@@ -1,0 +1,9 @@
+..\..\bin\XML Cleaner.dll
+..\..\bin\XML Cleaner.pdb
+..\..\bin\XML Cleaner.xml
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\XML Cleaner.vbproj.GenerateResource.Cache
+obj\Debug\XML Cleaner.dll
+obj\Debug\XML Cleaner.xml
+obj\Debug\XML Cleaner.pdb
+obj\Debug\SkinEditor.XML_Cleaner.Resources.resources
