@@ -1,0 +1,11 @@
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\SkinEditor.XPRExtractor.Resources.resources
+obj\Debug\XPRExtractor.vbproj.GenerateResource.Cache
+bin\Debug\XPRExtractor.dll
+bin\Debug\XPRExtractor.pdb
+bin\Debug\XPRExtractor.xml
+obj\Debug\XPRExtractor.dll
+obj\Debug\XPRExtractor.pdb
+..\..\bin\XPRExtractor.dll
+..\..\bin\XPRExtractor.pdb
+..\..\bin\lzo.dll

@@ -1,0 +1,10 @@
+..\..\bin\SkinEditor.exe
+..\..\bin\SkinEditor.pdb
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\SkinEditor.Main.resources
+obj\Debug\SkinEditor.Resources.resources
+obj\Debug\SkinEditor.vbproj.GenerateResource.Cache
+obj\Debug\SkinEditor.exe
+obj\Debug\SkinEditor.pdb
+..\..\..\Build\SkinEditor.exe
+..\..\..\Build\SkinEditor.pdb
