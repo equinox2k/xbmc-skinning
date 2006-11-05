@@ -8,3 +8,4 @@ obj\Debug\SkinEditor.exe
 obj\Debug\SkinEditor.pdb
 ..\..\..\Build\SkinEditor.exe
 ..\..\..\Build\SkinEditor.pdb
+..\..\..\Build\lzo.dll

@@ -12,10 +12,12 @@ Public Interface IHost
 
     Function GetXPRImageCount(ByVal FileName As String) As Integer
     Function GetXPRImageName(ByVal FileName As String, ByVal ImageIndex As Integer) As String
+    Function GetXPRImageLoops(ByVal FileName As String, ByVal ImageIndex As Integer) As Integer
     Function GetXPRImageFrameCount(ByVal FileName As String, ByVal ImageIndex As Integer) As Integer
     Function GetXPRImageFrameDelay(ByVal FileName As String, ByVal ImageIndex As Integer, ByVal FrameIndex As Integer) As Integer
     Function GetXPRImageFrame(ByVal FileName As String, ByVal ImageIndex As Integer, ByVal FrameIndex As Integer) As Image
 
+    Function GetGIFImageLoops(ByVal FileName As String) As Integer
     Function GetGIFImageFrameCount(ByVal FileName As String) As Integer
     Function GetGIFImageFrameDelay(ByVal FileName As String, ByVal FrameIndex As Integer) As Integer
     Function GetGIFImageFrame(ByVal FileName As String, ByVal FrameIndex As Integer) As Image
