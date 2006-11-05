@@ -110,8 +110,12 @@ Public Class XMLCleaner
 #End Region
 
     Public Sub Start() Implements SkinEditor.Interfaces.IPlugin.Start
-        objHost.ShowMessage("hello from plugin")
-        objHost.ErrorOccured(0, "No error really just pretending :)", "", 0, 0)
+        'objHost.ShowMessage("hello from plugin")
+        'objHost.ErrorOccured(0, "No error really just pretending :)", "", 0, 0)
+        'objHost.XMLClean << does not lower case tags
+
+        Dim objForm As New Main
+        objHost.ShowForm(objForm)
     End Sub
 
 End Class

@@ -1,0 +1,7 @@
+..\..\..\Build\SkinEditor.Plugin.XMLCleaner.dll
+..\..\..\Build\SkinEditor.Plugin.XMLCleaner.pdb
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\SkinEditor.Plugin.XMLCleaner.dll
+obj\Debug\SkinEditor.Plugin.XMLCleaner.pdb
+obj\Debug\SkinEditor.Plugin.XMLCleaner.Main.resources
+obj\Debug\XMLCleaner.vbproj.GenerateResource.Cache
