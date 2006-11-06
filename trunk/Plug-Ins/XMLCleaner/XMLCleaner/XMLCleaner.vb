@@ -1,115 +1,61 @@
-Public Class XMLCleaner
-    Implements SkinEditor.Interfaces.IPlugin
+Imports SkinEditor.Interfaces
 
-#Region "Host Events"
+Public Class XMLCleaner
+    Implements IPlugin
 
     Private objHost As SkinEditor.Interfaces.IHost
+    Private lstInputParameters As New Generic.List(Of InputParameter)
+    Private lstOutputParameters As New Generic.List(Of OutputParameter)
 
-    Public Sub Initialize(ByVal Host As SkinEditor.Interfaces.IHost) Implements SkinEditor.Interfaces.IPlugin.Initialize
-        objHost = Host
-    End Sub
-
-    Public Sub HostClosing(ByRef Cancel As Boolean) Implements SkinEditor.Interfaces.IPlugin.HostClosing
-        Cancel = False
-    End Sub
-
-#End Region
-
-#Region "Plugin Details"
-
-    Public ReadOnly Property Plugin_Name() As String Implements SkinEditor.Interfaces.IPlugin.Plugin_Name
+    'Plugin Details
+    ReadOnly Property PluginDetails() As PluginDetails Implements IPlugin.PluginDetails
         Get
-            Return "XML Cleaner"
+            Dim strName As String = "XML Cleaner"
+            Dim strDescription As String = "XML Cleaner Plug-in"
+            Dim strAuthor As String = "Equinox & Donno"
+            Dim intVersionMajor As Integer = "1"
+            Dim inVersionMinor As Integer = "0"
+            Return New PluginDetails(strName, strDescription, strAuthor, intVersionMajor, inVersionMinor)
         End Get
     End Property
 
-    Public ReadOnly Property Plugin_Author() As String Implements SkinEditor.Interfaces.IPlugin.Plugin_Author
-        Get
-            Return "EqUiNoX & Donno"
-        End Get
-    End Property
-
-    Public ReadOnly Property Plugin_Description() As String Implements SkinEditor.Interfaces.IPlugin.Plugin_Description
-        Get
-            Return "XML Cleaner Application"
-        End Get
-    End Property
-
-    Public ReadOnly Property Plugin_Version_Major() As Integer Implements SkinEditor.Interfaces.IPlugin.Plugin_Version_Major
-        Get
-            Return 1
-        End Get
-    End Property
-
-    Public ReadOnly Property Plugin_Version_Minor() As Integer Implements SkinEditor.Interfaces.IPlugin.Plugin_Version_Minor
-        Get
-            Return 0
-        End Get
-    End Property
-
-#End Region
-
-#Region "Plugin Parameters"
-
-    Public Property Input_Param(ByVal Index As Integer) As Object Implements SkinEditor.Interfaces.IPlugin.Input_Param
-        Get
-            Return Nothing
-        End Get
-        Set(ByVal Value As Object)
+    'Plugin Input Parameters
+    WriteOnly Property InputParameters() As Generic.List(Of InputParameter) Implements IPlugin.InputParameters
+        Set(ByVal Value As Generic.List(Of InputParameter))
+            lstInputParameters = Value
         End Set
     End Property
 
-    Public ReadOnly Property Input_Param_Count() As Integer Implements SkinEditor.Interfaces.IPlugin.Input_Param_Count
+    'Plugin Output Parameters
+    ReadOnly Property OutputParameters() As Generic.List(Of OutputParameter) Implements IPlugin.OutputParameters
         Get
-            Return 0
+            Return lstOutputParameters
         End Get
     End Property
 
-    Public ReadOnly Property Input_Param_Description(ByVal Index As Integer) As String Implements SkinEditor.Interfaces.IPlugin.Input_Param_Description
-        Get
-            Return ""
-        End Get
-    End Property
+    'Plugin Initialise
+    Public Sub Initialize(ByVal Host As SkinEditor.Interfaces.IHost) Implements IPlugin.Initialize
+        objHost = Host
+    End Sub
 
-    Public ReadOnly Property Input_Param_Type(ByVal Index As Integer) As Integer Implements SkinEditor.Interfaces.IPlugin.Input_Param_Type
-        Get
-            Return 0
-        End Get
-    End Property
+    'Plugin Closing
+    Public Sub HostClosing(ByRef Cancel As Boolean) Implements IPlugin.HostClosing
+        Cancel = False
+    End Sub
 
-    Public ReadOnly Property Input_Param_Optional(ByVal Index As Integer) As Boolean Implements SkinEditor.Interfaces.IPlugin.Input_Param_Optional
-        Get
-            Return False
-        End Get
-    End Property
+    'Plugin Close
+    Public Sub Close() Implements IPlugin.Close
 
-    Public ReadOnly Property Output_Param(ByVal Index As Integer) As Object Implements SkinEditor.Interfaces.IPlugin.Output_Param
-        Get
-            Return Nothing
-        End Get
-    End Property
+    End Sub
 
-    Public ReadOnly Property Output_Param_Count() As Integer Implements SkinEditor.Interfaces.IPlugin.Output_Param_Count
-        Get
-            Return 0
-        End Get
-    End Property
+    'Plugin Settings
+    Public Sub Settings() Implements IPlugin.Settings
+        Dim objSettings As New Settings
+        objHost.ShowDialog(objSettings)
+    End Sub
 
-    Public ReadOnly Property Output_Param_Description(ByVal Index As Integer) As String Implements SkinEditor.Interfaces.IPlugin.Output_Param_Description
-        Get
-            Return ""
-        End Get
-    End Property
-
-    Public ReadOnly Property Output_Param_Type(ByVal Index As Integer) As Integer Implements SkinEditor.Interfaces.IPlugin.Output_Param_Type
-        Get
-            Return 0
-        End Get
-    End Property
-
-#End Region
-
-    Public Sub Start() Implements SkinEditor.Interfaces.IPlugin.Start
+    'Plugin Start
+    Public Sub Start() Implements IPlugin.Start
         'objHost.ShowMessage("hello from plugin")
         'objHost.ErrorOccured(0, "No error really just pretending :)", "", 0, 0)
         'objHost.XMLClean << does not lower case tags

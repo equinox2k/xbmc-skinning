@@ -1,25 +1,13 @@
 Public Interface IPlugin
 
+    ReadOnly Property PluginDetails() As PluginDetails
+    WriteOnly Property InputParameters() As Generic.List(Of InputParameter)
+    ReadOnly Property OutputParameters() As Generic.List(Of OutputParameter)
+
     Sub Initialize(ByVal Host As IHost)
-    Sub HostClosing(ByRef Cancel As Boolean)
-
-    ReadOnly Property Plugin_Name() As String
-    ReadOnly Property Plugin_Description() As String
-    ReadOnly Property Plugin_Author() As String
-    ReadOnly Property Plugin_Version_Major() As Integer
-    ReadOnly Property Plugin_Version_Minor() As Integer
-
-    Property Input_Param(ByVal Index As Integer) As Object
-    ReadOnly Property Input_Param_Count() As Integer
-    ReadOnly Property Input_Param_Description(ByVal Index As Integer) As String
-    ReadOnly Property Input_Param_Type(ByVal Index As Integer) As Integer
-    ReadOnly Property Input_Param_Optional(ByVal Index As Integer) As Boolean
-
-    ReadOnly Property Output_Param(ByVal Index As Integer) As Object
-    ReadOnly Property Output_Param_Count() As Integer
-    ReadOnly Property Output_Param_Description(ByVal Index As Integer) As String
-    ReadOnly Property Output_Param_Type(ByVal Index As Integer) As Integer
-
     Sub Start()
+    Sub HostClosing(ByRef Cancel As Boolean)
+    Sub Close()
+    Sub Settings()
 
 End Interface

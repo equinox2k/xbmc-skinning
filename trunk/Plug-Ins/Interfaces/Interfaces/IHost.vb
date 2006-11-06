@@ -4,6 +4,7 @@ Imports System.Windows.Forms
 Public Interface IHost
 
     Sub ShowMessage(ByVal Message As String)
+    Function ShowDialog(ByVal Form As Form) As DialogResult
     Sub ShowForm(ByVal Form As Form)
 
     Sub ErrorOccured(ByVal ErrorLevel As Integer, ByVal Message As String, ByVal File As String, ByVal Line As Integer, ByVal Pos As Integer)

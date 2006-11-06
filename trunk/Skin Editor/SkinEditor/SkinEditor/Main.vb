@@ -14,7 +14,7 @@ Public Class Main
         If Plugins IsNot Nothing Then
             For intIndex As Integer = 0 To Plugins.Length - 1
                 Dim objPlugin As IPlugin = DirectCast(PluginServices.CreateInstance(Plugins(intIndex)), IPlugin)
-                lstPlugins.Items.Add(objPlugin.Plugin_Name)
+                lstPlugins.Items.Add(objPlugin.PluginDetails.Name)
             Next intIndex
             lstPlugins.SelectedIndex = 0
         Else
@@ -27,6 +27,12 @@ Public Class Main
         Dim objPlugin As IPlugin = DirectCast(PluginServices.CreateInstance(Plugins(lstPlugins.SelectedIndex)), IPlugin)
         objPlugin.Initialize(objHost)
         objPlugin.Start()
+    End Sub
+
+    Private Sub btnSettings_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSettings.Click
+        Dim objPlugin As IPlugin = DirectCast(PluginServices.CreateInstance(Plugins(lstPlugins.SelectedIndex)), IPlugin)
+        objPlugin.Initialize(objHost)
+        objPlugin.Settings()
     End Sub
 
     Private Sub objHost_ErrorEvent(ByVal ErrorLevel As Integer, ByVal Message As String, ByVal File As String, ByVal Line As Integer, ByVal Pos As Integer) Handles objHost.ErrorEvent

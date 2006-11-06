@@ -48,8 +48,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IHost.vb" />
+    <Compile Include="InputParameter.vb" />
     <Compile Include="IPlugin.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="OutputParameter.vb" />
+    <Compile Include="PluginDetails.vb" />
   </ItemGroup>
   <ItemGroup>
     <None Include="My Project\Application.myapp">

@@ -16,6 +16,10 @@ Public Class Host
         Form.Show()
     End Sub
 
+    Public Function ShowDialog(ByVal Form As Form) As DialogResult Implements SkinEditor.Interfaces.IHost.ShowDialog
+        Return Form.ShowDialog()
+    End Function
+
     Public Sub ErrorOccured(ByVal ErrorLevel As Integer, ByVal Message As String, ByVal File As String, ByVal Line As Integer, ByVal Pos As Integer) Implements SkinEditor.Interfaces.IHost.ErrorOccured
         RaiseEvent ErrorEvent(ErrorLevel, Message, File, Line, Pos)
     End Sub
@@ -180,7 +184,7 @@ Public Class Host
 #Region "Settings Functions"
 
     Public Function GetSetting(ByVal Name As String) As String Implements SkinEditor.Interfaces.IHost.GetSetting
-
+        Return Nothing
     End Function
 
     Public Sub SetSetting(ByVal Name As String, ByVal Value As String) Implements SkinEditor.Interfaces.IHost.SetSetting
@@ -188,7 +192,7 @@ Public Class Host
     End Sub
 
     Public Function GetPluginSetting(ByVal Plugin As String, ByVal Name As String) As String Implements SkinEditor.Interfaces.IHost.GetPluginSetting
-
+        Return Nothing
     End Function
 
     Public Sub SetPluginSetting(ByVal Plugin As String, ByVal Name As String, ByVal Value As String) Implements SkinEditor.Interfaces.IHost.SetPluginSetting
