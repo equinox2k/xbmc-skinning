@@ -1,13 +1,12 @@
+Imports System.IO
+Imports System.Xml
+Imports System.Xml.Serialization
 Imports SkinEditor.Interfaces
 
 Public Class Main
 
     Private WithEvents objHost As New Host
-    Private Plugins() As PluginServices.AvailablePlugin = PluginServices.FindPlugins(AppPath, "SkinEditor.Interfaces.IPlugin")
-
-    Private Function AppPath() As String
-        Return System.AppDomain.CurrentDomain.BaseDirectory()
-    End Function
+    Private Plugins() As PluginServices.AvailablePlugin = PluginServices.FindPlugins(objHost.AppPath, "SkinEditor.Interfaces.IPlugin")
 
     Private Sub Main_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
@@ -20,6 +19,8 @@ Public Class Main
         Else
             btnRun.Enabled = False
         End If
+
+        objHost.LoadSettings()
 
     End Sub
 

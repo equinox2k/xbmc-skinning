@@ -1,3 +1,5 @@
+Imports System.Windows.Forms
+
 Public Interface IPlugin
 
     ReadOnly Property PluginDetails() As PluginDetails
@@ -8,6 +10,7 @@ Public Interface IPlugin
     Sub Start()
     Sub HostClosing(ByRef Cancel As Boolean)
     Sub Close()
+    Sub About()
     Sub Settings()
 
 End Interface

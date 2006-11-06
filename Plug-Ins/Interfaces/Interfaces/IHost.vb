@@ -5,7 +5,7 @@ Public Interface IHost
 
     Sub ShowMessage(ByVal Message As String)
     Function ShowDialog(ByVal Form As Form) As DialogResult
-    Sub ShowForm(ByVal Form As Form)
+    Sub ShowForm(ByVal Form As Form, ByVal DockLocation As String)
 
     Sub ErrorOccured(ByVal ErrorLevel As Integer, ByVal Message As String, ByVal File As String, ByVal Line As Integer, ByVal Pos As Integer)
 
@@ -31,9 +31,11 @@ Public Interface IHost
     Function XMLMergeIncludes(ByVal IncludeXML As String, ByVal XML As String) As String
     Function XMLMergeReferences(ByVal ReferencesXML As String, ByVal XML As String) As String
 
-    Function GetSetting(ByVal Name As String) As String
-    Sub SetSetting(ByVal Name As String, ByVal Value As String)
-    Function GetPluginSetting(ByVal Plugin As String, ByVal Name As String) As String
-    Sub SetPluginSetting(ByVal Plugin As String, ByVal Name As String, ByVal Value As String)
+    Sub LoadSettings()
+    Sub SaveSettings()
+    Function GetSetting(ByVal SettingName As String) As String
+    Sub SetSetting(ByVal SettingName As String, ByVal Value As String)
+    Function GetPluginSetting(ByVal PluginName As String, ByVal SettingName As String) As String
+    Sub SetPluginSetting(ByVal PluginName As String, ByVal SettingName As String, ByVal Value As String)
 
 End Interface
