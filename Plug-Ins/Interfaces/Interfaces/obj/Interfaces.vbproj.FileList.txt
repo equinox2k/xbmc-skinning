@@ -1,5 +1,0 @@
-..\..\..\Build\SkinEditor.Interfaces.dll
-..\..\..\Build\SkinEditor.Interfaces.pdb
-obj\Debug\ResolveAssemblyReference.cache
-obj\Debug\SkinEditor.Interfaces.dll
-obj\Debug\SkinEditor.Interfaces.pdb
