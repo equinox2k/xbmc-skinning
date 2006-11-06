@@ -7,6 +7,7 @@ Public Class Settings
     End Sub
 
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
+        objHost.SetSetting("TestSetting", TextBox1.Text)
         objHost.SaveSettings()
     End Sub
 
