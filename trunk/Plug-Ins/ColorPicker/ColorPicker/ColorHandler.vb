@@ -1,3 +1,5 @@
+Imports System.Drawing
+
 Public Class ColorHandler
 
     Public Structure RGB

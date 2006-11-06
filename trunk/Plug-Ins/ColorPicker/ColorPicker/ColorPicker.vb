@@ -1,154 +1,64 @@
-Imports System.Drawing
-Imports System.Drawing.Drawing2D
-Imports System.Drawing.Imaging
+Imports SkinEditor.Interfaces
 
 Public Class ColorPicker
+    Implements IPlugin
 
-    Private Enum ChangeStyle
-        MouseMove
-        RGB
-        HSV
-        None
-    End Enum
+    Private objHost As SkinEditor.Interfaces.IHost
+    Private lstInputParameters As New Generic.List(Of InputParameter)
+    Private lstOutputParameters As New Generic.List(Of OutputParameter)
 
-    Private ChangeType As ChangeStyle = ChangeStyle.None
-    Private SelectedPoint As Point
-    Private WithEvents MyColorWheel As ColorWheel
-
-    Private RGB As ColorHandler.RGB
-    Private HSV As ColorHandler.HSV
-    Private IsInUpdate As Boolean = False
-    Private LastColorValue As String
-
-    Public Sub New()
-
-        InitializeComponent()
-
-        Me.DoubleBuffered = True
-
-        pnlSelectedColor.Visible = False
-        pnlBrightness.Visible = False
-        pnlColor.Visible = False
-
-        Dim SelectedColorRectangle As Rectangle = New Rectangle(pnlSelectedColor.Location, pnlSelectedColor.Size)
-        Dim BrightnessRectangle As Rectangle = New Rectangle(pnlBrightness.Location, pnlBrightness.Size)
-        Dim ColorRectangle As Rectangle = New Rectangle(pnlColor.Location, pnlColor.Size)
-
-        MyColorWheel = New ColorWheel(ColorRectangle, BrightnessRectangle, SelectedColorRectangle)
-
-        SetRGB(RGB)
-        SetHSV(HSV)
-
-    End Sub
-
-    Private Sub HandleMouse(ByVal sender As Object, ByVal e As MouseEventArgs) Handles MyBase.MouseMove, MyBase.MouseDown
-        If e.Button = Windows.Forms.MouseButtons.Left Then
-            ChangeType = ChangeStyle.MouseMove
-            SelectedPoint = New Point(e.X, e.Y)
-            Me.Invalidate()
-        End If
-    End Sub
-
-    Private Sub HandleMouseUp(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles MyBase.MouseUp
-        MyColorWheel.SetMouseUp()
-        ChangeType = ChangeStyle.None
-    End Sub
-
-    Private Sub HandleRGBChange(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles nudRed.ValueChanged, nudBlue.ValueChanged, nudGreen.ValueChanged
-        If Not IsInUpdate Then
-            ChangeType = ChangeStyle.RGB
-            RGB = New ColorHandler.RGB(CInt(nudRed.Value), CInt(nudGreen.Value), CInt(nudBlue.Value))
-            SetHSV(ColorHandler.RGBtoHSV(RGB))
-            Me.Invalidate()
-        End If
-    End Sub
-
-    Private Sub txtColorValue_LostFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtColorValue.LostFocus
-
-        If Not IsNumeric("&H" & txtColorValue.Text) Then
-            txtColorValue.Text = LastColorValue
-            Exit Sub
-        Else
-            txtColorValue.Text = txtColorValue.Text.PadLeft(6, "0").ToUpper
-        End If
-
-        If Not IsInUpdate Then
-            ChangeType = ChangeStyle.RGB
-            Dim ColorValue As String = txtColorValue.Text.PadLeft(6, "0")
-            RGB = New ColorHandler.RGB(CInt("&H" & ColorValue.Substring(0, 2)), CInt("&H" & ColorValue.Substring(2, 2)), CInt("&H" & ColorValue.Substring(4, 2)))
-            SetHSV(ColorHandler.RGBtoHSV(RGB))
-            Me.Invalidate()
-        End If
-
-    End Sub
-
-    Private Sub HandleHSVChange(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles nudHue.ValueChanged, nudSaturation.ValueChanged, nudBrightness.ValueChanged
-        If Not IsInUpdate Then
-            ChangeType = ChangeStyle.HSV
-            HSV = New ColorHandler.HSV(CInt(nudHue.Value), CInt(nudSaturation.Value), CInt(nudBrightness.Value))
-            SetRGB(ColorHandler.HSVtoRGB(HSV))
-            Me.Invalidate()
-        End If
-    End Sub
-
-    Private Sub SetRGB(ByVal RGB As ColorHandler.RGB)
-        IsInUpdate = True
-        RefreshValue(nudRed, RGB.Red)
-        RefreshValue(nudBlue, RGB.Blue)
-        RefreshValue(nudGreen, RGB.Green)
-        LastColorValue = txtColorValue.Text
-        txtColorValue.Text = Hex(RGB.Red).PadLeft(2, "0") & Hex(RGB.Green).PadLeft(2, "0") & Hex(RGB.Blue).PadLeft(2, "0")
-        IsInUpdate = False
-    End Sub
-
-    Private Sub SetHSV(ByVal HSV As ColorHandler.HSV)
-        IsInUpdate = True
-        RefreshValue(nudHue, HSV.Hue)
-        RefreshValue(nudSaturation, HSV.Saturation)
-        RefreshValue(nudBrightness, HSV.Value)
-        IsInUpdate = False
-    End Sub
-
-    Private Sub HandleTextChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles nudRed.TextChanged, nudBlue.TextChanged, nudGreen.TextChanged, nudHue.TextChanged, nudSaturation.TextChanged, nudBrightness.TextChanged
-        Dim x As Decimal = DirectCast(sender, NumericUpDown).Value
-    End Sub
-
-    Private Sub RefreshValue(ByVal nud As NumericUpDown, ByVal Value As Integer)
-        If nud.Value <> Value Then
-            nud.Value = Value
-            nud.Refresh()
-        End If
-    End Sub
-
-    Public Property Color() As Color
+    'Plugin Details
+    ReadOnly Property PluginDetails() As PluginDetails Implements IPlugin.PluginDetails
         Get
-            Return MyColorWheel.Color
+            Dim strName As String = "Color Picker"
+            Dim strDescription As String = "Color Picker Plug-in"
+            Dim strAuthor As String = "Equinox"
+            Dim intVersionMajor As Integer = "1"
+            Dim inVersionMinor As Integer = "0"
+            Return New PluginDetails(strName, strDescription, strAuthor, intVersionMajor, inVersionMinor)
         End Get
-        Set(ByVal Value As Color)
-            ChangeType = ChangeStyle.RGB
-            RGB = New ColorHandler.RGB(Value.R, Value.G, Value.B)
-            HSV = ColorHandler.RGBtoHSV(RGB)
+    End Property
+
+    'Plugin Input Parameters
+    WriteOnly Property InputParameters() As Generic.List(Of InputParameter) Implements IPlugin.InputParameters
+        Set(ByVal Value As Generic.List(Of InputParameter))
+            lstInputParameters = Value
         End Set
     End Property
 
-    Private Sub MyColorWheel_ColorChanged(ByVal sender As Object, ByVal e As ColorChangedEventArgs) Handles MyColorWheel.ColorChanged
-        SetRGB(e.RGB)
-        SetHSV(e.HSV)
+    'Plugin Output Parameters
+    ReadOnly Property OutputParameters() As Generic.List(Of OutputParameter) Implements IPlugin.OutputParameters
+        Get
+            Return lstOutputParameters
+        End Get
+    End Property
+
+    'Plugin Initialise
+    Public Sub Initialize(ByVal Host As SkinEditor.Interfaces.IHost) Implements IPlugin.Initialize
+        objHost = Host
     End Sub
 
-    Private Sub HandlePaint(ByVal sender As Object, ByVal e As PaintEventArgs) Handles MyBase.Paint
-        Select Case ChangeType
-            Case ChangeStyle.HSV
-                MyColorWheel.Draw(e.Graphics, HSV)
-            Case ChangeStyle.MouseMove, ChangeStyle.None
-                MyColorWheel.Draw(e.Graphics, SelectedPoint)
-            Case ChangeStyle.RGB
-                MyColorWheel.Draw(e.Graphics, RGB)
-        End Select
+    'Plugin Closing
+    Public Sub HostClosing(ByRef Cancel As Boolean) Implements IPlugin.HostClosing
+        Cancel = False
     End Sub
 
-    Private Sub ColorPicker_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+    'Plugin Close
+    Public Sub Close() Implements IPlugin.Close
+    End Sub
 
+    'Plugin About
+    Public Sub About() Implements IPlugin.About
+    End Sub
+
+    'Plugin Settings
+    Public Sub Settings() Implements IPlugin.Settings
+    End Sub
+
+    'Plugin Start
+    Public Sub Start() Implements IPlugin.Start
+        Dim a As New Main
+        objHost.ShowForm(a, "")
     End Sub
 
 End Class
