@@ -48,9 +48,15 @@ Public Class XMLCleaner
 
     End Sub
 
+    'Plugin About
+    Public Sub About() Implements IPlugin.About
+
+    End Sub
+
     'Plugin Settings
     Public Sub Settings() Implements IPlugin.Settings
         Dim objSettings As New Settings
+        objSettings.objHost = objHost
         objHost.ShowDialog(objSettings)
     End Sub
 
@@ -61,7 +67,7 @@ Public Class XMLCleaner
         'objHost.XMLClean << does not lower case tags
 
         Dim objForm As New Main
-        objHost.ShowForm(objForm)
+        objHost.ShowForm(objForm, "")
     End Sub
 
 End Class
