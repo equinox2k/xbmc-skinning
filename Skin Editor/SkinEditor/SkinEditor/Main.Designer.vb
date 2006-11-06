@@ -24,6 +24,7 @@ Partial Class Main
         Me.btnRun = New System.Windows.Forms.Button
         Me.Label1 = New System.Windows.Forms.Label
         Me.Label2 = New System.Windows.Forms.Label
+        Me.btnSettings = New System.Windows.Forms.Button
         Me.SuspendLayout()
         '
         'lstPlugins
@@ -70,11 +71,21 @@ Partial Class Main
         Me.Label2.TabIndex = 4
         Me.Label2.Text = "Error Log"
         '
+        'btnSettings
+        '
+        Me.btnSettings.Location = New System.Drawing.Point(93, 113)
+        Me.btnSettings.Name = "btnSettings"
+        Me.btnSettings.Size = New System.Drawing.Size(75, 23)
+        Me.btnSettings.TabIndex = 5
+        Me.btnSettings.Text = "Settings"
+        Me.btnSettings.UseVisualStyleBackColor = True
+        '
         'Main
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(518, 266)
+        Me.Controls.Add(Me.btnSettings)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.btnRun)
@@ -91,4 +102,5 @@ Partial Class Main
     Friend WithEvents btnRun As System.Windows.Forms.Button
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents Label2 As System.Windows.Forms.Label
+    Friend WithEvents btnSettings As System.Windows.Forms.Button
 End Class
