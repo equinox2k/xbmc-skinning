@@ -25,6 +25,7 @@ Partial Class Main
         Me.Label1 = New System.Windows.Forms.Label
         Me.Label2 = New System.Windows.Forms.Label
         Me.btnSettings = New System.Windows.Forms.Button
+        Me.btnAbout = New System.Windows.Forms.Button
         Me.SuspendLayout()
         '
         'lstPlugins
@@ -80,11 +81,21 @@ Partial Class Main
         Me.btnSettings.Text = "Settings"
         Me.btnSettings.UseVisualStyleBackColor = True
         '
+        'btnAbout
+        '
+        Me.btnAbout.Location = New System.Drawing.Point(431, 113)
+        Me.btnAbout.Name = "btnAbout"
+        Me.btnAbout.Size = New System.Drawing.Size(75, 23)
+        Me.btnAbout.TabIndex = 6
+        Me.btnAbout.Text = "About"
+        Me.btnAbout.UseVisualStyleBackColor = True
+        '
         'Main
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(518, 266)
+        Me.Controls.Add(Me.btnAbout)
         Me.Controls.Add(Me.btnSettings)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
@@ -103,4 +114,5 @@ Partial Class Main
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents btnSettings As System.Windows.Forms.Button
+    Friend WithEvents btnAbout As System.Windows.Forms.Button
 End Class
