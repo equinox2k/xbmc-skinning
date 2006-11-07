@@ -4,7 +4,15 @@ Public Class OutputParameter
     Dim intType As Integer
     Dim objValue As Object
 
-    Public Sub New(ByVal Description As String, ByVal Type As Integer, ByVal OptionalValue As Integer)
+    Public Enum ValueType
+        Text = 0
+        Number = 1
+        Hex = 2
+        File = 3
+        Color = 4
+    End Enum
+
+    Public Sub New(ByVal Description As String, ByVal ValueType As ValueType, ByVal OptionalValue As Integer)
         strDescription = Description
         intType = Type
     End Sub
