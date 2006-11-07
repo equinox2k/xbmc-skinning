@@ -40,4 +40,8 @@ Public Class Main
         txtError.Text &= Message & ControlChars.CrLf
     End Sub
 
+    Private Sub btnAbout_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAbout.Click
+        Dim frmAbout As New About
+        frmAbout.ShowDialog()
+    End Sub
 End Class
