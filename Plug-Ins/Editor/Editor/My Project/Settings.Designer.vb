@@ -64,9 +64,9 @@ Namespace My
     Friend Module MySettingsProperty
         
         <Global.System.ComponentModel.Design.HelpKeywordAttribute("My.Settings")>  _
-        Friend ReadOnly Property Settings() As Global.SkinEditor.Plugin.Calculator.My.MySettings
+        Friend ReadOnly Property Settings() As Global.SkinEditor.Plugin.Editor.My.MySettings
             Get
-                Return Global.SkinEditor.Plugin.Calculator.My.MySettings.Default
+                Return Global.SkinEditor.Plugin.Editor.My.MySettings.Default
             End Get
         End Property
     End Module

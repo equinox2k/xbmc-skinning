@@ -5,10 +5,10 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.50727</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{5BC1C527-D61C-4842-98A0-B122BCD74A76}</ProjectGuid>
+    <ProjectGuid>{B2323756-E5DF-411A-9EB0-C5CC8EA8BBA7}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>SkinEditor.Plugin.Calculator</RootNamespace>
-    <AssemblyName>SkinEditor.Plugin.Calculator</AssemblyName>
+    <RootNamespace>SkinEditor.Plugin.Editor</RootNamespace>
+    <AssemblyName>SkinEditor.Plugin.Editor</AssemblyName>
     <MyType>Windows</MyType>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -17,8 +17,7 @@
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <OutputPath>..\..\..\Build\</OutputPath>
-    <DocumentationFile>
-    </DocumentationFile>
+    <DocumentationFile>SkinEditor.Plugin.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -27,15 +26,27 @@
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
     <OutputPath>..\..\..\Build\</OutputPath>
-    <DocumentationFile>
-    </DocumentationFile>
+    <DocumentationFile>SkinEditor.Plugin.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="SkinEditor.Interfaces, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="QWhale.Common, Version=1.4.0.0, Culture=neutral, PublicKeyToken=751aaa1c30182835, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Build\SkinEditor.Interfaces.dll</HintPath>
+      <HintPath>.\QWhale.Common.dll</HintPath>
     </Reference>
+    <Reference Include="QWhale.Editor, Version=1.4.0.0, Culture=neutral, PublicKeyToken=751aaa1c30182835, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\QWhale.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="QWhale.Syntax, Version=1.4.0.0, Culture=neutral, PublicKeyToken=751aaa1c30182835, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\QWhale.Syntax.dll</HintPath>
+    </Reference>
+    <Reference Include="QWhale.Syntax.Schemes, Version=1.4.0.0, Culture=neutral, PublicKeyToken=751aaa1c30182835, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\QWhale.Syntax.Schemes.dll</HintPath>
+    </Reference>
+    <Reference Include="SkinEditor.Interfaces, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -51,7 +62,7 @@
     <Import Include="System.Diagnostics" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Calculator.vb" />
+    <Compile Include="Editor.vb" />
     <Compile Include="Main.Designer.vb">
       <DependentUpon>Main.vb</DependentUpon>
     </Compile>
