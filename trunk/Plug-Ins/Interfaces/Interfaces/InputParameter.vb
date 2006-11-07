@@ -2,13 +2,23 @@ Public Class InputParameter
 
     Dim strDescription As String
     Dim intType As Integer
-    Dim blnOptionalValue As Boolean
     Dim objValue As Object
+    Dim strParameters As String
+    Dim blnOptionalValue As Boolean
 
-    Public Sub New(ByVal Description As String, ByVal Type As Integer, ByVal OptionalValue As Integer)
+    Public Enum ValueType
+        Text = 0
+        Number = 1
+        Hex = 2
+        Color = 3
+        File = 4
+    End Enum
+
+    Public Sub New(ByVal Description As String, ByVal ValueType As ValueType, ByVal OptionalValue As Boolean)
         strDescription = Description
         intType = Type
         blnOptionalValue = OptionalValue
+        objValue = Nothing
     End Sub
 
     Public ReadOnly Property Description() As String

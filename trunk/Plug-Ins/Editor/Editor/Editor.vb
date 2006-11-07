@@ -36,6 +36,7 @@ Public Class Calculator
     'Plugin Initialise
     Public Sub Initialize(ByVal Host As SkinEditor.Interfaces.IHost) Implements IPlugin.Initialize
         objHost = Host
+        Dim objInputParameter As New InputParameter("", InputParameter.ValueType.File, False)
     End Sub
 
     'Plugin Closing
