@@ -108,6 +108,28 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Css.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Html.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Javascript.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Python.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\find.png" />
+    <Content Include="Resources\goto.png" />
+    <Content Include="Resources\print.png" />
+    <Content Include="Resources\printer_options.png" />
+    <Content Include="Resources\print_preview.png" />
+    <Content Include="Resources\replace.png" />
+    <Content Include="Resources\window_split_hor.png" />
+    <None Include="Resources\window_split_ver.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
