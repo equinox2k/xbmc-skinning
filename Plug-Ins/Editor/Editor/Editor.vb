@@ -65,7 +65,7 @@ Public Class Calculator
     'Plugin Start
     Public Sub Start() Implements IPlugin.Start
         Dim objForm As New Main
-        If "" & lstInputParameters(0).Value IsNot Nothing Then objForm.LoadFile(lstInputParameters(0).Value)
+        If "" & lstInputParameters(0).Value <> "" Then objForm.LoadFile(lstInputParameters(0).Value)
         objHost.ShowForm(objForm, "")
     End Sub
 
