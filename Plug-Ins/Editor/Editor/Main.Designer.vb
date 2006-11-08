@@ -43,23 +43,17 @@ Partial Class Main
         Me.ReplaceToolItem = New System.Windows.Forms.ToolStripButton
         Me.GotoToolItem = New System.Windows.Forms.ToolStripButton
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator
-        Me.SplitHorizToolItem = New System.Windows.Forms.ToolStripButton
-        Me.SplitVertToolItem = New System.Windows.Forms.ToolStripButton
-        Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator
         Me.ToolStripLabel1 = New System.Windows.Forms.ToolStripLabel
         Me.SyntaxComboToolItem = New System.Windows.Forms.ToolStripComboBox
         Me.Panel1 = New System.Windows.Forms.Panel
         Me.lblPos = New System.Windows.Forms.Label
         Me.lblLine = New System.Windows.Forms.Label
-        Me.EditorSplitContainer = New System.Windows.Forms.SplitContainer
+        Me.OpenFileDialog = New System.Windows.Forms.OpenFileDialog
+        Me.SaveFileDialog = New System.Windows.Forms.SaveFileDialog
         Me.SyntaxEdit1 = New QWhale.Editor.SyntaxEdit(Me.components)
-        Me.SyntaxEdit2 = New QWhale.Editor.SyntaxEdit(Me.components)
         Me.EditorMenuStrip.SuspendLayout()
         Me.EditorToolStrip.SuspendLayout()
         Me.Panel1.SuspendLayout()
-        Me.EditorSplitContainer.Panel1.SuspendLayout()
-        Me.EditorSplitContainer.Panel2.SuspendLayout()
-        Me.EditorSplitContainer.SuspendLayout()
         Me.SuspendLayout()
         '
         'HtmlParser
@@ -162,7 +156,7 @@ Partial Class Main
         '
         'EditorToolStrip
         '
-        Me.EditorToolStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FindToolItem, Me.ReplaceToolItem, Me.GotoToolItem, Me.ToolStripSeparator2, Me.SplitHorizToolItem, Me.SplitVertToolItem, Me.ToolStripSeparator4, Me.ToolStripLabel1, Me.SyntaxComboToolItem})
+        Me.EditorToolStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FindToolItem, Me.ReplaceToolItem, Me.GotoToolItem, Me.ToolStripSeparator2, Me.ToolStripLabel1, Me.SyntaxComboToolItem})
         Me.EditorToolStrip.Location = New System.Drawing.Point(0, 24)
         Me.EditorToolStrip.Name = "EditorToolStrip"
         Me.EditorToolStrip.Size = New System.Drawing.Size(652, 25)
@@ -200,29 +194,6 @@ Partial Class Main
         '
         Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
         Me.ToolStripSeparator2.Size = New System.Drawing.Size(6, 25)
-        '
-        'SplitHorizToolItem
-        '
-        Me.SplitHorizToolItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.SplitHorizToolItem.Image = Global.SkinEditor.Plugin.Editor.My.Resources.Resources.window_split_hor
-        Me.SplitHorizToolItem.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.SplitHorizToolItem.Name = "SplitHorizToolItem"
-        Me.SplitHorizToolItem.Size = New System.Drawing.Size(23, 22)
-        Me.SplitHorizToolItem.Text = "ToolStripButton4"
-        '
-        'SplitVertToolItem
-        '
-        Me.SplitVertToolItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.SplitVertToolItem.Image = Global.SkinEditor.Plugin.Editor.My.Resources.Resources.window_split_ver
-        Me.SplitVertToolItem.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.SplitVertToolItem.Name = "SplitVertToolItem"
-        Me.SplitVertToolItem.Size = New System.Drawing.Size(23, 22)
-        Me.SplitVertToolItem.Text = "ToolStripButton5"
-        '
-        'ToolStripSeparator4
-        '
-        Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
-        Me.ToolStripSeparator4.Size = New System.Drawing.Size(6, 25)
         '
         'ToolStripLabel1
         '
@@ -268,26 +239,9 @@ Partial Class Main
         Me.lblLine.TabIndex = 18
         Me.lblLine.Text = "Ln 1"
         '
-        'EditorSplitContainer
+        'OpenFileDialog
         '
-        Me.EditorSplitContainer.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.EditorSplitContainer.Location = New System.Drawing.Point(4, 52)
-        Me.EditorSplitContainer.Name = "EditorSplitContainer"
-        Me.EditorSplitContainer.Orientation = System.Windows.Forms.Orientation.Horizontal
-        '
-        'EditorSplitContainer.Panel1
-        '
-        Me.EditorSplitContainer.Panel1.Controls.Add(Me.SyntaxEdit1)
-        '
-        'EditorSplitContainer.Panel2
-        '
-        Me.EditorSplitContainer.Panel2.Controls.Add(Me.SyntaxEdit2)
-        Me.EditorSplitContainer.Panel2Collapsed = True
-        Me.EditorSplitContainer.Size = New System.Drawing.Size(643, 356)
-        Me.EditorSplitContainer.SplitterDistance = 130
-        Me.EditorSplitContainer.TabIndex = 21
+        Me.OpenFileDialog.FileName = "OpenFileDialog1"
         '
         'SyntaxEdit1
         '
@@ -296,24 +250,11 @@ Partial Class Main
         Me.SyntaxEdit1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.SyntaxEdit1.Font = New System.Drawing.Font("Courier New", 10.0!)
         Me.SyntaxEdit1.Gutter.Options = CType((QWhale.Editor.GutterOptions.PaintLineNumbers Or QWhale.Editor.GutterOptions.PaintLinesOnGutter), QWhale.Editor.GutterOptions)
-        Me.SyntaxEdit1.Location = New System.Drawing.Point(0, 0)
+        Me.SyntaxEdit1.Location = New System.Drawing.Point(0, 49)
         Me.SyntaxEdit1.Name = "SyntaxEdit1"
-        Me.SyntaxEdit1.Size = New System.Drawing.Size(643, 356)
-        Me.SyntaxEdit1.TabIndex = 16
+        Me.SyntaxEdit1.Size = New System.Drawing.Size(652, 362)
+        Me.SyntaxEdit1.TabIndex = 21
         Me.SyntaxEdit1.Text = ""
-        '
-        'SyntaxEdit2
-        '
-        Me.SyntaxEdit2.BackColor = System.Drawing.SystemColors.Window
-        Me.SyntaxEdit2.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.SyntaxEdit2.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.SyntaxEdit2.Font = New System.Drawing.Font("Courier New", 10.0!)
-        Me.SyntaxEdit2.Gutter.Options = CType((QWhale.Editor.GutterOptions.PaintLineNumbers Or QWhale.Editor.GutterOptions.PaintLinesOnGutter), QWhale.Editor.GutterOptions)
-        Me.SyntaxEdit2.Location = New System.Drawing.Point(0, 0)
-        Me.SyntaxEdit2.Name = "SyntaxEdit2"
-        Me.SyntaxEdit2.Size = New System.Drawing.Size(150, 46)
-        Me.SyntaxEdit2.Source = Me.TextSource
-        Me.SyntaxEdit2.TabIndex = 14
         '
         'Main
         '
@@ -321,7 +262,7 @@ Partial Class Main
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.Control
         Me.ClientSize = New System.Drawing.Size(652, 442)
-        Me.Controls.Add(Me.EditorSplitContainer)
+        Me.Controls.Add(Me.SyntaxEdit1)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.EditorToolStrip)
         Me.Controls.Add(Me.EditorMenuStrip)
@@ -333,9 +274,6 @@ Partial Class Main
         Me.EditorToolStrip.ResumeLayout(False)
         Me.EditorToolStrip.PerformLayout()
         Me.Panel1.ResumeLayout(False)
-        Me.EditorSplitContainer.Panel1.ResumeLayout(False)
-        Me.EditorSplitContainer.Panel2.ResumeLayout(False)
-        Me.EditorSplitContainer.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -358,19 +296,16 @@ Partial Class Main
     Friend WithEvents ReplaceToolItem As System.Windows.Forms.ToolStripButton
     Friend WithEvents GotoToolItem As System.Windows.Forms.ToolStripButton
     Friend WithEvents ToolStripSeparator2 As System.Windows.Forms.ToolStripSeparator
-    Friend WithEvents SplitHorizToolItem As System.Windows.Forms.ToolStripButton
-    Friend WithEvents SplitVertToolItem As System.Windows.Forms.ToolStripButton
-    Friend WithEvents Panel1 As System.Windows.Forms.Panel
     Friend WithEvents lblPos As System.Windows.Forms.Label
     Friend WithEvents lblLine As System.Windows.Forms.Label
-    Friend WithEvents EditorSplitContainer As System.Windows.Forms.SplitContainer
-    Friend WithEvents SyntaxEdit1 As QWhale.Editor.SyntaxEdit
-    Friend WithEvents SyntaxEdit2 As QWhale.Editor.SyntaxEdit
     Friend WithEvents NewMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents OpenMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolStripSeparator3 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents SaveAsMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents ToolStripSeparator4 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents ToolStripLabel1 As System.Windows.Forms.ToolStripLabel
     Friend WithEvents SyntaxComboToolItem As System.Windows.Forms.ToolStripComboBox
+    Friend WithEvents OpenFileDialog As System.Windows.Forms.OpenFileDialog
+    Friend WithEvents SaveFileDialog As System.Windows.Forms.SaveFileDialog
+    Friend WithEvents Panel1 As System.Windows.Forms.Panel
+    Friend WithEvents SyntaxEdit1 As QWhale.Editor.SyntaxEdit
 End Class
