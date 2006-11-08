@@ -92,13 +92,13 @@ Public Class Main
         UpdateForm()
     End Sub
 
-    Private Sub SyntaxEdit1_SourceStateChanged(ByVal sender As Object, ByVal e As QWhale.Editor.NotifyEventArgs)
+    Private Sub SyntaxEdit1_SourceStateChanged(ByVal sender As Object, ByVal e As QWhale.Editor.NotifyEventArgs) Handles SyntaxEdit1.SourceStateChanged
         Dim objPosition As Point = TextSource.Position
         lblLine.Text = "Ln " & objPosition.Y + 1
         lblPos.Text = "Pos " & objPosition.X + 1
     End Sub
 
-    Private Sub SyntaxEdit1_ModifiedChanged(ByVal sender As Object, ByVal e As System.EventArgs)
+    Private Sub SyntaxEdit1_ModifiedChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles SyntaxEdit1.ModifiedChanged
         UpdateForm()
     End Sub
 
@@ -162,6 +162,10 @@ Public Class Main
     End Sub
 
     Private Sub Main_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+
+    End Sub
+
+    Private Sub SyntaxEdit1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SyntaxEdit1.Click
 
     End Sub
 End Class

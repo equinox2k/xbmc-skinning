@@ -253,8 +253,8 @@ Partial Class Main
         Me.SyntaxEdit1.Location = New System.Drawing.Point(0, 49)
         Me.SyntaxEdit1.Name = "SyntaxEdit1"
         Me.SyntaxEdit1.Size = New System.Drawing.Size(652, 362)
+        Me.SyntaxEdit1.Source = Me.TextSource
         Me.SyntaxEdit1.TabIndex = 21
-        Me.SyntaxEdit1.Text = ""
         '
         'Main
         '
