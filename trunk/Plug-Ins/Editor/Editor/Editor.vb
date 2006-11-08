@@ -40,7 +40,7 @@ Public Class Calculator
     Public Sub Initialize(ByVal Host As SkinEditor.Interfaces.IHost) Implements IPlugin.Initialize
         objHost = Host
         lstInputParameters.Clear()
-        lstInputParameters.Add(New InputParameter("Filename", InputParameter.ValueType.File, True, "", "*.TXT,*.XML,*.CSS,*.JS,*.PY,*.HTML,*.HTM,*.ASP,*.PHP"))
+        lstInputParameters.Add(New InputParameter("Filename", InputParameter.ValueType.File, True, "", "*.TXT;*.XML;*.CSS;*.JS;*.PY;*.HTML;*.HTM;*.ASP;*.PHP"))
     End Sub
 
     'Plugin Closing

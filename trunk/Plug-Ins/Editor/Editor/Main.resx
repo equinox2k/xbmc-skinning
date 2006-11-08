@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <metadata name="HtmlParser.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 56</value>
+    <value>274, 17</value>
   </metadata>
   <data name="HtmlParser.XmlScheme" xml:space="preserve">
     <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;
@@ -815,7 +815,7 @@
 &lt;/LexScheme&gt;</value>
   </data>
   <metadata name="PythonParser.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>129, 56</value>
+    <value>380, 17</value>
   </metadata>
   <data name="PythonParser.XmlScheme" xml:space="preserve">
     <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;
@@ -1029,7 +1029,7 @@
 &lt;/LexScheme&gt;</value>
   </data>
   <metadata name="JavascriptParser.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>252, 56</value>
+    <value>622, 17</value>
   </metadata>
   <data name="JavascriptParser.XmlScheme" xml:space="preserve">
     <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;
@@ -1281,12 +1281,18 @@
 &lt;/LexScheme&gt;</value>
   </data>
   <metadata name="TextSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>390, 56</value>
+    <value>17, 54</value>
   </metadata>
   <metadata name="EditorMenuStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 58</value>
+    <value>143, 17</value>
   </metadata>
   <metadata name="EditorToolStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>132, 58</value>
+    <value>497, 17</value>
+  </metadata>
+  <metadata name="OpenFileDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="SaveFileDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>124, 54</value>
   </metadata>
 </root>

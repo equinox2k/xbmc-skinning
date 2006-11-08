@@ -9,62 +9,87 @@ Public Class Main
         InitializeComponent()
 
         SyntaxComboToolItem.Items.Clear()
-        SyntaxComboToolItem.Items.Add("Text)")
+        SyntaxComboToolItem.Items.Add("Text")
         SyntaxComboToolItem.Items.Add("XML")
         SyntaxComboToolItem.Items.Add("Python")
         SyntaxComboToolItem.Items.Add("CSS")
         SyntaxComboToolItem.Items.Add("HTML")
         SyntaxComboToolItem.Items.Add("Javascript")
         SyntaxComboToolItem.SelectedIndex = 0
-        'SaveMenuItem.Visible = True
+
+        UpdateForm()
 
     End Sub
 
     Private Sub SetSyntax(ByVal Syntax As String)
-        Select Case Syntax.ToUpper
-            Case "XML", ".XML"
-                SyntaxComboToolItem.SelectedIndex = 1
-                TextSource.Lexer = New XmlParser
-            Case "PYTHON", ".PY"
-                SyntaxComboToolItem.SelectedIndex = 2
-                Dim objLexer As New Lexer
-                objLexer.XmlScheme = My.Resources.Python
-                TextSource.Lexer = objLexer
-            Case "CSS", ".CSS"
-                SyntaxComboToolItem.SelectedIndex = 3
-                Dim objLexer As New Lexer
-                objLexer.XmlScheme = My.Resources.Css
-                TextSource.Lexer = objLexer
-            Case "HTML", ".HTML", ".HTM", ".ASP", ".PHP"
-                SyntaxComboToolItem.SelectedIndex = 4
-                Dim objLexer As New Lexer
-                objLexer.XmlScheme = My.Resources.Html
-                TextSource.Lexer = objLexer
-            Case "JAVASCRIPT", ".JS"
-                SyntaxComboToolItem.SelectedIndex = 5
-                Dim objLexer As New Lexer
-                objLexer.XmlScheme = My.Resources.Javascript
-                TextSource.Lexer = objLexer
-            Case Else
-                SyntaxComboToolItem.SelectedIndex = 0
-        End Select
+        Static Disabled As Boolean = False
+        If Disabled = False Then
+            Disabled = True
+            Select Case Syntax.ToUpper
+                Case "XML", ".XML"
+                    SyntaxComboToolItem.SelectedIndex = 1
+                    TextSource.Lexer = New XmlParser
+                Case "PYTHON", ".PY"
+                    SyntaxComboToolItem.SelectedIndex = 2
+                    Dim objLexer As New Lexer
+                    objLexer.XmlScheme = My.Resources.Python
+                    TextSource.Lexer = objLexer
+                Case "CSS", ".CSS"
+                    SyntaxComboToolItem.SelectedIndex = 3
+                    Dim objLexer As New Lexer
+                    objLexer.XmlScheme = My.Resources.Css
+                    TextSource.Lexer = objLexer
+                Case "HTML", ".HTML", ".HTM", ".ASP", ".PHP"
+                    SyntaxComboToolItem.SelectedIndex = 4
+                    Dim objLexer As New Lexer
+                    objLexer.XmlScheme = My.Resources.Html
+                    TextSource.Lexer = objLexer
+                Case "JAVASCRIPT", ".JS"
+                    SyntaxComboToolItem.SelectedIndex = 5
+                    Dim objLexer As New Lexer
+                    objLexer.XmlScheme = My.Resources.Javascript
+                    TextSource.Lexer = objLexer
+                Case Else
+                    SyntaxComboToolItem.SelectedIndex = 0
+                    TextSource.Lexer = Nothing
+            End Select
+            Disabled = False
+        End If
     End Sub
 
     Private Sub SyntaxComboToolItem_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles SyntaxComboToolItem.SelectedIndexChanged
-        SetSyntax(SyntaxComboToolItem.SelectedText)
+        SetSyntax(SyntaxComboToolItem.SelectedItem)
+    End Sub
+
+    Private Sub UpdateForm()
+        If TextSource.FileName = "" Then
+            Me.Text = "Untitled" & IIf(TextSource.Modified, "*", "") & " - Editor"
+        Else
+            Me.Text = Path.GetFileName(TextSource.FileName) & IIf(TextSource.Modified, "*", "") & " - Editor"
+        End If
+        SaveMenuItem.Text = "Save " & Path.GetFileName(TextSource.FileName)
+        SaveAsMenuItem.Text = "Save " & Path.GetFileName(TextSource.FileName) & IIf(TextSource.FileName <> "", " ", "") & "As..."
     End Sub
 
     Public Sub LoadFile(ByVal FileName As String)
         TextSource.LoadFile(FileName)
         TextSource.FileName = FileName
         SetSyntax(Path.GetExtension(FileName))
-        SaveMenuItem.Text = "Save " & Path.GetFileName(FileName)
-        SaveAsMenuItem.Text = "Save " & Path.GetFileName(FileName) & " As..."
+        UpdateForm()
     End Sub
 
-    Public Sub SaveFile(ByVal FileName As String)
-        'if filename blank ask
-        TextSource.SaveFile(FileName)
+    Public Sub SaveFile(Optional ByVal SaveAs As Boolean = False)
+        If TextSource.FileName = "" Or SaveAs = True Then
+            SaveFileDialog.OverwritePrompt = True
+            SaveFileDialog.Filter = "Files (*.TXT,*.XML,*.CSS,*.JS,*.PY,*.HTML,*.HTM,*.ASP,*.PHP)|*.TXT;*.XML;*.CSS;*.JS;*.PY;*.HTML;*.HTM;*.ASP;*.PHP"
+            If SaveFileDialog.ShowDialog = Windows.Forms.DialogResult.OK Then
+                TextSource.FileName = SaveFileDialog.FileName
+                TextSource.SaveFile(TextSource.FileName)
+            End If
+        Else
+            TextSource.SaveFile(TextSource.FileName)
+        End If
+        UpdateForm()
     End Sub
 
     Private Sub SyntaxEdit1_SourceStateChanged(ByVal sender As Object, ByVal e As QWhale.Editor.NotifyEventArgs)
@@ -74,67 +99,30 @@ Public Class Main
     End Sub
 
     Private Sub SyntaxEdit1_ModifiedChanged(ByVal sender As Object, ByVal e As System.EventArgs)
-        Me.Text = Path.GetFileName(TextSource.FileName) & IIf(TextSource.Modified, "*", "")
+        UpdateForm()
     End Sub
-
-    'Private Sub UltraToolbarsManager_ToolClick(ByVal sender As System.Object, ByVal e As Infragistics.Win.UltraWinToolbars.ToolClickEventArgs) Handles UltraToolbarsManager.ToolClick
-    '    Select Case e.Tool.Key
-    '        Case "Split Vert"
-    '            UltraToolbarsManager.EventManager.SetEnabled(Infragistics.Win.UltraWinToolbars.ToolbarEventIds.ToolClick, False)
-    '            Dim StateButtonVert As Infragistics.Win.UltraWinToolbars.StateButtonTool
-    '            StateButtonVert = UltraToolbarsManager.Tools("Split Vert")
-    '            Dim StateButtonHoriz As Infragistics.Win.UltraWinToolbars.StateButtonTool
-    '            StateButtonHoriz = UltraToolbarsManager.Tools("Split Horiz")
-    '            If StateButtonVert.Checked = True Then
-    '                StateButtonHoriz.Checked = False
-    '                SplitContainer.Orientation = Orientation.Horizontal
-    '                SplitContainer.SplitterDistance = SplitContainer.Height / 2
-    '                SplitContainer.Panel2Collapsed = False
-    '            Else
-    '                SplitContainer.Panel2Collapsed = True
-    '            End If
-    '            UltraToolbarsManager.EventManager.SetEnabled(Infragistics.Win.UltraWinToolbars.ToolbarEventIds.ToolClick, True)
-    '        Case "Split Horiz"
-    '            UltraToolbarsManager.EventManager.SetEnabled(Infragistics.Win.UltraWinToolbars.ToolbarEventIds.ToolClick, False)
-    '            Dim StateButtonHoriz As Infragistics.Win.UltraWinToolbars.StateButtonTool
-    '            StateButtonHoriz = UltraToolbarsManager.Tools("Split Horiz")
-    '            Dim StateButtonVert As Infragistics.Win.UltraWinToolbars.StateButtonTool
-    '            StateButtonVert = UltraToolbarsManager.Tools("Split Vert")
-    '            If StateButtonHoriz.Checked = True Then
-    '                StateButtonVert.Checked = False
-    '                SplitContainer.Orientation = Orientation.Vertical
-    '                SplitContainer.SplitterDistance = SplitContainer.Width / 2
-    '                SplitContainer.Panel2Collapsed = False
-    '            Else
-    '                SplitContainer.Panel2Collapsed = True
-    '            End If
-    '            UltraToolbarsManager.EventManager.SetEnabled(Infragistics.Win.UltraWinToolbars.ToolbarEventIds.ToolClick, True)
-    '    End Select
-    'End Sub
 
     Private Sub NewToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles NewMenuItem.Click
         SetSyntax("Text")
         TextSource.FileName = ""
         TextSource.Text = ""
-        SaveMenuItem.Text = "Save"
-        SaveAsMenuItem.Text = "Save As..."
+        UpdateForm()
     End Sub
 
     Private Sub OpenMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OpenMenuItem.Click
-        'ask file and open etc
+        OpenFileDialog.CheckFileExists = True
+        OpenFileDialog.Filter = "Files (*.TXT,*.XML,*.CSS,*.JS,*.PY,*.HTML,*.HTM,*.ASP,*.PHP)|*.TXT;*.XML;*.CSS;*.JS;*.PY;*.HTML;*.HTM;*.ASP;*.PHP"
+        If OpenFileDialog.ShowDialog = Windows.Forms.DialogResult.OK Then
+            LoadFile(OpenFileDialog.FileName)
+        End If
     End Sub
 
     Private Sub SaveAsMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SaveAsMenuItem.Click
-        'ask file then change file caption
-        SaveFile(TextSource.FileName)
-        'SaveMenuItem.Text = "Save " & Path.GetFileName(FileName)
-        'SaveAsMenuItem.Text = "Save " & Path.GetFileName(FileName) & " As..."
+        SaveFile(True)
     End Sub
 
     Private Sub SaveMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SaveMenuItem.Click
-        SaveFile(TextSource.FileName)
-        'SaveMenuItem.Text = "Save " & Path.GetFileName(FileName)
-        'SaveAsMenuItem.Text = "Save " & Path.GetFileName(FileName) & " As..."
+        SaveFile()
     End Sub
 
     Private Sub CloseMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CloseMenuItem.Click
@@ -169,12 +157,11 @@ Public Class Main
         SyntaxEdit1.DisplayGotoLineDialog()
     End Sub
 
-    Private Sub SplitHorizToolItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SplitHorizToolItem.Click
+    Private Sub Panel1_Paint(ByVal sender As System.Object, ByVal e As System.Windows.Forms.PaintEventArgs) Handles Panel1.Paint
 
     End Sub
 
-    Private Sub SplitVertToolItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SplitVertToolItem.Click
+    Private Sub Main_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
     End Sub
-
 End Class
