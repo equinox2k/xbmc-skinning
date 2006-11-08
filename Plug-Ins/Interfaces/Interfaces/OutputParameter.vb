@@ -3,6 +3,7 @@ Public Class OutputParameter
     Dim strDescription As String
     Dim intType As Integer
     Dim objValue As Object
+    Dim strParameters As String
 
     Public Enum ValueType
         Text = 0
@@ -12,9 +13,10 @@ Public Class OutputParameter
         Color = 4
     End Enum
 
-    Public Sub New(ByVal Description As String, ByVal ValueType As ValueType, ByVal OptionalValue As Integer)
+    Public Sub New(ByVal Description As String, ByVal ValueType As ValueType, ByVal Value As Object)
         strDescription = Description
         intType = Type
+        objValue = Value
     End Sub
 
     Public ReadOnly Property Description() As String
@@ -23,7 +25,7 @@ Public Class OutputParameter
         End Get
     End Property
 
-    Public ReadOnly Property Type() As Integer
+    Public ReadOnly Property Type() As ValueType
         Get
             Return intType
         End Get

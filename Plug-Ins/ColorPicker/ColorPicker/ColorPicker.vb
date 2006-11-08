@@ -20,7 +20,10 @@ Public Class ColorPicker
     End Property
 
     'Plugin Input Parameters
-    WriteOnly Property InputParameters() As Generic.List(Of InputParameter) Implements IPlugin.InputParameters
+    Property InputParameters() As Generic.List(Of InputParameter) Implements IPlugin.InputParameters
+        Get
+            Return lstInputParameters
+        End Get
         Set(ByVal Value As Generic.List(Of InputParameter))
             lstInputParameters = Value
         End Set
