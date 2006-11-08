@@ -26,21 +26,28 @@ Partial Class Main
         Me.JavascriptParser = New QWhale.Syntax.Parser
         Me.TextSource = New QWhale.Editor.TextSource(Me.components)
         Me.EditorMenuStrip = New System.Windows.Forms.MenuStrip
-        Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.SaveToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.CloseToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
+        Me.FileMenuItem = New System.Windows.Forms.ToolStripMenuItem
+        Me.NewMenuItem = New System.Windows.Forms.ToolStripMenuItem
+        Me.OpenMenuItem = New System.Windows.Forms.ToolStripMenuItem
+        Me.SaveMenuItem = New System.Windows.Forms.ToolStripMenuItem
+        Me.SaveAsMenuItem = New System.Windows.Forms.ToolStripMenuItem
+        Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator
+        Me.CloseMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator
-        Me.PageSetupToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.PrintOptionsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.PrintPreviewToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.PrintToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
+        Me.PageSetupMenuItem = New System.Windows.Forms.ToolStripMenuItem
+        Me.PrintOptionsMenuItem = New System.Windows.Forms.ToolStripMenuItem
+        Me.PrintPreviewMenuItem = New System.Windows.Forms.ToolStripMenuItem
+        Me.PrintMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.EditorToolStrip = New System.Windows.Forms.ToolStrip
-        Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton
-        Me.ToolStripButton2 = New System.Windows.Forms.ToolStripButton
-        Me.ToolStripButton3 = New System.Windows.Forms.ToolStripButton
+        Me.FindToolItem = New System.Windows.Forms.ToolStripButton
+        Me.ReplaceToolItem = New System.Windows.Forms.ToolStripButton
+        Me.GotoToolItem = New System.Windows.Forms.ToolStripButton
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator
-        Me.ToolStripButton4 = New System.Windows.Forms.ToolStripButton
-        Me.ToolStripButton5 = New System.Windows.Forms.ToolStripButton
+        Me.SplitHorizToolItem = New System.Windows.Forms.ToolStripButton
+        Me.SplitVertToolItem = New System.Windows.Forms.ToolStripButton
+        Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator
+        Me.ToolStripLabel1 = New System.Windows.Forms.ToolStripLabel
+        Me.SyntaxComboToolItem = New System.Windows.Forms.ToolStripComboBox
         Me.Panel1 = New System.Windows.Forms.Panel
         Me.lblPos = New System.Windows.Forms.Label
         Me.lblLine = New System.Windows.Forms.Label
@@ -72,123 +79,162 @@ Partial Class Main
         '
         'EditorMenuStrip
         '
-        Me.EditorMenuStrip.GripStyle = System.Windows.Forms.ToolStripGripStyle.Visible
-        Me.EditorMenuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem})
+        Me.EditorMenuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileMenuItem})
         Me.EditorMenuStrip.Location = New System.Drawing.Point(0, 0)
         Me.EditorMenuStrip.Name = "EditorMenuStrip"
         Me.EditorMenuStrip.Size = New System.Drawing.Size(652, 24)
         Me.EditorMenuStrip.TabIndex = 18
         Me.EditorMenuStrip.Text = "Editor Menu"
         '
-        'FileToolStripMenuItem
+        'FileMenuItem
         '
-        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SaveToolStripMenuItem, Me.CloseToolStripMenuItem, Me.ToolStripSeparator1, Me.PageSetupToolStripMenuItem, Me.PrintOptionsToolStripMenuItem, Me.PrintPreviewToolStripMenuItem, Me.PrintToolStripMenuItem})
-        Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
-        Me.FileToolStripMenuItem.Size = New System.Drawing.Size(37, 20)
-        Me.FileToolStripMenuItem.Text = "File"
+        Me.FileMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NewMenuItem, Me.OpenMenuItem, Me.SaveMenuItem, Me.SaveAsMenuItem, Me.ToolStripSeparator3, Me.CloseMenuItem, Me.ToolStripSeparator1, Me.PageSetupMenuItem, Me.PrintOptionsMenuItem, Me.PrintPreviewMenuItem, Me.PrintMenuItem})
+        Me.FileMenuItem.Name = "FileMenuItem"
+        Me.FileMenuItem.Size = New System.Drawing.Size(35, 20)
+        Me.FileMenuItem.Text = "File"
         '
-        'SaveToolStripMenuItem
+        'NewMenuItem
         '
-        Me.SaveToolStripMenuItem.Name = "SaveToolStripMenuItem"
-        Me.SaveToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.SaveToolStripMenuItem.Text = "Save"
+        Me.NewMenuItem.Name = "NewMenuItem"
+        Me.NewMenuItem.Size = New System.Drawing.Size(148, 22)
+        Me.NewMenuItem.Text = "New"
         '
-        'CloseToolStripMenuItem
+        'OpenMenuItem
         '
-        Me.CloseToolStripMenuItem.Name = "CloseToolStripMenuItem"
-        Me.CloseToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.CloseToolStripMenuItem.Text = "Close"
+        Me.OpenMenuItem.Name = "OpenMenuItem"
+        Me.OpenMenuItem.Size = New System.Drawing.Size(148, 22)
+        Me.OpenMenuItem.Text = "Open"
+        '
+        'SaveMenuItem
+        '
+        Me.SaveMenuItem.Name = "SaveMenuItem"
+        Me.SaveMenuItem.Size = New System.Drawing.Size(148, 22)
+        Me.SaveMenuItem.Text = "Save"
+        '
+        'SaveAsMenuItem
+        '
+        Me.SaveAsMenuItem.Name = "SaveAsMenuItem"
+        Me.SaveAsMenuItem.Size = New System.Drawing.Size(148, 22)
+        Me.SaveAsMenuItem.Text = "Save As"
+        '
+        'ToolStripSeparator3
+        '
+        Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
+        Me.ToolStripSeparator3.Size = New System.Drawing.Size(145, 6)
+        '
+        'CloseMenuItem
+        '
+        Me.CloseMenuItem.Name = "CloseMenuItem"
+        Me.CloseMenuItem.Size = New System.Drawing.Size(148, 22)
+        Me.CloseMenuItem.Text = "Close"
         '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(149, 6)
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(145, 6)
         '
-        'PageSetupToolStripMenuItem
+        'PageSetupMenuItem
         '
-        Me.PageSetupToolStripMenuItem.Name = "PageSetupToolStripMenuItem"
-        Me.PageSetupToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.PageSetupToolStripMenuItem.Text = "Page Setup"
+        Me.PageSetupMenuItem.Name = "PageSetupMenuItem"
+        Me.PageSetupMenuItem.Size = New System.Drawing.Size(148, 22)
+        Me.PageSetupMenuItem.Text = "Page Setup"
         '
-        'PrintOptionsToolStripMenuItem
+        'PrintOptionsMenuItem
         '
-        Me.PrintOptionsToolStripMenuItem.Image = Global.SkinEditor.Plugin.Editor.My.Resources.Resources.printer_options
-        Me.PrintOptionsToolStripMenuItem.Name = "PrintOptionsToolStripMenuItem"
-        Me.PrintOptionsToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.PrintOptionsToolStripMenuItem.Text = "Print Options"
+        Me.PrintOptionsMenuItem.Image = Global.SkinEditor.Plugin.Editor.My.Resources.Resources.printer_options
+        Me.PrintOptionsMenuItem.Name = "PrintOptionsMenuItem"
+        Me.PrintOptionsMenuItem.Size = New System.Drawing.Size(148, 22)
+        Me.PrintOptionsMenuItem.Text = "Print Options"
         '
-        'PrintPreviewToolStripMenuItem
+        'PrintPreviewMenuItem
         '
-        Me.PrintPreviewToolStripMenuItem.Image = Global.SkinEditor.Plugin.Editor.My.Resources.Resources.print_preview
-        Me.PrintPreviewToolStripMenuItem.Name = "PrintPreviewToolStripMenuItem"
-        Me.PrintPreviewToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.PrintPreviewToolStripMenuItem.Text = "Print Preview"
+        Me.PrintPreviewMenuItem.Image = Global.SkinEditor.Plugin.Editor.My.Resources.Resources.print_preview
+        Me.PrintPreviewMenuItem.Name = "PrintPreviewMenuItem"
+        Me.PrintPreviewMenuItem.Size = New System.Drawing.Size(148, 22)
+        Me.PrintPreviewMenuItem.Text = "Print Preview"
         '
-        'PrintToolStripMenuItem
+        'PrintMenuItem
         '
-        Me.PrintToolStripMenuItem.Image = Global.SkinEditor.Plugin.Editor.My.Resources.Resources.print
-        Me.PrintToolStripMenuItem.Name = "PrintToolStripMenuItem"
-        Me.PrintToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.PrintToolStripMenuItem.Text = "Print"
+        Me.PrintMenuItem.Image = Global.SkinEditor.Plugin.Editor.My.Resources.Resources.print
+        Me.PrintMenuItem.Name = "PrintMenuItem"
+        Me.PrintMenuItem.Size = New System.Drawing.Size(148, 22)
+        Me.PrintMenuItem.Text = "Print"
         '
         'EditorToolStrip
         '
-        Me.EditorToolStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripButton1, Me.ToolStripButton2, Me.ToolStripButton3, Me.ToolStripSeparator2, Me.ToolStripButton4, Me.ToolStripButton5})
+        Me.EditorToolStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FindToolItem, Me.ReplaceToolItem, Me.GotoToolItem, Me.ToolStripSeparator2, Me.SplitHorizToolItem, Me.SplitVertToolItem, Me.ToolStripSeparator4, Me.ToolStripLabel1, Me.SyntaxComboToolItem})
         Me.EditorToolStrip.Location = New System.Drawing.Point(0, 24)
         Me.EditorToolStrip.Name = "EditorToolStrip"
         Me.EditorToolStrip.Size = New System.Drawing.Size(652, 25)
         Me.EditorToolStrip.TabIndex = 19
         Me.EditorToolStrip.Text = "Editor Tools"
         '
-        'ToolStripButton1
+        'FindToolItem
         '
-        Me.ToolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripButton1.Image = Global.SkinEditor.Plugin.Editor.My.Resources.Resources.find
-        Me.ToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButton1.Name = "ToolStripButton1"
-        Me.ToolStripButton1.Size = New System.Drawing.Size(23, 22)
-        Me.ToolStripButton1.Text = "ToolStripButton1"
+        Me.FindToolItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.FindToolItem.Image = Global.SkinEditor.Plugin.Editor.My.Resources.Resources.find
+        Me.FindToolItem.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.FindToolItem.Name = "FindToolItem"
+        Me.FindToolItem.Size = New System.Drawing.Size(23, 22)
+        Me.FindToolItem.Text = "ToolStripButton1"
         '
-        'ToolStripButton2
+        'ReplaceToolItem
         '
-        Me.ToolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripButton2.Image = Global.SkinEditor.Plugin.Editor.My.Resources.Resources.replace
-        Me.ToolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButton2.Name = "ToolStripButton2"
-        Me.ToolStripButton2.Size = New System.Drawing.Size(23, 22)
-        Me.ToolStripButton2.Text = "ToolStripButton2"
+        Me.ReplaceToolItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ReplaceToolItem.Image = Global.SkinEditor.Plugin.Editor.My.Resources.Resources.replace
+        Me.ReplaceToolItem.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ReplaceToolItem.Name = "ReplaceToolItem"
+        Me.ReplaceToolItem.Size = New System.Drawing.Size(23, 22)
+        Me.ReplaceToolItem.Text = "ToolStripButton2"
         '
-        'ToolStripButton3
+        'GotoToolItem
         '
-        Me.ToolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripButton3.Image = Global.SkinEditor.Plugin.Editor.My.Resources.Resources._goto
-        Me.ToolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButton3.Name = "ToolStripButton3"
-        Me.ToolStripButton3.Size = New System.Drawing.Size(23, 22)
-        Me.ToolStripButton3.Text = "ToolStripButton3"
+        Me.GotoToolItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.GotoToolItem.Image = Global.SkinEditor.Plugin.Editor.My.Resources.Resources._goto
+        Me.GotoToolItem.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.GotoToolItem.Name = "GotoToolItem"
+        Me.GotoToolItem.Size = New System.Drawing.Size(23, 22)
+        Me.GotoToolItem.Text = "ToolStripButton3"
         '
         'ToolStripSeparator2
         '
         Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
         Me.ToolStripSeparator2.Size = New System.Drawing.Size(6, 25)
         '
-        'ToolStripButton4
+        'SplitHorizToolItem
         '
-        Me.ToolStripButton4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripButton4.Image = Global.SkinEditor.Plugin.Editor.My.Resources.Resources.window_split_hor
-        Me.ToolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButton4.Name = "ToolStripButton4"
-        Me.ToolStripButton4.Size = New System.Drawing.Size(23, 22)
-        Me.ToolStripButton4.Text = "ToolStripButton4"
+        Me.SplitHorizToolItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.SplitHorizToolItem.Image = Global.SkinEditor.Plugin.Editor.My.Resources.Resources.window_split_hor
+        Me.SplitHorizToolItem.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.SplitHorizToolItem.Name = "SplitHorizToolItem"
+        Me.SplitHorizToolItem.Size = New System.Drawing.Size(23, 22)
+        Me.SplitHorizToolItem.Text = "ToolStripButton4"
         '
-        'ToolStripButton5
+        'SplitVertToolItem
         '
-        Me.ToolStripButton5.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripButton5.Image = Global.SkinEditor.Plugin.Editor.My.Resources.Resources.window_split_ver
-        Me.ToolStripButton5.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButton5.Name = "ToolStripButton5"
-        Me.ToolStripButton5.Size = New System.Drawing.Size(23, 22)
-        Me.ToolStripButton5.Text = "ToolStripButton5"
+        Me.SplitVertToolItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.SplitVertToolItem.Image = Global.SkinEditor.Plugin.Editor.My.Resources.Resources.window_split_ver
+        Me.SplitVertToolItem.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.SplitVertToolItem.Name = "SplitVertToolItem"
+        Me.SplitVertToolItem.Size = New System.Drawing.Size(23, 22)
+        Me.SplitVertToolItem.Text = "ToolStripButton5"
+        '
+        'ToolStripSeparator4
+        '
+        Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
+        Me.ToolStripSeparator4.Size = New System.Drawing.Size(6, 25)
+        '
+        'ToolStripLabel1
+        '
+        Me.ToolStripLabel1.Name = "ToolStripLabel1"
+        Me.ToolStripLabel1.Size = New System.Drawing.Size(41, 22)
+        Me.ToolStripLabel1.Text = "Syntax"
+        '
+        'SyntaxComboToolItem
+        '
+        Me.SyntaxComboToolItem.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.SyntaxComboToolItem.Name = "SyntaxComboToolItem"
+        Me.SyntaxComboToolItem.Size = New System.Drawing.Size(121, 25)
         '
         'Panel1
         '
@@ -265,7 +311,7 @@ Partial Class Main
         Me.SyntaxEdit2.Gutter.Options = CType((QWhale.Editor.GutterOptions.PaintLineNumbers Or QWhale.Editor.GutterOptions.PaintLinesOnGutter), QWhale.Editor.GutterOptions)
         Me.SyntaxEdit2.Location = New System.Drawing.Point(0, 0)
         Me.SyntaxEdit2.Name = "SyntaxEdit2"
-        Me.SyntaxEdit2.Size = New System.Drawing.Size(643, 222)
+        Me.SyntaxEdit2.Size = New System.Drawing.Size(150, 46)
         Me.SyntaxEdit2.Source = Me.TextSource
         Me.SyntaxEdit2.TabIndex = 14
         '
@@ -299,25 +345,32 @@ Partial Class Main
     Friend WithEvents JavascriptParser As QWhale.Syntax.Parser
     Friend WithEvents TextSource As QWhale.Editor.TextSource
     Friend WithEvents EditorMenuStrip As System.Windows.Forms.MenuStrip
-    Friend WithEvents FileToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents SaveToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents CloseToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents FileMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents SaveMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents CloseMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolStripSeparator1 As System.Windows.Forms.ToolStripSeparator
-    Friend WithEvents PageSetupToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents PrintOptionsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents PrintPreviewToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents PrintToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents PageSetupMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents PrintOptionsMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents PrintPreviewMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents PrintMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents EditorToolStrip As System.Windows.Forms.ToolStrip
-    Friend WithEvents ToolStripButton1 As System.Windows.Forms.ToolStripButton
-    Friend WithEvents ToolStripButton2 As System.Windows.Forms.ToolStripButton
-    Friend WithEvents ToolStripButton3 As System.Windows.Forms.ToolStripButton
+    Friend WithEvents FindToolItem As System.Windows.Forms.ToolStripButton
+    Friend WithEvents ReplaceToolItem As System.Windows.Forms.ToolStripButton
+    Friend WithEvents GotoToolItem As System.Windows.Forms.ToolStripButton
     Friend WithEvents ToolStripSeparator2 As System.Windows.Forms.ToolStripSeparator
-    Friend WithEvents ToolStripButton4 As System.Windows.Forms.ToolStripButton
-    Friend WithEvents ToolStripButton5 As System.Windows.Forms.ToolStripButton
+    Friend WithEvents SplitHorizToolItem As System.Windows.Forms.ToolStripButton
+    Friend WithEvents SplitVertToolItem As System.Windows.Forms.ToolStripButton
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
     Friend WithEvents lblPos As System.Windows.Forms.Label
     Friend WithEvents lblLine As System.Windows.Forms.Label
     Friend WithEvents EditorSplitContainer As System.Windows.Forms.SplitContainer
     Friend WithEvents SyntaxEdit1 As QWhale.Editor.SyntaxEdit
     Friend WithEvents SyntaxEdit2 As QWhale.Editor.SyntaxEdit
+    Friend WithEvents NewMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents OpenMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ToolStripSeparator3 As System.Windows.Forms.ToolStripSeparator
+    Friend WithEvents SaveAsMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ToolStripSeparator4 As System.Windows.Forms.ToolStripSeparator
+    Friend WithEvents ToolStripLabel1 As System.Windows.Forms.ToolStripLabel
+    Friend WithEvents SyntaxComboToolItem As System.Windows.Forms.ToolStripComboBox
 End Class

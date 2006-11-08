@@ -20,9 +20,12 @@ Public Class Calculator
     End Property
 
     'Plugin Input Parameters
-    WriteOnly Property InputParameters() As Generic.List(Of InputParameter) Implements IPlugin.InputParameters
-        Set(ByVal Value As Generic.List(Of InputParameter))
-            lstInputParameters = Value
+    Property InputParameters() As Generic.List(Of InputParameter) Implements IPlugin.InputParameters
+        Get
+            Return lstInputParameters
+        End Get
+        Set(ByVal value As Generic.List(Of InputParameter))
+            lstInputParameters = value
         End Set
     End Property
 
@@ -36,7 +39,8 @@ Public Class Calculator
     'Plugin Initialise
     Public Sub Initialize(ByVal Host As SkinEditor.Interfaces.IHost) Implements IPlugin.Initialize
         objHost = Host
-        Dim objInputParameter As New InputParameter("", InputParameter.ValueType.File, False)
+        lstInputParameters.Clear()
+        lstInputParameters.Add(New InputParameter("Filename", InputParameter.ValueType.File, True, "", "*.TXT,*.XML,*.CSS,*.JS,*.PY,*.HTML,*.HTM,*.ASP,*.PHP"))
     End Sub
 
     'Plugin Closing
@@ -61,6 +65,7 @@ Public Class Calculator
     'Plugin Start
     Public Sub Start() Implements IPlugin.Start
         Dim objForm As New Main
+        If "" & lstInputParameters(0).Value IsNot Nothing Then objForm.LoadFile(lstInputParameters(0).Value)
         objHost.ShowForm(objForm, "")
     End Sub
 
