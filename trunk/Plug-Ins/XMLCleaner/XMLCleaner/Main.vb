@@ -5,18 +5,6 @@ Imports System.Web
 
 Public Class Main
 
-    Private Sub SelectXPR_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SelectXPR.Click
-        If FolderBrowserDialog.ShowDialog = Windows.Forms.DialogResult.OK Then
-            SRCPath.Text = FolderBrowserDialog.SelectedPath & "\"
-        End If
-    End Sub
-
-    Private Sub SelectDestination_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SelectDestination.Click
-        If FolderBrowserDialog.ShowDialog = Windows.Forms.DialogResult.OK Then
-            DestinationPath.Text = FixPath(FolderBrowserDialog.SelectedPath)
-        End If
-    End Sub
-
     Private Function FixPath(ByVal Path As String) As String
         If Path.EndsWith("\") Then Return Path
         Return Path & "\"
@@ -67,9 +55,9 @@ Public Class Main
     End Function
 
     Private Sub btnProcess_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnProcess.Click
-        If Not SRCPath.Text.EndsWith("\") Then SRCPath.Text = SRCPath.Text & "\"
-        If Not DestinationPath.Text.EndsWith("\") Then DestinationPath.Text = DestinationPath.Text & "\"
-        Dim strFiles() As String = Directory.GetFiles(SRCPath.Text, "*.xml")
+        If Not txtSource.Text.EndsWith("\") Then txtSource.Text = txtSource.Text & "\"
+        If Not txtDest.Text.EndsWith("\") Then txtDest.Text = txtDest.Text & "\"
+        Dim strFiles() As String = Directory.GetFiles(txtSource.Text, "*.xml")
         Progress.Value = 0
         Progress.Maximum = strFiles.GetUpperBound(0) + 1
         Try
@@ -103,12 +91,52 @@ Public Class Main
 
     End Sub
 
-    Private Sub btnSRC2Dest_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSRC2Dest.Click
-        DestinationPath.Text = SRCPath.Text
+
+
+
+    Private Sub txtSource_Validating(ByVal sender As Object, ByVal e As System.ComponentModel.CancelEventArgs) Handles txtSource.Validating
+        If Directory.Exists(txtSource.Text) Then
+            txtSource.Text = FixPath(txtSource.Text)
+            e.Cancel = False
+        Else
+            e.Cancel = True
+        End If
     End Sub
 
-    Private Sub Main_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+    Private Sub txtDest_Validating(ByVal sender As Object, ByVal e As System.ComponentModel.CancelEventArgs) Handles txtDest.Validating
+        If Directory.Exists(txtDest.Text) Then
+            txtDest.Text = FixPath(txtDest.Text)
+            e.Cancel = False
+        Else
+            e.Cancel = True
+        End If
+    End Sub
 
+    Private Sub txtDefault_Validating(ByVal sender As Object, ByVal e As System.ComponentModel.CancelEventArgs) Handles txtDest.Validating
+        If Directory.Exists(txtDefault.Text) Then
+            txtDefault.Text = FixPath(txtDefault.Text)
+            e.Cancel = False
+        Else
+            e.Cancel = True
+        End If
+    End Sub
+
+    Private Sub btnSource_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSource.Click
+        If FolderBrowserDialog.ShowDialog = Windows.Forms.DialogResult.OK Then
+            txtSource.Text = FolderBrowserDialog.SelectedPath & "\"
+        End If
+    End Sub
+
+    Private Sub btnDest_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDest.Click
+        If FolderBrowserDialog.ShowDialog = Windows.Forms.DialogResult.OK Then
+            txtDest.Text = FixPath(FolderBrowserDialog.SelectedPath)
+        End If
+    End Sub
+
+    Private Sub btnDefault_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDefault.Click
+        If FolderBrowserDialog.ShowDialog = Windows.Forms.DialogResult.OK Then
+            txtDefault.Text = FixPath(FolderBrowserDialog.SelectedPath)
+        End If
     End Sub
 
 End Class
