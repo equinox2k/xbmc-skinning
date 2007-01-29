@@ -8,17 +8,17 @@ Imports System.Runtime.InteropServices
 
 ' Review the values of the assembly attributes
 
-<Assembly: AssemblyTitle("Host")> 
+<Assembly: AssemblyTitle("XML Cleaner")> 
 <Assembly: AssemblyDescription("")> 
 <Assembly: AssemblyCompany("AndersElite")> 
-<Assembly: AssemblyProduct("Host")> 
+<Assembly: AssemblyProduct("XML Cleaner")> 
 <Assembly: AssemblyCopyright("Copyright © AndersElite 2006")> 
 <Assembly: AssemblyTrademark("")> 
 
 <Assembly: ComVisible(False)>
 
 'The following GUID is for the ID of the typelib if this project is exposed to COM
-<Assembly: Guid("573eb810-bf48-4465-92ce-8a934c8d5987")> 
+<Assembly: Guid("96b3e09b-1456-4d65-811c-c18fb3fc776e")> 
 
 ' Version information for an assembly consists of the following four values:
 '

@@ -50,15 +50,19 @@ Public Class Main
     End Sub
 
     Private Sub btnRun_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnRun.Click
-        Dim objPlugin As IPlugin = DirectCast(PluginServices.CreateInstance(Plugins(lstPlugins.SelectedIndex)), IPlugin)
-        objPlugin.Initialize(objHost)
-        objPlugin.Start()
+        If (lstPlugins.Items.Count > 0) Then
+            Dim objPlugin As IPlugin = DirectCast(PluginServices.CreateInstance(Plugins(lstPlugins.SelectedIndex)), IPlugin)
+            objPlugin.Initialize(objHost)
+            objPlugin.Start()
+        End If
     End Sub
 
     Private Sub btnSettings_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSettings.Click
-        Dim objPlugin As IPlugin = DirectCast(PluginServices.CreateInstance(Plugins(lstPlugins.SelectedIndex)), IPlugin)
-        objPlugin.Initialize(objHost)
-        objPlugin.Settings()
+        If (lstPlugins.Items.Count > 0) Then
+            Dim objPlugin As IPlugin = DirectCast(PluginServices.CreateInstance(Plugins(lstPlugins.SelectedIndex)), IPlugin)
+            objPlugin.Initialize(objHost)
+            objPlugin.Settings()
+        End If
     End Sub
 
     Private Sub objHost_ErrorEvent(ByVal ErrorLevel As Integer, ByVal Message As String, ByVal File As String, ByVal Line As Integer, ByVal Pos As Integer) Handles objHost.ErrorEvent
@@ -68,9 +72,10 @@ Public Class Main
 
 
     Private Sub PluginMenu_DropDownItemClicked(ByVal sender As Object, ByVal e As System.Windows.Forms.ToolStripItemClickedEventArgs) Handles PluginMenu.DropDownItemClicked
-
-        Dim objPlugin As IPlugin = DirectCast(PluginServices.CreateInstance(Plugins(Int(e.ClickedItem.Tag))), IPlugin)
-        objPlugin.Initialize(objHost)
-        objPlugin.Start()
+        If (lstPlugins.Items.Count > 0) Then
+            Dim objPlugin As IPlugin = DirectCast(PluginServices.CreateInstance(Plugins(Int(e.ClickedItem.Tag))), IPlugin)
+            objPlugin.Initialize(objHost)
+            objPlugin.Start()
+        End If
     End Sub
 End Class

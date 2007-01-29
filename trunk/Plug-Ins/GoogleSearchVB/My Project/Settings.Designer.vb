@@ -53,6 +53,16 @@ Namespace My
                 Return defaultInstance
             End Get
         End Property
+        
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.WebServiceUrl),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("http://api.google.com/search/beta2")>  _
+        Public ReadOnly Property SkinEditor_Plugin_GoogleSearch_googleapi_GoogleSearchService() As String
+            Get
+                Return CType(Me("SkinEditor_Plugin_GoogleSearch_googleapi_GoogleSearchService"),String)
+            End Get
+        End Property
     End Class
 End Namespace
 
@@ -64,9 +74,9 @@ Namespace My
     Friend Module MySettingsProperty
         
         <Global.System.ComponentModel.Design.HelpKeywordAttribute("My.Settings")>  _
-        Friend ReadOnly Property Settings() As Global.SkinEditor.My.MySettings
+        Friend ReadOnly Property Settings() As Global.SkinEditor.Plugin.GoogleSearch.My.MySettings
             Get
-                Return Global.SkinEditor.My.MySettings.Default
+                Return Global.SkinEditor.Plugin.GoogleSearch.My.MySettings.Default
             End Get
         End Property
     End Module
