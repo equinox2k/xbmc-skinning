@@ -29,7 +29,7 @@
     <DefineDebug>false</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
-    <OutputPath>../../Build/</OutputPath>
+    <OutputPath>../Build/</OutputPath>
     <DocumentationFile>XBMCSkinEditor.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
     <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
@@ -101,7 +101,16 @@
       <DependentUpon>SkinBrowser.vb</DependentUpon>
     </Compile>
     <Compile Include="Controls\SkinBrowser.vb">
-      <SubType>UserControl</SubType>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\SkinDoc.Designer.vb">
+      <DependentUpon>SkinDoc.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SkinDoc.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\SkinDocument.vb">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Controls\SkinImages.vb" />
     <Compile Include="Controls\XPRTool.vb" />
@@ -148,6 +157,10 @@
     <EmbeddedResource Include="Controls\SkinBrowser.resx">
       <SubType>Designer</SubType>
       <DependentUpon>SkinBrowser.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\SkinDoc.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>SkinDoc.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\About.resx">
       <DependentUpon>About.vb</DependentUpon>
