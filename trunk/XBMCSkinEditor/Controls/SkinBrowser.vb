@@ -2,8 +2,8 @@ Imports System.IO
 Imports WeifenLuo.WinFormsUI
 
 Public Class SkinBrowser
+    Inherits DockContent
     Private objSkin As New Skin
-    'Private SkinBrowser_Dock As New DockContent
     Public Enum FileType
         File = 0
         Directory = 1
@@ -133,8 +133,8 @@ Public Class SkinBrowser
         Next intLoop
 
     End Sub
-
-    Private Sub SkinBrowser_TV_AfterSelect(ByVal sender As System.Object, ByVal e As System.Windows.Forms.TreeViewEventArgs) Handles SkinBrowser_TV.AfterSelect
-
+    Public Sub InitShow(ByVal DockPanel As WeifenLuo.WinFormsUI.DockPanel, ByVal DockState As WeifenLuo.WinFormsUI.DockState)
+        Show(DockPanel, DockState)
     End Sub
+
 End Class

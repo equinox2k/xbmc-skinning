@@ -1,7 +1,10 @@
 Imports SkinEditor.Interfaces
+Imports WeifenLuo.WinFormsUI
 Public Class Main
     Private WithEvents objHost As New Host
+    Private m_SkinBrowser As New SkinBrowser
     Private Plugins() As PluginServices.AvailablePlugin = PluginServices.FindPlugins(objHost.AppPath, "SkinEditor.Interfaces.IPlugin")
+
 
     Private Sub AboutToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles AboutToolStripMenuItem.Click
         Dim objAbout As New About
@@ -23,15 +26,17 @@ Public Class Main
     End Sub
 
     Private Sub SBTSMI_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SBTSMI.Click
-        Me.SplitContainer1.Panel1Collapsed = SBTSMI.Checked
         If SBTSMI.Checked Then
             SBTSMI.Checked = False
+            m_SkinBrowser.Hide()
         Else
             SBTSMI.Checked = True
+            m_SkinBrowser.Show(DockingPanel, DockState.DockLeft)
         End If
     End Sub
 
     Private Sub Main_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        m_SkinBrowser.Text = "Skin Browser"
         If Plugins IsNot Nothing Then
             For intIndex As Integer = 0 To Plugins.Length - 1
                 Dim objPlugin As IPlugin = DirectCast(PluginServices.CreateInstance(Plugins(intIndex)), IPlugin)
@@ -76,6 +81,38 @@ Public Class Main
             Dim objPlugin As IPlugin = DirectCast(PluginServices.CreateInstance(Plugins(Int(e.ClickedItem.Tag))), IPlugin)
             objPlugin.Initialize(objHost)
             objPlugin.Start()
+        End If
+    End Sub
+
+    Private Sub NewToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles NewToolStripMenuItem.Click
+        Dim dummyDoc As SkinDoc = CreateNewDocument()
+
+        If DockingPanel.DocumentStyle = DocumentStyles.SystemMdi Then
+            dummyDoc.MdiParent = Me
+            dummyDoc.Show()
+        Else
+            dummyDoc.Show(DockingPanel)
+        End If
+    End Sub
+
+    Private Function CreateNewDocument() As SkinDoc
+        Dim dummyDoc As New SkinDoc()
+
+        Dim count As Integer = 1
+        Dim text As String = "Document" + count.ToString()
+
+        dummyDoc.Text = text
+        Return dummyDoc
+    End Function
+
+    Private Sub TSB_New_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TSB_New.Click
+        Dim dummyDoc As SkinDoc = CreateNewDocument()
+
+        If DockingPanel.DocumentStyle = DocumentStyles.SystemMdi Then
+            dummyDoc.MdiParent = Me
+            dummyDoc.Show()
+        Else
+            dummyDoc.Show(DockingPanel)
         End If
     End Sub
 End Class
