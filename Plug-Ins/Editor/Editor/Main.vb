@@ -3,7 +3,7 @@ Imports System.Drawing
 Imports QWhale.Syntax
 
 Public Class Main
-
+    Inherits WeifenLuo.WinFormsUI.DockContent
     Public Sub New()
 
         InitializeComponent()

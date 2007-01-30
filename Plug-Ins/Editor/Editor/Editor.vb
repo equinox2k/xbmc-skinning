@@ -1,6 +1,6 @@
 Imports SkinEditor.Interfaces
 
-Public Class Calculator
+Public Class Editor
     Implements IPlugin
 
     Private objHost As SkinEditor.Interfaces.IHost
@@ -66,7 +66,8 @@ Public Class Calculator
     Public Sub Start() Implements IPlugin.Start
         Dim objForm As New Main
         If "" & lstInputParameters(0).Value <> "" Then objForm.LoadFile(lstInputParameters(0).Value)
-        objHost.ShowForm(objForm, "")
+        'objHost.ShowForm(objForm, "")
+        objHost.ShowDockContent(objForm, WeifenLuo.WinFormsUI.DockState.Document)
     End Sub
 
 End Class
