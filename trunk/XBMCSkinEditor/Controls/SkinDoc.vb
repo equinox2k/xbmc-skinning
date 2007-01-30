@@ -50,23 +50,30 @@ Public Class SkinDoc
     Public Sub LoadText(ByVal FileNamePath As String)
         Dim ext As String
         ext = System.IO.Path.GetExtension(FileNamePath.ToLower())
-        'Select Case ext
-        '    Case ".txt"
-        '        'Me.ScintillaControl2.LegacyConfigurationLanguage = "txt"
-        '    Case ".xml"
-        '        Me.ScintillaControl2.LegacyConfigurationLanguage = "hypertext"
-        '    Case ".py"
-        '        Me.ScintillaControl2.LegacyConfigurationLanguage = "PY"
-        '    Case ".cs"
-        '        'Me.ScintillaControl2.LegacyConfigurationLanguage = "C#"
-        'End Select
+        Select Case ext
+            Case ".txt"
+                Me.ScintillaControl2.LegacyConfigurationLanguage = ""
+            Case ".xml"
+                Me.ScintillaControl2.LegacyConfigurationLanguage = "hypertext"
+            Case ".py"
+                Me.ScintillaControl2.LegacyConfigurationLanguage = "PY"
+            Case ".cs"
+                Me.ScintillaControl2.LegacyConfigurationLanguage = "C#"
+        End Select
         Me.ScintillaControl2.SetText(System.IO.File.ReadAllText(FileNamePath, Encoding.ASCII))
     End Sub
 
 
-    Private Sub SkinDoc_Load(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        'Dim cu = New Scintilla.Legacy.Configuration.ConfigurationUtility([GetType]().[Module].Assembly)
-        'Me.ScintillaControl2.LegacyConfiguration = DirectCast(cu.LoadConfiguration(GetType(Scintilla.Legacy.Configuration.Scintilla), "LegacyScintillaNET.xml"), Scintilla.Legacy.Configuration.Scintilla)
-    End Sub
+    Private Sub SkinDoc_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        ScintillaControl2.LegacyConfiguration = Main.m_LegacyConf
+        'Dim lc = Main.m_LegacyConf.GetLanguage("C#") as 
+        'Dim lc As Scintilla.Lexers.Xml
+        'ScintillaControl2.LegacyConfigurationLanguage = "C#"
 
+        For Each x As Scintilla.Legacy.Configuration.Language In Main.m_LegacyConf.languages
+            'MsgBox(x.name)
+        Next
+
+        ''lang = _legacyConfiguration.GetLanguage(value);
+    End Sub
 End Class

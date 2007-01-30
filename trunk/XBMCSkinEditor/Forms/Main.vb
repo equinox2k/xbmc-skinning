@@ -5,6 +5,7 @@ Public Class Main
     Private m_SkinBrowser As New SkinBrowser
     Private m_OutputWindow As New OutputWindow
     Private m_ErrorLogWindow As New ErrorLogWindow
+    Public m_LegacyConf As Scintilla.Legacy.Configuration.Scintilla
     Private Plugins() As PluginServices.AvailablePlugin = PluginServices.FindPlugins(objHost.AppPath, "SkinEditor.Interfaces.IPlugin")
 
 
@@ -12,7 +13,6 @@ Public Class Main
         Dim objAbout As New About
         objAbout.ShowDialog(Me)
     End Sub
-
 
     Private Sub OSTSMI_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OSTSMI.Click
         Dim objOFD As New OpenFileDialog
@@ -40,40 +40,42 @@ Public Class Main
     Private Sub Main_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         m_SkinBrowser.Text = "Skin Browser"
         If Plugins IsNot Nothing Then
+
             For intIndex As Integer = 0 To Plugins.Length - 1
                 Dim objPlugin As IPlugin = DirectCast(PluginServices.CreateInstance(Plugins(intIndex)), IPlugin)
-                lstPlugins.Items.Add(objPlugin.PluginDetails.Name)
                 Dim newItem As New ToolStripMenuItem
+                Dim newItem2 As New ToolStripMenuItem
                 newItem.Text = objPlugin.PluginDetails.Name
-                newItem.Tag = Str(lstPlugins.Items.Count - 1)
+                newItem.Tag = Str(intIndex)
+                newItem2.Text = objPlugin.PluginDetails.Name
+                newItem2.Tag = Str(intIndex)
                 PluginMenu.DropDownItems.Add(newItem)
+                TSMI_PluginsSettings.DropDownItems.Add(newItem2) '' ADD CODE TO DETECT IF IT HAS SETTINGS
             Next intIndex
-            lstPlugins.SelectedIndex = 0
-        Else
-            btnRun.Enabled = False
         End If
 
         objHost.LoadSettings()
         m_SkinBrowser.Show(DockingPanel, DockState.DockLeft)
         m_OutputWindow.Show(DockingPanel, DockState.DockBottom)
         m_ErrorLogWindow.Show(DockingPanel, DockState.DockBottom)
-    End Sub
+        Dim cu = New Scintilla.Legacy.Configuration.ConfigurationUtility([GetType]().[Module].Assembly)
+        m_LegacyConf = DirectCast(cu.LoadConfiguration(GetType(Scintilla.Legacy.Configuration.Scintilla), "LegacyScintillaNET.xml"), Scintilla.Legacy.Configuration.Scintilla)
 
-    Private Sub btnRun_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnRun.Click
-        If (lstPlugins.Items.Count > 0) Then
-            Dim objPlugin As IPlugin = DirectCast(PluginServices.CreateInstance(Plugins(lstPlugins.SelectedIndex)), IPlugin)
-            objPlugin.Initialize(objHost)
-            objPlugin.Start()
-        End If
+        For Each x As Scintilla.Legacy.Configuration.Language In m_LegacyConf.languages
+            Dim ts As New ToolStripMenuItem
+            ts.Text = x.name
+            ts.Tag = x.fileextensions
+            Me.TSMI_Lang.DropDownItems.Add(ts)
+        Next
     End Sub
-
-    Private Sub btnSettings_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSettings.Click
-        If (lstPlugins.Items.Count > 0) Then
-            Dim objPlugin As IPlugin = DirectCast(PluginServices.CreateInstance(Plugins(lstPlugins.SelectedIndex)), IPlugin)
-            objPlugin.Initialize(objHost)
-            objPlugin.Settings()
-        End If
-    End Sub
+    Private Function HasLang(ByVal LName As String) As Boolean
+        For Each x As Scintilla.Legacy.Configuration.Language In m_LegacyConf.languages
+            If x.name = LName Then
+                Return True
+            End If
+        Next
+        Return False
+    End Function
 
     Private Sub objHost_ErrorEvent(ByVal ErrorLevel As Integer, ByVal Message As String, ByVal File As String, ByVal Line As Integer, ByVal Pos As Integer) Handles objHost.ErrorEvent
         'txtError.Text &= Message & ControlChars.CrLf
@@ -81,14 +83,14 @@ Public Class Main
     End Sub
 
     Private Sub PluginMenu_DropDownItemClicked(ByVal sender As Object, ByVal e As System.Windows.Forms.ToolStripItemClickedEventArgs) Handles PluginMenu.DropDownItemClicked
-        If (lstPlugins.Items.Count > 0) Then
+        If (Plugins.Length > 0) Then
             Dim objPlugin As IPlugin = DirectCast(PluginServices.CreateInstance(Plugins(Int(e.ClickedItem.Tag))), IPlugin)
             objPlugin.Initialize(objHost)
             objPlugin.Start()
         End If
     End Sub
 
-    Private Sub NewToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles NewToolStripMenuItem.Click
+    Private Sub NewToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Dim dummyDoc As SkinDoc = CreateNewDocument()
 
         If DockingPanel.DocumentStyle = DocumentStyles.SystemMdi Then
@@ -145,14 +147,11 @@ Public Class Main
             m_OutputWindow.Show(DockingPanel, DockState.DockBottom)
         End If
     End Sub
-
-    Private Sub Main_Resize(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Resize
-        'Me.DockingPanel.Width = Me.Width - 7
-        'Me.DockingPanel.Height = Me.Height - 53
-    End Sub
-
-
-    Private Sub MS_ItemClicked(ByVal sender As System.Object, ByVal e As System.Windows.Forms.ToolStripItemClickedEventArgs) Handles MS.ItemClicked
-
+    Private Sub TSMI_PluginsSettings_DropDownItemClicked(ByVal sender As Object, ByVal e As System.Windows.Forms.ToolStripItemClickedEventArgs) Handles TSMI_PluginsSettings.DropDownItemClicked
+        If (Plugins.Length > 0) Then
+            Dim objPlugin As IPlugin = DirectCast(PluginServices.CreateInstance(Plugins(Int(e.ClickedItem.Tag))), IPlugin)
+            objPlugin.Initialize(objHost)
+            objPlugin.Settings()
+        End If
     End Sub
 End Class

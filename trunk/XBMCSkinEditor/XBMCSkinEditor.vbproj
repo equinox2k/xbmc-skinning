@@ -96,6 +96,12 @@
     <Compile Include="Classes\Visible.vb" />
     <Compile Include="Classes\Window.vb" />
     <Compile Include="Classes\XmlTextWriterNoDeclaration.vb" />
+    <Compile Include="Controls\SkinImageView.Designer.vb">
+      <DependentUpon>SkinImageView.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SkinImageView.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Controls\ErrorLog.designer.vb">
       <DependentUpon>ErrorLog.vb</DependentUpon>
     </Compile>
@@ -244,6 +250,10 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="lzo.dll" />
+    <EmbeddedResource Include="Controls\SkinImageView.resx">
+      <DependentUpon>SkinImageView.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Train.mod">
     </EmbeddedResource>
     <Content Include="SciLexer.dll">

@@ -27,25 +27,27 @@ Partial Class Main
         Me.Button1 = New System.Windows.Forms.Button
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.OSTSMI = New System.Windows.Forms.ToolStripMenuItem
-        Me.NewToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.WindowToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.SBTSMI = New System.Windows.Forms.ToolStripMenuItem
         Me.TSMI_ErrorLog = New System.Windows.Forms.ToolStripMenuItem
         Me.TSMI_Output = New System.Windows.Forms.ToolStripMenuItem
         Me.MS = New System.Windows.Forms.MenuStrip
         Me.PluginMenu = New System.Windows.Forms.ToolStripMenuItem
+        Me.TSMI_Lang = New System.Windows.Forms.ToolStripMenuItem
         Me.SettingsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.TSMI_PluginsSettings = New System.Windows.Forms.ToolStripMenuItem
         Me.HelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.btnRun = New System.Windows.Forms.Button
         Me.DockingPanel = New WeifenLuo.WinFormsUI.DockPanel
-        Me.lstPlugins = New System.Windows.Forms.ListBox
-        Me.btnSettings = New System.Windows.Forms.Button
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox
         AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.MS.SuspendLayout()
-        Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
+        '
+        'AboutToolStripMenuItem
+        '
+        AboutToolStripMenuItem.Name = "AboutToolStripMenuItem"
+        AboutToolStripMenuItem.Size = New System.Drawing.Size(114, 22)
+        AboutToolStripMenuItem.Text = "About"
+        AddHandler AboutToolStripMenuItem.Click, AddressOf Me.AboutToolStripMenuItem_Click
         '
         'Button1
         '
@@ -58,7 +60,7 @@ Partial Class Main
         '
         'FileToolStripMenuItem
         '
-        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OSTSMI, Me.NewToolStripMenuItem})
+        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OSTSMI})
         Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
         Me.FileToolStripMenuItem.Size = New System.Drawing.Size(35, 20)
         Me.FileToolStripMenuItem.Text = "File"
@@ -66,14 +68,8 @@ Partial Class Main
         'OSTSMI
         '
         Me.OSTSMI.Name = "OSTSMI"
-        Me.OSTSMI.Size = New System.Drawing.Size(152, 22)
+        Me.OSTSMI.Size = New System.Drawing.Size(133, 22)
         Me.OSTSMI.Text = "Open Skin"
-        '
-        'NewToolStripMenuItem
-        '
-        Me.NewToolStripMenuItem.Name = "NewToolStripMenuItem"
-        Me.NewToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.NewToolStripMenuItem.Text = "New"
         '
         'WindowToolStripMenuItem
         '
@@ -111,7 +107,7 @@ Partial Class Main
         'MS
         '
         Me.MS.GripStyle = System.Windows.Forms.ToolStripGripStyle.Visible
-        Me.MS.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.WindowToolStripMenuItem, Me.PluginMenu, Me.SettingsToolStripMenuItem, Me.HelpToolStripMenuItem})
+        Me.MS.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.WindowToolStripMenuItem, Me.PluginMenu, Me.TSMI_Lang, Me.SettingsToolStripMenuItem, Me.HelpToolStripMenuItem})
         Me.MS.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow
         Me.MS.Location = New System.Drawing.Point(0, 0)
         Me.MS.Name = "MS"
@@ -124,6 +120,13 @@ Partial Class Main
         Me.PluginMenu.Size = New System.Drawing.Size(52, 20)
         Me.PluginMenu.Text = "Plugins"
         '
+        'TSMI_Lang
+        '
+        Me.TSMI_Lang.Name = "TSMI_Lang"
+        Me.TSMI_Lang.Size = New System.Drawing.Size(71, 20)
+        Me.TSMI_Lang.Text = "Languages"
+        Me.TSMI_Lang.Visible = False
+        '
         'SettingsToolStripMenuItem
         '
         Me.SettingsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TSMI_PluginsSettings})
@@ -134,7 +137,7 @@ Partial Class Main
         'TSMI_PluginsSettings
         '
         Me.TSMI_PluginsSettings.Name = "TSMI_PluginsSettings"
-        Me.TSMI_PluginsSettings.Size = New System.Drawing.Size(118, 22)
+        Me.TSMI_PluginsSettings.Size = New System.Drawing.Size(152, 22)
         Me.TSMI_PluginsSettings.Text = "Plugins"
         '
         'HelpToolStripMenuItem
@@ -143,23 +146,6 @@ Partial Class Main
         Me.HelpToolStripMenuItem.Name = "HelpToolStripMenuItem"
         Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(40, 20)
         Me.HelpToolStripMenuItem.Text = "Help"
-        '
-        'AboutToolStripMenuItem
-        '
-        AboutToolStripMenuItem.Name = "AboutToolStripMenuItem"
-        AboutToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        AboutToolStripMenuItem.Text = "About"
-        AddHandler AboutToolStripMenuItem.Click, AddressOf Me.AboutToolStripMenuItem_Click
-        '
-        'btnRun
-        '
-        Me.btnRun.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnRun.Location = New System.Drawing.Point(158, 108)
-        Me.btnRun.Name = "btnRun"
-        Me.btnRun.Size = New System.Drawing.Size(72, 28)
-        Me.btnRun.TabIndex = 1
-        Me.btnRun.Text = "Run"
-        Me.btnRun.UseVisualStyleBackColor = True
         '
         'DockingPanel
         '
@@ -173,43 +159,11 @@ Partial Class Main
         Me.DockingPanel.Size = New System.Drawing.Size(692, 342)
         Me.DockingPanel.TabIndex = 0
         '
-        'lstPlugins
-        '
-        Me.lstPlugins.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.lstPlugins.FormattingEnabled = True
-        Me.lstPlugins.Location = New System.Drawing.Point(3, 16)
-        Me.lstPlugins.Name = "lstPlugins"
-        Me.lstPlugins.Size = New System.Drawing.Size(235, 121)
-        Me.lstPlugins.TabIndex = 0
-        '
-        'btnSettings
-        '
-        Me.btnSettings.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnSettings.Location = New System.Drawing.Point(158, 16)
-        Me.btnSettings.Name = "btnSettings"
-        Me.btnSettings.Size = New System.Drawing.Size(72, 28)
-        Me.btnSettings.TabIndex = 2
-        Me.btnSettings.Text = "Settings"
-        Me.btnSettings.UseVisualStyleBackColor = True
-        '
-        'GroupBox1
-        '
-        Me.GroupBox1.Controls.Add(Me.btnSettings)
-        Me.GroupBox1.Controls.Add(Me.btnRun)
-        Me.GroupBox1.Controls.Add(Me.lstPlugins)
-        Me.GroupBox1.Location = New System.Drawing.Point(353, 81)
-        Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(241, 142)
-        Me.GroupBox1.TabIndex = 4
-        Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "PlugsIn"
-        '
         'Main
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(692, 366)
-        Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.DockingPanel)
         Me.Controls.Add(Me.MS)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -220,7 +174,6 @@ Partial Class Main
         Me.Text = "XBMC Skin Editor"
         Me.MS.ResumeLayout(False)
         Me.MS.PerformLayout()
-        Me.GroupBox1.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -234,13 +187,10 @@ Partial Class Main
     Friend WithEvents MS As System.Windows.Forms.MenuStrip
     Friend WithEvents PluginMenu As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents HelpToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents btnRun As System.Windows.Forms.Button
-    Friend WithEvents lstPlugins As System.Windows.Forms.ListBox
-    Friend WithEvents btnSettings As System.Windows.Forms.Button
-    Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
     Friend WithEvents DockingPanel As WeifenLuo.WinFormsUI.DockPanel
     Friend WithEvents TSMI_ErrorLog As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents TSMI_Output As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents SettingsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents TSMI_PluginsSettings As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents TSMI_Lang As System.Windows.Forms.ToolStripMenuItem
 End Class
