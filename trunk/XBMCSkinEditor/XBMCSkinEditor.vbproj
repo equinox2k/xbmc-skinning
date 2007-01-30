@@ -249,6 +249,9 @@
     <Content Include="Bass.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="LegacyScintillaNET.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="lzo.dll" />
     <EmbeddedResource Include="Controls\SkinImageView.resx">
       <DependentUpon>SkinImageView.vb</DependentUpon>
