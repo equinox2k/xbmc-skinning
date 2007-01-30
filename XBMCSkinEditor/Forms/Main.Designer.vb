@@ -22,6 +22,7 @@ Partial Class Main
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim AboutToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Main))
         Me.Button1 = New System.Windows.Forms.Button
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
@@ -29,21 +30,21 @@ Partial Class Main
         Me.NewToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.WindowToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.SBTSMI = New System.Windows.Forms.ToolStripMenuItem
+        Me.TSMI_ErrorLog = New System.Windows.Forms.ToolStripMenuItem
+        Me.TSMI_Output = New System.Windows.Forms.ToolStripMenuItem
         Me.MS = New System.Windows.Forms.MenuStrip
         Me.PluginMenu = New System.Windows.Forms.ToolStripMenuItem
+        Me.SettingsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
+        Me.TSMI_PluginsSettings = New System.Windows.Forms.ToolStripMenuItem
         Me.HelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.btnRun = New System.Windows.Forms.Button
         Me.DockingPanel = New WeifenLuo.WinFormsUI.DockPanel
         Me.lstPlugins = New System.Windows.Forms.ListBox
         Me.btnSettings = New System.Windows.Forms.Button
-        Me.txtError = New System.Windows.Forms.TextBox
         Me.GroupBox1 = New System.Windows.Forms.GroupBox
-        Me.ToolStrip1 = New System.Windows.Forms.ToolStrip
-        Me.TSB_New = New System.Windows.Forms.ToolStripButton
+        AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.MS.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
-        Me.ToolStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'Button1
@@ -65,40 +66,57 @@ Partial Class Main
         'OSTSMI
         '
         Me.OSTSMI.Name = "OSTSMI"
-        Me.OSTSMI.Size = New System.Drawing.Size(133, 22)
+        Me.OSTSMI.Size = New System.Drawing.Size(152, 22)
         Me.OSTSMI.Text = "Open Skin"
         '
         'NewToolStripMenuItem
         '
         Me.NewToolStripMenuItem.Name = "NewToolStripMenuItem"
-        Me.NewToolStripMenuItem.Size = New System.Drawing.Size(133, 22)
+        Me.NewToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.NewToolStripMenuItem.Text = "New"
         '
         'WindowToolStripMenuItem
         '
         Me.WindowToolStripMenuItem.Checked = True
         Me.WindowToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.WindowToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SBTSMI})
+        Me.WindowToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SBTSMI, Me.TSMI_ErrorLog, Me.TSMI_Output})
         Me.WindowToolStripMenuItem.Name = "WindowToolStripMenuItem"
         Me.WindowToolStripMenuItem.Size = New System.Drawing.Size(57, 20)
         Me.WindowToolStripMenuItem.Text = "Window"
         '
         'SBTSMI
         '
+        Me.SBTSMI.Checked = True
+        Me.SBTSMI.CheckState = System.Windows.Forms.CheckState.Checked
         Me.SBTSMI.Name = "SBTSMI"
         Me.SBTSMI.Size = New System.Drawing.Size(143, 22)
         Me.SBTSMI.Text = "SkinBrowser"
         '
+        'TSMI_ErrorLog
+        '
+        Me.TSMI_ErrorLog.Checked = True
+        Me.TSMI_ErrorLog.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.TSMI_ErrorLog.Name = "TSMI_ErrorLog"
+        Me.TSMI_ErrorLog.Size = New System.Drawing.Size(143, 22)
+        Me.TSMI_ErrorLog.Text = "Error Log"
+        '
+        'TSMI_Output
+        '
+        Me.TSMI_Output.Checked = True
+        Me.TSMI_Output.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.TSMI_Output.Name = "TSMI_Output"
+        Me.TSMI_Output.Size = New System.Drawing.Size(143, 22)
+        Me.TSMI_Output.Text = "Output"
+        '
         'MS
         '
         Me.MS.GripStyle = System.Windows.Forms.ToolStripGripStyle.Visible
-        Me.MS.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.WindowToolStripMenuItem, Me.PluginMenu, Me.HelpToolStripMenuItem})
+        Me.MS.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.WindowToolStripMenuItem, Me.PluginMenu, Me.SettingsToolStripMenuItem, Me.HelpToolStripMenuItem})
         Me.MS.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow
         Me.MS.Location = New System.Drawing.Point(0, 0)
         Me.MS.Name = "MS"
-        Me.MS.Size = New System.Drawing.Size(655, 24)
+        Me.MS.Size = New System.Drawing.Size(692, 24)
         Me.MS.TabIndex = 0
-        Me.MS.Text = "MenuStrip1"
         '
         'PluginMenu
         '
@@ -106,23 +124,37 @@ Partial Class Main
         Me.PluginMenu.Size = New System.Drawing.Size(52, 20)
         Me.PluginMenu.Text = "Plugins"
         '
+        'SettingsToolStripMenuItem
+        '
+        Me.SettingsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TSMI_PluginsSettings})
+        Me.SettingsToolStripMenuItem.Name = "SettingsToolStripMenuItem"
+        Me.SettingsToolStripMenuItem.Size = New System.Drawing.Size(58, 20)
+        Me.SettingsToolStripMenuItem.Text = "Settings"
+        '
+        'TSMI_PluginsSettings
+        '
+        Me.TSMI_PluginsSettings.Name = "TSMI_PluginsSettings"
+        Me.TSMI_PluginsSettings.Size = New System.Drawing.Size(118, 22)
+        Me.TSMI_PluginsSettings.Text = "Plugins"
+        '
         'HelpToolStripMenuItem
         '
-        Me.HelpToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AboutToolStripMenuItem})
+        Me.HelpToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {AboutToolStripMenuItem})
         Me.HelpToolStripMenuItem.Name = "HelpToolStripMenuItem"
         Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(40, 20)
         Me.HelpToolStripMenuItem.Text = "Help"
         '
         'AboutToolStripMenuItem
         '
-        Me.AboutToolStripMenuItem.Image = Global.XBMCSkinEditor.My.Resources.Resources.Skin
-        Me.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem"
-        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.AboutToolStripMenuItem.Text = "About"
+        AboutToolStripMenuItem.Name = "AboutToolStripMenuItem"
+        AboutToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        AboutToolStripMenuItem.Text = "About"
+        AddHandler AboutToolStripMenuItem.Click, AddressOf Me.AboutToolStripMenuItem_Click
         '
         'btnRun
         '
-        Me.btnRun.Location = New System.Drawing.Point(110, 15)
+        Me.btnRun.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnRun.Location = New System.Drawing.Point(158, 108)
         Me.btnRun.Name = "btnRun"
         Me.btnRun.Size = New System.Drawing.Size(72, 28)
         Me.btnRun.TabIndex = 1
@@ -132,92 +164,63 @@ Partial Class Main
         'DockingPanel
         '
         Me.DockingPanel.ActiveAutoHideContent = Nothing
-        Me.DockingPanel.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.DockingPanel.BackgroundImage = Global.XBMCSkinEditor.My.Resources.Resources.Back
+        Me.DockingPanel.BackColor = System.Drawing.Color.White
+        Me.DockingPanel.BackgroundImage = CType(resources.GetObject("DockingPanel.BackgroundImage"), System.Drawing.Image)
+        Me.DockingPanel.Dock = System.Windows.Forms.DockStyle.Fill
         Me.DockingPanel.Font = New System.Drawing.Font("Tahoma", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World)
-        Me.DockingPanel.Location = New System.Drawing.Point(0, 48)
+        Me.DockingPanel.Location = New System.Drawing.Point(0, 24)
         Me.DockingPanel.Name = "DockingPanel"
-        Me.DockingPanel.Size = New System.Drawing.Size(655, 278)
+        Me.DockingPanel.Size = New System.Drawing.Size(692, 342)
         Me.DockingPanel.TabIndex = 0
         '
         'lstPlugins
         '
+        Me.lstPlugins.Dock = System.Windows.Forms.DockStyle.Fill
         Me.lstPlugins.FormattingEnabled = True
-        Me.lstPlugins.Location = New System.Drawing.Point(6, 15)
+        Me.lstPlugins.Location = New System.Drawing.Point(3, 16)
         Me.lstPlugins.Name = "lstPlugins"
-        Me.lstPlugins.Size = New System.Drawing.Size(98, 108)
+        Me.lstPlugins.Size = New System.Drawing.Size(235, 121)
         Me.lstPlugins.TabIndex = 0
         '
         'btnSettings
         '
-        Me.btnSettings.Location = New System.Drawing.Point(110, 95)
+        Me.btnSettings.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnSettings.Location = New System.Drawing.Point(158, 16)
         Me.btnSettings.Name = "btnSettings"
         Me.btnSettings.Size = New System.Drawing.Size(72, 28)
         Me.btnSettings.TabIndex = 2
         Me.btnSettings.Text = "Settings"
         Me.btnSettings.UseVisualStyleBackColor = True
         '
-        'txtError
-        '
-        Me.txtError.Location = New System.Drawing.Point(6, 129)
-        Me.txtError.Multiline = True
-        Me.txtError.Name = "txtError"
-        Me.txtError.ScrollBars = System.Windows.Forms.ScrollBars.Both
-        Me.txtError.Size = New System.Drawing.Size(176, 51)
-        Me.txtError.TabIndex = 3
-        '
         'GroupBox1
         '
         Me.GroupBox1.Controls.Add(Me.btnSettings)
         Me.GroupBox1.Controls.Add(Me.btnRun)
         Me.GroupBox1.Controls.Add(Me.lstPlugins)
-        Me.GroupBox1.Controls.Add(Me.txtError)
-        Me.GroupBox1.Location = New System.Drawing.Point(334, 115)
+        Me.GroupBox1.Location = New System.Drawing.Point(353, 81)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(197, 186)
+        Me.GroupBox1.Size = New System.Drawing.Size(241, 142)
         Me.GroupBox1.TabIndex = 4
         Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "GroupBox1"
-        '
-        'ToolStrip1
-        '
-        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TSB_New})
-        Me.ToolStrip1.Location = New System.Drawing.Point(0, 24)
-        Me.ToolStrip1.Name = "ToolStrip1"
-        Me.ToolStrip1.Size = New System.Drawing.Size(655, 25)
-        Me.ToolStrip1.TabIndex = 7
-        Me.ToolStrip1.Text = "ToolStrip1"
-        '
-        'TSB_New
-        '
-        Me.TSB_New.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.TSB_New.Image = Global.XBMCSkinEditor.My.Resources.Resources.document_plain
-        Me.TSB_New.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.TSB_New.Name = "TSB_New"
-        Me.TSB_New.Size = New System.Drawing.Size(23, 22)
+        Me.GroupBox1.Text = "PlugsIn"
         '
         'Main
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(655, 332)
-        Me.Controls.Add(Me.ToolStrip1)
-        Me.Controls.Add(Me.MS)
+        Me.ClientSize = New System.Drawing.Size(692, 366)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.DockingPanel)
+        Me.Controls.Add(Me.MS)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.IsMdiContainer = True
         Me.MainMenuStrip = Me.MS
         Me.Name = "Main"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "XBMC Skin Editor"
         Me.MS.ResumeLayout(False)
         Me.MS.PerformLayout()
         Me.GroupBox1.ResumeLayout(False)
-        Me.GroupBox1.PerformLayout()
-        Me.ToolStrip1.ResumeLayout(False)
-        Me.ToolStrip1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -231,13 +234,13 @@ Partial Class Main
     Friend WithEvents MS As System.Windows.Forms.MenuStrip
     Friend WithEvents PluginMenu As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents HelpToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents AboutToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents btnRun As System.Windows.Forms.Button
     Friend WithEvents lstPlugins As System.Windows.Forms.ListBox
     Friend WithEvents btnSettings As System.Windows.Forms.Button
-    Friend WithEvents txtError As System.Windows.Forms.TextBox
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
     Friend WithEvents DockingPanel As WeifenLuo.WinFormsUI.DockPanel
-    Friend WithEvents ToolStrip1 As System.Windows.Forms.ToolStrip
-    Friend WithEvents TSB_New As System.Windows.Forms.ToolStripButton
+    Friend WithEvents TSMI_ErrorLog As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents TSMI_Output As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents SettingsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents TSMI_PluginsSettings As System.Windows.Forms.ToolStripMenuItem
 End Class

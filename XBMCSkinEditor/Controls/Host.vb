@@ -23,6 +23,10 @@ Public Class Host
         Form.Show()
     End Sub
 
+    Public Sub ShowDockContent(ByVal DockCon As WeifenLuo.WinFormsUI.DockContent, ByVal DDockStyle As WeifenLuo.WinFormsUI.DockState) Implements IHost.ShowDockContent
+        DockCon.Show(Main.DockingPanel, DDockStyle)
+    End Sub
+
     Public Function ShowDialog(ByVal Form As Form) As DialogResult Implements IHost.ShowDialog
         Return Form.ShowDialog()
     End Function

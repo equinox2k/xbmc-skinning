@@ -5,7 +5,7 @@ Imports System.Runtime.InteropServices
 Public Class About
 
     Dim intHand As Integer
-
+    'Dim objMod As Byte() = 
     Private Sub About_FormClosing(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
         Bass.BASS_ChannelStop(intHand)
         Bass.BASS_MusicFree(intHand)
@@ -24,7 +24,10 @@ Public Class About
         ScrollingTextPanel1.Started = True
 
         Bass.BASS_Init(1, 44100, Un4seen.Bass.BASSInit.BASS_DEVICE_DEFAULT, 0, Nothing)
-        intHand = Bass.BASS_MusicLoad(System.AppDomain.CurrentDomain.BaseDirectory & "train.mod", 0, 0, BASSMusic.BASS_DEFAULT, 0)
+
+        'intHand = Bass.BASS_MusicLoad(System.AppDomain.CurrentDomain.BaseDirectory & "train.mod", 0, 0, BASSMusic.BASS_DEFAULT, 0)
+        intHand = Bass.BASS_MusicLoad(My.Resources.Train, 0, 0, BASSMusic.BASS_DEFAULT, 0)
+
         Bass.BASS_ChannelPlay(intHand, True)
     End Sub
 

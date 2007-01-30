@@ -2,9 +2,10 @@ Imports System.Drawing
 Imports System.Drawing.Drawing2D
 Imports System.Drawing.Imaging
 Imports System.Windows.Forms
+Imports WeifenLuo.WinFormsUI
 
 Public Class Main
-
+    Inherits DockContent
     Private Enum ChangeStyle
         MouseMove
         RGB
@@ -146,10 +147,6 @@ Public Class Main
             Case ChangeStyle.RGB
                 MyColorWheel.Draw(e.Graphics, RGB)
         End Select
-    End Sub
-
-    Private Sub Main_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-
     End Sub
 
 End Class

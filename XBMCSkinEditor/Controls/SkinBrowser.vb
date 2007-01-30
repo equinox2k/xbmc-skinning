@@ -137,4 +137,26 @@ Public Class SkinBrowser
         Show(DockPanel, DockState)
     End Sub
 
+
+    Private Sub SkinBrowser_TV_NodeMouseDoubleClick(ByVal sender As Object, ByVal e As System.Windows.Forms.TreeNodeMouseClickEventArgs) Handles SkinBrowser_TV.NodeMouseDoubleClick
+        Dim FI As FileInfo
+
+        Select Case System.IO.Path.GetExtension(e.Node.Text.ToLower())
+            Case ".txt"
+                FI = e.Node.Tag
+                Main.LoadDocument(FI.Path + FI.Name)
+            Case ".xml"
+                FI = e.Node.Tag
+                Main.LoadDocument(FI.Path + FI.Name)
+            Case ".cs"
+                FI = e.Node.Tag
+                Main.LoadDocument(FI.Path + FI.Name)
+            Case ".py"
+                FI = e.Node.Tag
+                Main.LoadDocument(FI.Path + FI.Name)
+        End Select
+    End Sub
+
+
+
 End Class
