@@ -1,5 +1,5 @@
 <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class SkinDoc
+Partial Class OutputWindow
     Inherits WeifenLuo.WinFormsUI.DockContent
 
     'Form overrides dispose to clean up the component list.
@@ -17,33 +17,37 @@ Partial Class SkinDoc
     'Required by the Windows Form Designer
     Private components As System.ComponentModel.IContainer
 
-    'Private config As Scintilla.Legacy.Configuration.Scintilla
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.ScintillaControl2 = New Scintilla.ScintillaControl
+        Me.txtOutput = New System.Windows.Forms.TextBox
         Me.SuspendLayout()
         '
-        'ScintillaControl2
+        'txtOutput
         '
-        Me.ScintillaControl2.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.ScintillaControl2.LegacyConfiguration = Nothing
-        Me.ScintillaControl2.Location = New System.Drawing.Point(0, 0)
-        Me.ScintillaControl2.Name = "ScintillaControl2"
-        Me.ScintillaControl2.Size = New System.Drawing.Size(292, 266)
-        Me.ScintillaControl2.SmartIndentingEnabled = True
-        Me.ScintillaControl2.TabIndex = 1
-        Me.ScintillaControl2.Text = "ScintillaControl2"
+        Me.txtOutput.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.txtOutput.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.txtOutput.Location = New System.Drawing.Point(0, 0)
+        Me.txtOutput.Multiline = True
+        Me.txtOutput.Name = "txtOutput"
+        Me.txtOutput.Size = New System.Drawing.Size(601, 209)
+        Me.txtOutput.TabIndex = 0
         '
-        'SkinDoc
+        'OutputWindow
         '
-        Me.ClientSize = New System.Drawing.Size(292, 266)
-        Me.Controls.Add(Me.ScintillaControl2)
-        Me.Name = "SkinDoc"
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.ClientSize = New System.Drawing.Size(601, 209)
+        Me.Controls.Add(Me.txtOutput)
+        Me.Name = "OutputWindow"
+        Me.TabText = "Output"
+        Me.Text = "Output"
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
-    Friend WithEvents ScintillaControl2 As Scintilla.ScintillaControl
+    Private WithEvents txtOutput As System.Windows.Forms.TextBox
+
 End Class

@@ -1,6 +1,6 @@
 Imports System.IO
 Imports WeifenLuo.WinFormsUI
-
+Imports XBMCSkinEditor.XBMCGUI
 Public Class SkinBrowser
     Inherits DockContent
     Private objSkin As New Skin
@@ -8,6 +8,7 @@ Public Class SkinBrowser
         File = 0
         Directory = 1
         XPR = 2
+        XPRContainer = 3
     End Enum
 
     Public Structure XPRInfo
@@ -46,21 +47,20 @@ Public Class SkinBrowser
         Dim strDirectories() As String = System.IO.Directory.GetDirectories(Folder)
         For intLoop As Integer = strDirectories.GetLowerBound(0) To strDirectories.GetUpperBound(0)
             If Not Path.GetFileName(strDirectories(intLoop)).Equals("CVS", StringComparison.CurrentCultureIgnoreCase) Then
-
+                '' Create File Info ''
                 Dim objFileInfo As New FileInfo
                 objFileInfo.FileType = FileType.Directory
                 objFileInfo.XPRInfo = Nothing
                 objFileInfo.DisplayName = Path.GetFileName(strDirectories(intLoop))
                 objFileInfo.Name = Path.GetFileName(strDirectories(intLoop))
                 objFileInfo.Path = FixPath(strDirectories(intLoop))
-
-                Dim objTN As New TreeNode ' = Node.Nodes.Add
+                '' Create Tree Node Info ''
+                Dim objTN As New TreeNode
                 objTN.Text = objFileInfo.DisplayName
-                'objTreeNode.Override.NodeAppearance.Image = 1
-                'objTN.ImageIndex 
                 objTN.Tag = objFileInfo
-                RecurseTree(strDirectories(intLoop) & "\", objTN)
+                ' Add Node Tro tree and scan the directories for more files
                 Node.Nodes.Add(objTN)
+                RecurseTree(strDirectories(intLoop) & "\", objTN)
             End If
         Next intLoop
 
@@ -74,7 +74,7 @@ Public Class SkinBrowser
                     objXPRTool.OpenXPR(strFiles(intLoop))
 
                     Dim objFileInfo1 As New FileInfo
-                    objFileInfo1.FileType = FileType.File
+                    objFileInfo1.FileType = FileType.XPRContainer
                     objFileInfo1.XPRInfo = Nothing
                     objFileInfo1.DisplayName = Path.GetFileName(strFiles(intLoop)) & IIf(objXPRTool.ProtectionEnabled, " (Protected)", "")
                     objFileInfo1.Name = Path.GetFileName(strFiles(intLoop))
@@ -83,7 +83,7 @@ Public Class SkinBrowser
                     Dim objTreeNode1 As New TreeNode ' = Node.Nodes.Add
                     objTreeNode1.Text = objFileInfo1.DisplayName
                     objTreeNode1.Tag = objFileInfo1
-
+                    Node.Nodes.Add(objTreeNode1)
                     For intloop1 As Integer = 1 To objXPRTool.FileCount
                         Dim objFileInfo2 As New FileInfo
                         objFileInfo2.FileType = FileType.XPR
@@ -101,7 +101,7 @@ Public Class SkinBrowser
                         objTreeNode2.Tag = objFileInfo2
                         objTreeNode2.ImageKey = "image"
                         objTreeNode2.SelectedImageKey = "image"
-                        Node.Nodes.Add(objTreeNode2)
+                        objTreeNode1.Nodes.Add(objTreeNode2)
                     Next intloop1
 
                     objXPRTool.CloseXPR()
@@ -140,23 +140,30 @@ Public Class SkinBrowser
 
     Private Sub SkinBrowser_TV_NodeMouseDoubleClick(ByVal sender As Object, ByVal e As System.Windows.Forms.TreeNodeMouseClickEventArgs) Handles SkinBrowser_TV.NodeMouseDoubleClick
         Dim FI As FileInfo
-
-        Select Case System.IO.Path.GetExtension(e.Node.Text.ToLower())
-            Case ".txt"
-                FI = e.Node.Tag
-                Main.LoadDocument(FI.Path + FI.Name)
-            Case ".xml"
-                FI = e.Node.Tag
-                Main.LoadDocument(FI.Path + FI.Name)
-            Case ".cs"
-                FI = e.Node.Tag
-                Main.LoadDocument(FI.Path + FI.Name)
-            Case ".py"
-                FI = e.Node.Tag
-                Main.LoadDocument(FI.Path + FI.Name)
-        End Select
+        FI = e.Node.Tag()
+        If FileType.File = FileType.File Then
+            Select Case System.IO.Path.GetExtension(e.Node.Text.ToLower())
+                Case ".txt"
+                    FI = e.Node.Tag
+                    Main.LoadDocument(FI.Path + FI.Name)
+                Case ".xml"
+                    FI = e.Node.Tag
+                    Main.LoadDocument(FI.Path + FI.Name)
+                Case ".cs"
+                    FI = e.Node.Tag
+                    Main.LoadDocument(FI.Path + FI.Name)
+                Case ".py"
+                    FI = e.Node.Tag
+                    Main.LoadDocument(FI.Path + FI.Name)
+            End Select
+        ElseIf FileType.File = FileType.XPR Then
+            ' Load the image up
+        End If
     End Sub
 
 
 
+    Private Sub SkinBrowser_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+
+    End Sub
 End Class

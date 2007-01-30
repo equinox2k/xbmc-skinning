@@ -45,8 +45,8 @@ Partial Class About
         Me.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Name = "About"
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "About"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.ResumeLayout(False)
 
     End Sub
