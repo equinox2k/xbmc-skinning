@@ -40,6 +40,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Components\Bass.Net.dll</HintPath>
     </Reference>
+    <Reference Include="ScintillaNET, Version=1.0.2545.34147, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Components\ScintillaNET.dll</HintPath>
+    </Reference>
     <Reference Include="SkinEditor.Interfaces, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Components\SkinEditor.Interfaces.dll</HintPath>
@@ -92,7 +96,19 @@
     <Compile Include="Classes\Visible.vb" />
     <Compile Include="Classes\Window.vb" />
     <Compile Include="Classes\XmlTextWriterNoDeclaration.vb" />
+    <Compile Include="Controls\ErrorLog.designer.vb">
+      <DependentUpon>ErrorLog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ErrorLog.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Controls\Host.vb" />
+    <Compile Include="Controls\OutputWindow.designer.vb">
+      <DependentUpon>OutputWindow.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\OutputWindow.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Controls\PluginServices.vb" />
     <Compile Include="Controls\ScrollingTextPanel.vb">
       <SubType>Component</SubType>
@@ -107,9 +123,6 @@
       <DependentUpon>SkinDoc.vb</DependentUpon>
     </Compile>
     <Compile Include="Controls\SkinDoc.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Controls\SkinDocument.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Controls\SkinImages.vb" />
@@ -150,6 +163,14 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Controls\ErrorLog.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ErrorLog.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\OutputWindow.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>OutputWindow.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\ScrollingTextPanel.resx">
       <DependentUpon>ScrollingTextPanel.vb</DependentUpon>
       <SubType>Designer</SubType>
@@ -223,7 +244,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="lzo.dll" />
-    <Content Include="Train.mod">
+    <EmbeddedResource Include="Train.mod">
+    </EmbeddedResource>
+    <Content Include="SciLexer.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="XBMCSkinEditor.ico" />

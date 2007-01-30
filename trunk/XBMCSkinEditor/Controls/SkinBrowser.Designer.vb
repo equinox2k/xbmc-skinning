@@ -56,6 +56,8 @@ Partial Class SkinBrowser
         Me.ClientSize = New System.Drawing.Size(244, 216)
         Me.Controls.Add(Me.SkinBrowser_TV)
         Me.Name = "SkinBrowser"
+        Me.TabText = "Skin Browser"
+        Me.Text = "Skin Browser"
         Me.ResumeLayout(False)
 
     End Sub

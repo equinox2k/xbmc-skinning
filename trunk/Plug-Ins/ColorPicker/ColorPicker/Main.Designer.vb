@@ -1,6 +1,6 @@
 <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
 Partial Class Main
-    Inherits System.Windows.Forms.Form
+    Inherits WeifenLuo.WinFormsUI.DockContent
 
     'Form overrides dispose to clean up the component list.
     <System.Diagnostics.DebuggerNonUserCode()> _
@@ -243,7 +243,9 @@ Partial Class Main
         Me.Controls.Add(Me.nudGreen)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.nudHue)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Name = "Main"
+        Me.TabText = "Color Picker"
         Me.Text = "Color Picker"
         CType(Me.nudSaturation, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.nudBrightness, System.ComponentModel.ISupportInitialize).EndInit()

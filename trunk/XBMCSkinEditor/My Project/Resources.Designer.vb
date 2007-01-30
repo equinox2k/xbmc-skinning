@@ -216,6 +216,13 @@ Namespace My.Resources
             End Get
         End Property
         
+        Friend ReadOnly Property Train() As Byte()
+            Get
+                Dim obj As Object = ResourceManager.GetObject("Train", resourceCulture)
+                Return CType(obj,Byte())
+            End Get
+        End Property
+        
         Friend ReadOnly Property webheader() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("webheader", resourceCulture)
@@ -234,6 +241,13 @@ Namespace My.Resources
             Get
                 Dim obj As Object = ResourceManager.GetObject("window_split_ver", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        Friend ReadOnly Property XBMCSkinEditor() As System.Drawing.Icon
+            Get
+                Dim obj As Object = ResourceManager.GetObject("XBMCSkinEditor", resourceCulture)
+                Return CType(obj,System.Drawing.Icon)
             End Get
         End Property
     End Module

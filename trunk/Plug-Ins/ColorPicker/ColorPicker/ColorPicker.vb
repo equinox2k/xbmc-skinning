@@ -61,7 +61,7 @@ Public Class ColorPicker
     'Plugin Start
     Public Sub Start() Implements IPlugin.Start
         Dim a As New Main
-        objHost.ShowForm(a, "")
+        objHost.ShowDockContent(a, WeifenLuo.WinFormsUI.DockState.DockRight)
     End Sub
 
 End Class

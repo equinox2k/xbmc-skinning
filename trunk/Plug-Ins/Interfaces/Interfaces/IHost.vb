@@ -1,14 +1,11 @@
 Imports System.Drawing
 Imports System.Windows.Forms
-
 Public Interface IHost
-
+    Sub ShowDockContent(ByVal Form As WeifenLuo.WinFormsUI.DockContent, ByVal DDockStyle As WeifenLuo.WinFormsUI.DockState) ' Requires WeifenLuo.WinFormsUI Reference  WeifenLuo.WinFormsUI.Docking.dll
     Sub ShowMessage(ByVal Message As String)
     Function ShowDialog(ByVal Form As Form) As DialogResult
     Sub ShowForm(ByVal Form As Form, ByVal DockLocation As String)
-
     Sub ErrorOccured(ByVal ErrorLevel As Integer, ByVal Message As String, ByVal File As String, ByVal Line As Integer, ByVal Pos As Integer)
-
     Function ExecuteCommand(ByVal Command As String, ByVal Parameters() As Object) As Object()
 
     Function GetXPRImageCount(ByVal FileName As String) As Integer

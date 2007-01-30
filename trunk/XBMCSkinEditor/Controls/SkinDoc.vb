@@ -3,6 +3,7 @@ Imports System
 Imports System.Drawing
 Imports System.Windows.Forms
 Imports System.IO
+Imports System.Text
 Public Class SkinDoc
     Inherits DockContent
     Private m_resetText As Boolean = True
@@ -20,11 +21,6 @@ Public Class SkinDoc
 
                 Dim fext As String = efInfo.Extension.ToUpper()
 
-                If fext.Equals(".RTF") Then
-                    richTextBox1.LoadFile(s, RichTextBoxStreamType.RichText)
-                Else
-                    richTextBox1.LoadFile(s, RichTextBoxStreamType.PlainText)
-                End If
                 s.Close()
             End If
 
@@ -32,18 +28,6 @@ Public Class SkinDoc
             Me.ToolTipText = value
         End Set
     End Property
-
-    ' workaround of RichTextbox control's bug:
-    ' If load file before the control showed, all the text format will be lost
-    ' re-load the file after it get showed.
-    Protected Overloads Overrides Sub OnPaint(ByVal e As PaintEventArgs)
-        MyBase.OnPaint(e)
-
-        If m_resetText Then
-            m_resetText = False
-            FileName = FileName
-        End If
-    End Sub
 
     Protected Overloads Overrides Function GetPersistString() As String
         Return [GetType]().ToString() + "," + FileName + "," + Text
@@ -60,7 +44,29 @@ Public Class SkinDoc
     Protected Overloads Overrides Sub OnTextChanged(ByVal e As EventArgs)
         MyBase.OnTextChanged(e)
         If FileName = String.Empty Then
-            Me.richTextBox1.Text = Text
+            'Me.richTextBox1.Text = Text
         End If
     End Sub
+    Public Sub LoadText(ByVal FileNamePath As String)
+        Dim ext As String
+        ext = System.IO.Path.GetExtension(FileNamePath.ToLower())
+        'Select Case ext
+        '    Case ".txt"
+        '        'Me.ScintillaControl2.LegacyConfigurationLanguage = "txt"
+        '    Case ".xml"
+        '        Me.ScintillaControl2.LegacyConfigurationLanguage = "hypertext"
+        '    Case ".py"
+        '        Me.ScintillaControl2.LegacyConfigurationLanguage = "PY"
+        '    Case ".cs"
+        '        'Me.ScintillaControl2.LegacyConfigurationLanguage = "C#"
+        'End Select
+        Me.ScintillaControl2.SetText(System.IO.File.ReadAllText(FileNamePath, Encoding.ASCII))
+    End Sub
+
+
+    Private Sub SkinDoc_Load(ByVal sender As System.Object, ByVal e As System.EventArgs)
+        'Dim cu = New Scintilla.Legacy.Configuration.ConfigurationUtility([GetType]().[Module].Assembly)
+        'Me.ScintillaControl2.LegacyConfiguration = DirectCast(cu.LoadConfiguration(GetType(Scintilla.Legacy.Configuration.Scintilla), "LegacyScintillaNET.xml"), Scintilla.Legacy.Configuration.Scintilla)
+    End Sub
+
 End Class

@@ -28,8 +28,8 @@ Partial Class Splash
         '
         Me.Version.BackColor = System.Drawing.Color.Transparent
         Me.Version.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Version.ForeColor = System.Drawing.Color.Black
-        Me.Version.Location = New System.Drawing.Point(276, 142)
+        Me.Version.ForeColor = System.Drawing.Color.White
+        Me.Version.Location = New System.Drawing.Point(276, 112)
         Me.Version.Name = "Version"
         Me.Version.Size = New System.Drawing.Size(203, 22)
         Me.Version.TabIndex = 0
@@ -41,8 +41,8 @@ Partial Class Splash
         Me.Label2.AutoSize = True
         Me.Label2.BackColor = System.Drawing.Color.Transparent
         Me.Label2.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.ForeColor = System.Drawing.Color.Black
-        Me.Label2.Location = New System.Drawing.Point(12, 359)
+        Me.Label2.ForeColor = System.Drawing.Color.MidnightBlue
+        Me.Label2.Location = New System.Drawing.Point(12, 333)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(204, 19)
         Me.Label2.TabIndex = 1
@@ -54,7 +54,7 @@ Partial Class Splash
         Me.Label3.BackColor = System.Drawing.Color.Transparent
         Me.Label3.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.ForeColor = System.Drawing.Color.Black
-        Me.Label3.Location = New System.Drawing.Point(330, 359)
+        Me.Label3.Location = New System.Drawing.Point(330, 333)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(149, 19)
         Me.Label3.TabIndex = 2

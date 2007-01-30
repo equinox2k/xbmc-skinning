@@ -5,7 +5,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.50727</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{FB080FB7-9E4B-4A43-82E9-C9A47CA60234}</ProjectGuid>
+    <ProjectGuid>{7A31710B-AC1B-468E-8A3E-F0FE5A2F3200}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>SkinEditor.Plugin.GoogleSearch</RootNamespace>
     <AssemblyName>SkinEditor.Plugin.GoogleSearch</AssemblyName>
