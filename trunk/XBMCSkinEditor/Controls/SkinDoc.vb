@@ -50,16 +50,16 @@ Public Class SkinDoc
     Public Sub LoadText(ByVal FileNamePath As String)
         Dim ext As String
         ext = System.IO.Path.GetExtension(FileNamePath.ToLower())
-        Select Case ext
-            Case ".txt"
-                Me.ScintillaControl2.LegacyConfigurationLanguage = ""
-            Case ".xml"
-                Me.ScintillaControl2.LegacyConfigurationLanguage = "hypertext"
-            Case ".py"
-                Me.ScintillaControl2.LegacyConfigurationLanguage = "PY"
-            Case ".cs"
-                Me.ScintillaControl2.LegacyConfigurationLanguage = "C#"
-        End Select
+        'Select Case ext
+        '    Case ".txt"
+        '        Me.ScintillaControl2.LegacyConfigurationLanguage = ""
+        '    Case ".xml"
+        '        Me.ScintillaControl2.LegacyConfigurationLanguage = "hypertext"
+        '    Case ".py"
+        '        Me.ScintillaControl2.LegacyConfigurationLanguage = "PY"
+        '    Case ".cs"
+        '        Me.ScintillaControl2.LegacyConfigurationLanguage = "C#"
+        'End Select
         Me.ScintillaControl2.SetText(System.IO.File.ReadAllText(FileNamePath, Encoding.ASCII))
     End Sub
 

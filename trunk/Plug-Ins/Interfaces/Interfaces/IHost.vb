@@ -34,5 +34,4 @@ Public Interface IHost
     Sub SetSetting(ByVal SettingName As String, ByVal Value As String)
     Function GetPluginSetting(ByVal PluginName As String, ByVal SettingName As String) As String
     Sub SetPluginSetting(ByVal PluginName As String, ByVal SettingName As String, ByVal Value As String)
-
 End Interface

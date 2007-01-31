@@ -12,7 +12,10 @@ Public Class Host
     Public Function AppPath() As String
         Return System.AppDomain.CurrentDomain.BaseDirectory()
     End Function
-
+    'Public Function HasSettings(ByVal PluginName As String) Implements IHost.H
+    '    objSettings.SetPluginSetting(PluginName, SettingName, Value)
+    '    return objHost.
+    'End Function
 #Region "Misc Functions"
 
     Public Sub ShowMessage(ByVal Message As String) Implements IHost.ShowMessage
@@ -219,7 +222,6 @@ Public Class Host
     Public Sub SetPluginSetting(ByVal PluginName As String, ByVal SettingName As String, ByVal Value As String) Implements IHost.SetPluginSetting
         objSettings.SetPluginSetting(PluginName, SettingName, Value)
     End Sub
-
 #End Region
 
 End Class

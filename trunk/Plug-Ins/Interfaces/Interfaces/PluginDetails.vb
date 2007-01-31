@@ -5,13 +5,14 @@ Public Class PluginDetails
     Dim strAuthor As String
     Dim intVersionMajor As Integer
     Dim intVersionMinor As Integer
-
-    Public Sub New(ByVal Name As String, ByVal Description As String, ByVal Author As String, ByVal VersionMajor As Integer, ByVal VersionMinor As Integer)
+    Dim bolhasSettings As Boolean
+    Public Sub New(ByVal Name As String, ByVal Description As String, ByVal Author As String, ByVal VersionMajor As Integer, ByVal VersionMinor As Integer, ByVal HasSettings As Boolean)
         strName = Name
         strDescription = Description
         strAuthor = Author
         intVersionMajor = VersionMajor
         intVersionMinor = VersionMinor
+        bolhasSettings = HasSettings
     End Sub
 
     Public ReadOnly Property Name() As String
@@ -43,5 +44,9 @@ Public Class PluginDetails
             Return intVersionMinor
         End Get
     End Property
-
+    Public ReadOnly Property HasSettings() As Boolean
+        Get
+            Return bolhasSettings
+        End Get
+    End Property
 End Class

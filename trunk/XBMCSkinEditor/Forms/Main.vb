@@ -44,13 +44,16 @@ Public Class Main
             For intIndex As Integer = 0 To Plugins.Length - 1
                 Dim objPlugin As IPlugin = DirectCast(PluginServices.CreateInstance(Plugins(intIndex)), IPlugin)
                 Dim newItem As New ToolStripMenuItem
-                Dim newItem2 As New ToolStripMenuItem
                 newItem.Text = objPlugin.PluginDetails.Name
                 newItem.Tag = Str(intIndex)
-                newItem2.Text = objPlugin.PluginDetails.Name
-                newItem2.Tag = Str(intIndex)
                 PluginMenu.DropDownItems.Add(newItem)
-                TSMI_PluginsSettings.DropDownItems.Add(newItem2) '' ADD CODE TO DETECT IF IT HAS SETTINGS
+                If objPlugin.PluginDetails.HasSettings Then
+                    Dim newItem2 As New ToolStripMenuItem
+                    newItem2.Text = objPlugin.PluginDetails.Name
+                    newItem2.Tag = Str(intIndex)
+
+                    TSMI_PluginsSettings.DropDownItems.Add(newItem2)
+                End If
             Next intIndex
         End If
 
@@ -154,4 +157,6 @@ Public Class Main
             objPlugin.Settings()
         End If
     End Sub
+
+
 End Class

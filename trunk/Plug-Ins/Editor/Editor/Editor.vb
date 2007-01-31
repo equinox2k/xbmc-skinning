@@ -15,7 +15,7 @@ Public Class Editor
             Dim strAuthor As String = "Equinox"
             Dim intVersionMajor As Integer = "1"
             Dim inVersionMinor As Integer = "0"
-            Return New PluginDetails(strName, strDescription, strAuthor, intVersionMajor, inVersionMinor)
+            Return New PluginDetails(strName, strDescription, strAuthor, intVersionMajor, inVersionMinor, False)
         End Get
     End Property
 
