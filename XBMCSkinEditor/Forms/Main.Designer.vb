@@ -137,7 +137,7 @@ Partial Class Main
         'TSMI_PluginsSettings
         '
         Me.TSMI_PluginsSettings.Name = "TSMI_PluginsSettings"
-        Me.TSMI_PluginsSettings.Size = New System.Drawing.Size(152, 22)
+        Me.TSMI_PluginsSettings.Size = New System.Drawing.Size(118, 22)
         Me.TSMI_PluginsSettings.Text = "Plugins"
         '
         'HelpToolStripMenuItem

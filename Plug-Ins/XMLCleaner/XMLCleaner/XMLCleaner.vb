@@ -15,7 +15,7 @@ Public Class XMLCleaner
             Dim strAuthor As String = "Equinox & Donno"
             Dim intVersionMajor As Integer = "1"
             Dim inVersionMinor As Integer = "0"
-            Return New PluginDetails(strName, strDescription, strAuthor, intVersionMajor, inVersionMinor)
+            Return New PluginDetails(strName, strDescription, strAuthor, intVersionMajor, inVersionMinor, True)
         End Get
     End Property
 
