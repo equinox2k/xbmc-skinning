@@ -32,7 +32,12 @@ Public Class About
     End Sub
 
 
-    Private Sub ScrollingTextPanel1_Paint(ByVal sender As System.Object, ByVal e As System.Windows.Forms.PaintEventArgs) Handles ScrollingTextPanel1.Paint
-
+    Private Sub About_Resize(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Resize
+        ScrollingTextPanel1.Width = Me.Width - 24
+        If Me.Height > 95 Then
+            ScrollingTextPanel1.Top = Me.Height / 2 - ScrollingTextPanel1.Height / 2
+        Else
+            ScrollingTextPanel1.Top = 12
+        End If
     End Sub
 End Class

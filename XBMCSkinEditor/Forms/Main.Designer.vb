@@ -45,7 +45,7 @@ Partial Class Main
         'AboutToolStripMenuItem
         '
         AboutToolStripMenuItem.Name = "AboutToolStripMenuItem"
-        AboutToolStripMenuItem.Size = New System.Drawing.Size(114, 22)
+        AboutToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         AboutToolStripMenuItem.Text = "About"
         AddHandler AboutToolStripMenuItem.Click, AddressOf Me.AboutToolStripMenuItem_Click
         '
@@ -68,7 +68,7 @@ Partial Class Main
         'OSTSMI
         '
         Me.OSTSMI.Name = "OSTSMI"
-        Me.OSTSMI.Size = New System.Drawing.Size(133, 22)
+        Me.OSTSMI.Size = New System.Drawing.Size(152, 22)
         Me.OSTSMI.Text = "Open Skin"
         '
         'WindowToolStripMenuItem
@@ -137,7 +137,7 @@ Partial Class Main
         'TSMI_PluginsSettings
         '
         Me.TSMI_PluginsSettings.Name = "TSMI_PluginsSettings"
-        Me.TSMI_PluginsSettings.Size = New System.Drawing.Size(118, 22)
+        Me.TSMI_PluginsSettings.Size = New System.Drawing.Size(152, 22)
         Me.TSMI_PluginsSettings.Text = "Plugins"
         '
         'HelpToolStripMenuItem
@@ -151,7 +151,7 @@ Partial Class Main
         '
         Me.DockingPanel.ActiveAutoHideContent = Nothing
         Me.DockingPanel.BackColor = System.Drawing.Color.White
-        Me.DockingPanel.BackgroundImage = CType(resources.GetObject("DockingPanel.BackgroundImage"), System.Drawing.Image)
+        Me.DockingPanel.BackgroundImage = Global.XBMCSkinEditor.My.Resources.Resources.Back
         Me.DockingPanel.Dock = System.Windows.Forms.DockStyle.Fill
         Me.DockingPanel.Font = New System.Drawing.Font("Tahoma", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World)
         Me.DockingPanel.Location = New System.Drawing.Point(0, 24)

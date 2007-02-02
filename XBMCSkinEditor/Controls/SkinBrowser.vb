@@ -37,6 +37,8 @@ Public Class SkinBrowser
 
         Dim objTreeNode As New TreeNode
         objTreeNode.Text = objSkin.SkinName
+        objTreeNode.ImageKey = "skin"
+        objTreeNode.SelectedImageKey = "skin"
         SkinBrowser_TV.Nodes.Add(objTreeNode)
         RecurseTree(SkinPath, SkinBrowser_TV.Nodes(0))
         Return True
@@ -141,29 +143,33 @@ Public Class SkinBrowser
     Private Sub SkinBrowser_TV_NodeMouseDoubleClick(ByVal sender As Object, ByVal e As System.Windows.Forms.TreeNodeMouseClickEventArgs) Handles SkinBrowser_TV.NodeMouseDoubleClick
         Dim FI As FileInfo
         FI = e.Node.Tag()
-        If FileType.File = FileType.File Then
-            Select Case System.IO.Path.GetExtension(e.Node.Text.ToLower())
-                Case ".txt"
-                    FI = e.Node.Tag
+        If FI.FileType = FileType.File Then
+            Select Case System.IO.Path.GetExtension(e.Node.Text.ToUpper())
+                Case ".TXT", ".XML", ".JS", ".PY", ".HTML", ".HTM", ".CSS", ".ASP", ".PHP"
                     Main.LoadDocument(FI.Path + FI.Name)
-                Case ".xml"
-                    FI = e.Node.Tag
-                    Main.LoadDocument(FI.Path + FI.Name)
-                Case ".cs"
-                    FI = e.Node.Tag
-                    Main.LoadDocument(FI.Path + FI.Name)
-                Case ".py"
-                    FI = e.Node.Tag
-                    Main.LoadDocument(FI.Path + FI.Name)
+                Case ".PNG", ".BMP", ".TGA", ".JPG", ".GIF"
+                    Main.Loadmage(FI.Path + FI.Name)
             End Select
-        ElseIf FileType.File = FileType.XPR Then
+        ElseIf FI.FileType = FileType.XPR Then
             ' Load the image up
+            Select Case Path.GetExtension(FI.XPRInfo.XPRFile).ToUpper
+                Case ".PNG", ".BMP", ".TGA", ".JPG", ".GIF"
+                    Main.LoadXPRImage(FI)
+            End Select
         End If
     End Sub
 
+    Public ReadOnly Property SelectedFileInfo() As Object
+        Get
+            If SkinBrowser_TV.Nodes.Count > 0 Then
+                Return SkinBrowser_TV.SelectedNode().Tag
+            Else
+                Return Nothing
+            End If
+        End Get
+    End Property
 
-
-    Private Sub SkinBrowser_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+    Private Sub SkinBrowser_TV_AfterSelect(ByVal sender As System.Object, ByVal e As System.Windows.Forms.TreeViewEventArgs) Handles SkinBrowser_TV.AfterSelect
 
     End Sub
 End Class

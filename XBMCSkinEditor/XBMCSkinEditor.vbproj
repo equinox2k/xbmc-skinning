@@ -252,7 +252,9 @@
     <Content Include="LegacyScintillaNET.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="lzo.dll" />
+    <Content Include="lzo.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <EmbeddedResource Include="Controls\SkinImageView.resx">
       <DependentUpon>SkinImageView.vb</DependentUpon>
       <SubType>Designer</SubType>

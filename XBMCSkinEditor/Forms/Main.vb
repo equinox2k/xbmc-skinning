@@ -70,6 +70,7 @@ Public Class Main
             ts.Tag = x.fileextensions
             Me.TSMI_Lang.DropDownItems.Add(ts)
         Next
+        m_OutputWindow.OuputText = "========== XBMC Skin Editor Loaded =========="
     End Sub
     Private Function HasLang(ByVal LName As String) As Boolean
         For Each x As Scintilla.Legacy.Configuration.Language In m_LegacyConf.languages
@@ -102,6 +103,25 @@ Public Class Main
         Else
             dummyDoc.Show(DockingPanel)
         End If
+    End Sub
+    Public Sub LoadXPRImage(ByVal FIFYI As SkinBrowser.FileInfo)
+        Dim newPC As New SkinImageView()
+        'Dim objViewImage As New SkinImageView
+        newPC.Text = FIFYI.XPRInfo.XPRFile
+        Try
+            Dim objXPRTool As New XPRTool
+            objXPRTool.OpenXPR(FIFYI.Path & FIFYI.Name)
+            newPC.Image = objXPRTool.GetImage(FIFYI.XPRInfo.XPRFile)
+            objXPRTool.CloseXPR()
+        Catch ex As Exception
+        End Try
+        newPC.Show(DockingPanel)
+    End Sub
+    Public Sub Loadmage(ByVal strPath As String)
+        Dim newPC As New SkinImageView()
+        newPC.Text = System.IO.Path.GetFileName(strPath)
+        newPC.LoadImage(strPath)
+        newPC.Show(DockingPanel)
     End Sub
     Public Sub LoadDocument(ByVal strPath As String)
         Dim dummyDoc As New SkinDoc()
@@ -157,6 +177,5 @@ Public Class Main
             objPlugin.Settings()
         End If
     End Sub
-
 
 End Class
