@@ -23,13 +23,28 @@ Partial Class SkinImageView
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.SkinImageView_PB = New System.Windows.Forms.PictureBox
+        CType(Me.SkinImageView_PB, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
+        '
+        'SkinImageView_PB
+        '
+        Me.SkinImageView_PB.BackgroundImage = Global.XBMCSkinEditor.My.Resources.Resources.Grid
+        Me.SkinImageView_PB.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.SkinImageView_PB.Location = New System.Drawing.Point(0, 0)
+        Me.SkinImageView_PB.Name = "SkinImageView_PB"
+        Me.SkinImageView_PB.Size = New System.Drawing.Size(484, 352)
+        Me.SkinImageView_PB.TabIndex = 0
+        Me.SkinImageView_PB.TabStop = False
         '
         'SkinImageView
         '
-        Me.ClientSize = New System.Drawing.Size(292, 266)
+        Me.ClientSize = New System.Drawing.Size(484, 352)
+        Me.Controls.Add(Me.SkinImageView_PB)
         Me.Name = "SkinImageView"
+        CType(Me.SkinImageView_PB, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
+    Friend WithEvents SkinImageView_PB As System.Windows.Forms.PictureBox
 End Class

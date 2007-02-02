@@ -79,6 +79,7 @@ Partial Class Main
         Me.EditorMenuStrip.Size = New System.Drawing.Size(652, 24)
         Me.EditorMenuStrip.TabIndex = 18
         Me.EditorMenuStrip.Text = "Editor Menu"
+        Me.EditorMenuStrip.Visible = False
         '
         'FileMenuItem
         '
@@ -90,74 +91,74 @@ Partial Class Main
         'NewMenuItem
         '
         Me.NewMenuItem.Name = "NewMenuItem"
-        Me.NewMenuItem.Size = New System.Drawing.Size(148, 22)
+        Me.NewMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.NewMenuItem.Text = "New"
         '
         'OpenMenuItem
         '
         Me.OpenMenuItem.Name = "OpenMenuItem"
-        Me.OpenMenuItem.Size = New System.Drawing.Size(148, 22)
+        Me.OpenMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.OpenMenuItem.Text = "Open"
         '
         'SaveMenuItem
         '
         Me.SaveMenuItem.Name = "SaveMenuItem"
-        Me.SaveMenuItem.Size = New System.Drawing.Size(148, 22)
+        Me.SaveMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.SaveMenuItem.Text = "Save"
         '
         'SaveAsMenuItem
         '
         Me.SaveAsMenuItem.Name = "SaveAsMenuItem"
-        Me.SaveAsMenuItem.Size = New System.Drawing.Size(148, 22)
+        Me.SaveAsMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.SaveAsMenuItem.Text = "Save As"
         '
         'ToolStripSeparator3
         '
         Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
-        Me.ToolStripSeparator3.Size = New System.Drawing.Size(145, 6)
+        Me.ToolStripSeparator3.Size = New System.Drawing.Size(149, 6)
         '
         'CloseMenuItem
         '
         Me.CloseMenuItem.Name = "CloseMenuItem"
-        Me.CloseMenuItem.Size = New System.Drawing.Size(148, 22)
+        Me.CloseMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.CloseMenuItem.Text = "Close"
         '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(145, 6)
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(149, 6)
         '
         'PageSetupMenuItem
         '
         Me.PageSetupMenuItem.Name = "PageSetupMenuItem"
-        Me.PageSetupMenuItem.Size = New System.Drawing.Size(148, 22)
+        Me.PageSetupMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.PageSetupMenuItem.Text = "Page Setup"
         '
         'PrintOptionsMenuItem
         '
         Me.PrintOptionsMenuItem.Image = Global.SkinEditor.Plugin.Editor.My.Resources.Resources.printer_options
         Me.PrintOptionsMenuItem.Name = "PrintOptionsMenuItem"
-        Me.PrintOptionsMenuItem.Size = New System.Drawing.Size(148, 22)
+        Me.PrintOptionsMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.PrintOptionsMenuItem.Text = "Print Options"
         '
         'PrintPreviewMenuItem
         '
         Me.PrintPreviewMenuItem.Image = Global.SkinEditor.Plugin.Editor.My.Resources.Resources.print_preview
         Me.PrintPreviewMenuItem.Name = "PrintPreviewMenuItem"
-        Me.PrintPreviewMenuItem.Size = New System.Drawing.Size(148, 22)
+        Me.PrintPreviewMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.PrintPreviewMenuItem.Text = "Print Preview"
         '
         'PrintMenuItem
         '
         Me.PrintMenuItem.Image = Global.SkinEditor.Plugin.Editor.My.Resources.Resources.print
         Me.PrintMenuItem.Name = "PrintMenuItem"
-        Me.PrintMenuItem.Size = New System.Drawing.Size(148, 22)
+        Me.PrintMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.PrintMenuItem.Text = "Print"
         '
         'EditorToolStrip
         '
         Me.EditorToolStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FindToolItem, Me.ReplaceToolItem, Me.GotoToolItem, Me.ToolStripSeparator2, Me.ToolStripLabel1, Me.SyntaxComboToolItem})
-        Me.EditorToolStrip.Location = New System.Drawing.Point(0, 24)
+        Me.EditorToolStrip.Location = New System.Drawing.Point(0, 0)
         Me.EditorToolStrip.Name = "EditorToolStrip"
         Me.EditorToolStrip.Size = New System.Drawing.Size(652, 25)
         Me.EditorToolStrip.TabIndex = 19
@@ -250,9 +251,9 @@ Partial Class Main
         Me.SyntaxEdit1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.SyntaxEdit1.Font = New System.Drawing.Font("Courier New", 10.0!)
         Me.SyntaxEdit1.Gutter.Options = CType((QWhale.Editor.GutterOptions.PaintLineNumbers Or QWhale.Editor.GutterOptions.PaintLinesOnGutter), QWhale.Editor.GutterOptions)
-        Me.SyntaxEdit1.Location = New System.Drawing.Point(0, 49)
+        Me.SyntaxEdit1.Location = New System.Drawing.Point(0, 25)
         Me.SyntaxEdit1.Name = "SyntaxEdit1"
-        Me.SyntaxEdit1.Size = New System.Drawing.Size(652, 362)
+        Me.SyntaxEdit1.Size = New System.Drawing.Size(652, 386)
         Me.SyntaxEdit1.Source = Me.TextSource
         Me.SyntaxEdit1.TabIndex = 21
         '
@@ -268,6 +269,7 @@ Partial Class Main
         Me.Controls.Add(Me.EditorMenuStrip)
         Me.MainMenuStrip = Me.EditorMenuStrip
         Me.Name = "Main"
+        Me.TabText = "Editor"
         Me.Text = "Editor"
         Me.EditorMenuStrip.ResumeLayout(False)
         Me.EditorMenuStrip.PerformLayout()

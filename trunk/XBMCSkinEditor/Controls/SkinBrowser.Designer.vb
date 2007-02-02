@@ -48,6 +48,7 @@ Partial Class SkinBrowser
         Me.SkinBrowser_IL.Images.SetKeyName(0, "folder")
         Me.SkinBrowser_IL.Images.SetKeyName(1, "file")
         Me.SkinBrowser_IL.Images.SetKeyName(2, "image")
+        Me.SkinBrowser_IL.Images.SetKeyName(3, "skin")
         '
         'SkinBrowser
         '

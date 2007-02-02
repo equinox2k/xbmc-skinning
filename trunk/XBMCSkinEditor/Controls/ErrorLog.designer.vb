@@ -45,7 +45,7 @@ Partial Class ErrorLogWindow
         Me.Name = "ErrorLogWindow"
         Me.ShowIcon = False
         Me.TabText = "ErrorLog"
-        Me.Text = "ErrorLog"
+        Me.Text = "Error Log"
         Me.ResumeLayout(False)
 
     End Sub

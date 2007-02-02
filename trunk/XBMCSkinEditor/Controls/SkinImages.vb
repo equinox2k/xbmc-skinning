@@ -134,5 +134,5 @@ Public Class SkinImage
         _Frame += 1
         If _Frame = _Frames.Count Then _Frame = 0
     End Sub
-
 End Class
+
