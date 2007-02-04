@@ -14,7 +14,7 @@ Public Class About
 
     Private Sub About_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         ScrollingTextPanel1.Message = "--------------------------------- XBMC Skin Editor was " & _
-                                      "created and designed by EqUiNox... GFX by Blackbolt... " & _
+                                      "created and designed by EqUiNox and Donno... GFX by Blackbolt... " & _
                                       "Big thanks go to: XBMC Team for creating such a great " & _
                                       "program and giving me inspiration to create this program. " & _
                                       "J Marshall who put up with me asking continuous questions " & _
