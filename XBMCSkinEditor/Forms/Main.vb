@@ -5,6 +5,7 @@ Public Class Main
     Private m_SkinBrowser As New SkinBrowser
     Private m_OutputWindow As New OutputWindow
     Private m_ErrorLogWindow As New ErrorLogWindow
+    Private m_PropertiesWindow As New Skinproperty
     Public m_LegacyConf As Scintilla.Legacy.Configuration.Scintilla
     Private m_CurrentProject As String
 
@@ -186,4 +187,13 @@ Public Class Main
     End Sub
 
 
+    Private Sub TSMI_Properties_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TSMI_Properties.Click
+        If TSMI_Properties.Checked Then
+            TSMI_Properties.Checked = False
+            m_PropertiesWindow.Hide()
+        Else
+            TSMI_Properties.Checked = True
+            m_PropertiesWindow.Show(DockingPanel, DockState.DockRight)
+        End If
+    End Sub
 End Class

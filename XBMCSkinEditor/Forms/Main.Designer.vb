@@ -40,6 +40,7 @@ Partial Class Main
         Me.TSMI_PluginsSettings = New System.Windows.Forms.ToolStripMenuItem
         Me.HelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.DockingPanel = New WeifenLuo.WinFormsUI.DockPanel
+        Me.TSMI_Properties = New System.Windows.Forms.ToolStripMenuItem
         AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.MS.SuspendLayout()
         Me.SuspendLayout()
@@ -83,7 +84,7 @@ Partial Class Main
         '
         Me.WindowToolStripMenuItem.Checked = True
         Me.WindowToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.WindowToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SBTSMI, Me.TSMI_ErrorLog, Me.TSMI_Output, Me.tss1})
+        Me.WindowToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SBTSMI, Me.TSMI_ErrorLog, Me.TSMI_Output, Me.TSMI_Properties, Me.tss1})
         Me.WindowToolStripMenuItem.Name = "WindowToolStripMenuItem"
         Me.WindowToolStripMenuItem.Size = New System.Drawing.Size(57, 20)
         Me.WindowToolStripMenuItem.Text = "Window"
@@ -93,7 +94,7 @@ Partial Class Main
         Me.SBTSMI.Checked = True
         Me.SBTSMI.CheckState = System.Windows.Forms.CheckState.Checked
         Me.SBTSMI.Name = "SBTSMI"
-        Me.SBTSMI.Size = New System.Drawing.Size(152, 22)
+        Me.SBTSMI.Size = New System.Drawing.Size(175, 22)
         Me.SBTSMI.Text = "SkinBrowser"
         '
         'TSMI_ErrorLog
@@ -101,7 +102,7 @@ Partial Class Main
         Me.TSMI_ErrorLog.Checked = True
         Me.TSMI_ErrorLog.CheckState = System.Windows.Forms.CheckState.Checked
         Me.TSMI_ErrorLog.Name = "TSMI_ErrorLog"
-        Me.TSMI_ErrorLog.Size = New System.Drawing.Size(152, 22)
+        Me.TSMI_ErrorLog.Size = New System.Drawing.Size(175, 22)
         Me.TSMI_ErrorLog.Text = "Error Log"
         '
         'TSMI_Output
@@ -109,13 +110,13 @@ Partial Class Main
         Me.TSMI_Output.Checked = True
         Me.TSMI_Output.CheckState = System.Windows.Forms.CheckState.Checked
         Me.TSMI_Output.Name = "TSMI_Output"
-        Me.TSMI_Output.Size = New System.Drawing.Size(152, 22)
+        Me.TSMI_Output.Size = New System.Drawing.Size(175, 22)
         Me.TSMI_Output.Text = "Output"
         '
         'tss1
         '
         Me.tss1.Name = "tss1"
-        Me.tss1.Size = New System.Drawing.Size(149, 6)
+        Me.tss1.Size = New System.Drawing.Size(172, 6)
         '
         'MS
         '
@@ -168,9 +169,16 @@ Partial Class Main
         Me.DockingPanel.Dock = System.Windows.Forms.DockStyle.Fill
         Me.DockingPanel.Font = New System.Drawing.Font("Tahoma", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World)
         Me.DockingPanel.Location = New System.Drawing.Point(0, 24)
+        Me.DockingPanel.Margin = New System.Windows.Forms.Padding(0)
         Me.DockingPanel.Name = "DockingPanel"
         Me.DockingPanel.Size = New System.Drawing.Size(692, 342)
         Me.DockingPanel.TabIndex = 0
+        '
+        'TSMI_Properties
+        '
+        Me.TSMI_Properties.Name = "TSMI_Properties"
+        Me.TSMI_Properties.Size = New System.Drawing.Size(175, 22)
+        Me.TSMI_Properties.Text = "Properties Window"
         '
         'Main
         '
@@ -208,4 +216,5 @@ Partial Class Main
     Friend WithEvents TSMI_Lang As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents TMSI_Refresh As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents tss1 As System.Windows.Forms.ToolStripSeparator
+    Friend WithEvents TSMI_Properties As System.Windows.Forms.ToolStripMenuItem
 End Class
