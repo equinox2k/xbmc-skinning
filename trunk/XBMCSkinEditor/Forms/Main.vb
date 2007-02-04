@@ -6,6 +6,8 @@ Public Class Main
     Private m_OutputWindow As New OutputWindow
     Private m_ErrorLogWindow As New ErrorLogWindow
     Public m_LegacyConf As Scintilla.Legacy.Configuration.Scintilla
+    Private m_CurrentProject As String
+
     Private Plugins() As PluginServices.AvailablePlugin = PluginServices.FindPlugins(objHost.AppPath, "SkinEditor.Interfaces.IPlugin")
 
 
@@ -22,6 +24,7 @@ Public Class Main
         objOFD.Title = "Please select desired skin to open:"
         If objOFD.ShowDialog() = Windows.Forms.DialogResult.OK Then
             If System.IO.Path.GetFileName(objOFD.FileName).ToUpper = "SKIN.XML" Then
+                m_CurrentProject = (System.IO.Path.GetDirectoryName(objOFD.FileName))
                 Me.m_SkinBrowser.OpenSkin(System.IO.Path.GetDirectoryName(objOFD.FileName))
             End If
         End If
@@ -177,5 +180,10 @@ Public Class Main
             objPlugin.Settings()
         End If
     End Sub
+
+    Private Sub TMSI_Refresh_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TMSI_Refresh.Click
+        Me.m_SkinBrowser.OpenSkin(m_CurrentProject)
+    End Sub
+
 
 End Class

@@ -27,10 +27,12 @@ Partial Class Main
         Me.Button1 = New System.Windows.Forms.Button
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.OSTSMI = New System.Windows.Forms.ToolStripMenuItem
+        Me.TMSI_Refresh = New System.Windows.Forms.ToolStripMenuItem
         Me.WindowToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.SBTSMI = New System.Windows.Forms.ToolStripMenuItem
         Me.TSMI_ErrorLog = New System.Windows.Forms.ToolStripMenuItem
         Me.TSMI_Output = New System.Windows.Forms.ToolStripMenuItem
+        Me.tss1 = New System.Windows.Forms.ToolStripSeparator
         Me.MS = New System.Windows.Forms.MenuStrip
         Me.PluginMenu = New System.Windows.Forms.ToolStripMenuItem
         Me.TSMI_Lang = New System.Windows.Forms.ToolStripMenuItem
@@ -60,10 +62,10 @@ Partial Class Main
         '
         'FileToolStripMenuItem
         '
-        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OSTSMI})
+        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OSTSMI, Me.TMSI_Refresh})
         Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
-        Me.FileToolStripMenuItem.Size = New System.Drawing.Size(35, 20)
-        Me.FileToolStripMenuItem.Text = "File"
+        Me.FileToolStripMenuItem.Size = New System.Drawing.Size(53, 20)
+        Me.FileToolStripMenuItem.Text = "Project"
         '
         'OSTSMI
         '
@@ -71,11 +73,17 @@ Partial Class Main
         Me.OSTSMI.Size = New System.Drawing.Size(152, 22)
         Me.OSTSMI.Text = "Open Skin"
         '
+        'TMSI_Refresh
+        '
+        Me.TMSI_Refresh.Name = "TMSI_Refresh"
+        Me.TMSI_Refresh.Size = New System.Drawing.Size(152, 22)
+        Me.TMSI_Refresh.Text = "Reload Tree"
+        '
         'WindowToolStripMenuItem
         '
         Me.WindowToolStripMenuItem.Checked = True
         Me.WindowToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.WindowToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SBTSMI, Me.TSMI_ErrorLog, Me.TSMI_Output})
+        Me.WindowToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SBTSMI, Me.TSMI_ErrorLog, Me.TSMI_Output, Me.tss1})
         Me.WindowToolStripMenuItem.Name = "WindowToolStripMenuItem"
         Me.WindowToolStripMenuItem.Size = New System.Drawing.Size(57, 20)
         Me.WindowToolStripMenuItem.Text = "Window"
@@ -85,7 +93,7 @@ Partial Class Main
         Me.SBTSMI.Checked = True
         Me.SBTSMI.CheckState = System.Windows.Forms.CheckState.Checked
         Me.SBTSMI.Name = "SBTSMI"
-        Me.SBTSMI.Size = New System.Drawing.Size(143, 22)
+        Me.SBTSMI.Size = New System.Drawing.Size(152, 22)
         Me.SBTSMI.Text = "SkinBrowser"
         '
         'TSMI_ErrorLog
@@ -93,7 +101,7 @@ Partial Class Main
         Me.TSMI_ErrorLog.Checked = True
         Me.TSMI_ErrorLog.CheckState = System.Windows.Forms.CheckState.Checked
         Me.TSMI_ErrorLog.Name = "TSMI_ErrorLog"
-        Me.TSMI_ErrorLog.Size = New System.Drawing.Size(143, 22)
+        Me.TSMI_ErrorLog.Size = New System.Drawing.Size(152, 22)
         Me.TSMI_ErrorLog.Text = "Error Log"
         '
         'TSMI_Output
@@ -101,8 +109,13 @@ Partial Class Main
         Me.TSMI_Output.Checked = True
         Me.TSMI_Output.CheckState = System.Windows.Forms.CheckState.Checked
         Me.TSMI_Output.Name = "TSMI_Output"
-        Me.TSMI_Output.Size = New System.Drawing.Size(143, 22)
+        Me.TSMI_Output.Size = New System.Drawing.Size(152, 22)
         Me.TSMI_Output.Text = "Output"
+        '
+        'tss1
+        '
+        Me.tss1.Name = "tss1"
+        Me.tss1.Size = New System.Drawing.Size(149, 6)
         '
         'MS
         '
@@ -193,4 +206,6 @@ Partial Class Main
     Friend WithEvents SettingsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents TSMI_PluginsSettings As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents TSMI_Lang As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents TMSI_Refresh As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents tss1 As System.Windows.Forms.ToolStripSeparator
 End Class

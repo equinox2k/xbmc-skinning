@@ -60,6 +60,7 @@ Public Class SkinDoc
         '    Case ".cs"
         '        Me.ScintillaControl2.LegacyConfigurationLanguage = "C#"
         'End Select
+        Me.m_fileName = FileNamePath
         Me.ScintillaControl2.SetText(System.IO.File.ReadAllText(FileNamePath, Encoding.ASCII))
     End Sub
 
@@ -75,5 +76,29 @@ Public Class SkinDoc
         Next
 
         ''lang = _legacyConfiguration.GetLanguage(value);
+    End Sub
+
+    Private Sub TSMI_Save_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TSMI_Save.Click
+        System.IO.File.WriteAllText(m_fileName, ScintillaControl2.Text)
+    End Sub
+
+    Private Sub TSMI_SaveAs_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TSMI_SaveAs.Click
+        ' save as means save it to a new file
+        sfd.Filter = "All Files (*.*)|*.*"
+        sfd.Title = "Save File As"
+        If (sfd.ShowDialog() = DialogResult.OK) Then
+            Me.m_fileName = sfd.FileName
+            Me.Text = System.IO.Path.GetFileName(m_fileName)
+            System.IO.File.WriteAllText(Me.m_fileName, ScintillaControl2.Text)
+        End If
+    End Sub
+
+    Private Sub TSMI_SaveCopy_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TSMI_SaveCopy.Click
+        ' save as means save it to a new file but keep workign on the oringally
+        sfd.Filter = "All Files (*.*)|*.*"
+        sfd.Title = "Save a Copy"
+        If (sfd.ShowDialog() = DialogResult.OK) Then
+            System.IO.File.WriteAllText(sfd.FileName, ScintillaControl2.Text)
+        End If
     End Sub
 End Class
