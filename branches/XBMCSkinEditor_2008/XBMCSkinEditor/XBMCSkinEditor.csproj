@@ -1,0 +1,200 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F7D6D84A-EE61-4BC8-A7AD-FF54E76884BD}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>XBMCSkinEditor</RootNamespace>
+    <AssemblyName>XBMCSkinEditor</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <StartupObject>XBMCSkinEditor.Program</StartupObject>
+    <ApplicationIcon>XBMCSkinEditor.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WeifenLuo.WinFormsUI.Docking, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Components\WeifenLuo.WinFormsUI.Docking.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Components\Output.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Components\Output.Designer.cs">
+      <DependentUpon>Output.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\SkinBrowser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Components\SkinBrowser.Designer.cs">
+      <DependentUpon>SkinBrowser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\FileBrowser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Components\FileBrowser.Designer.cs">
+      <DependentUpon>FileBrowser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\About.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows\About.designer.cs">
+      <DependentUpon>About.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\MainWin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows\MainWin.Designer.cs">
+      <DependentUpon>MainWin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Components\Output.resx">
+      <DependentUpon>Output.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\SkinBrowser.resx">
+      <DependentUpon>SkinBrowser.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\FileBrowser.resx">
+      <DependentUpon>FileBrowser.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\MainWin.resx">
+      <DependentUpon>MainWin.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\Splash.resx">
+      <DependentUpon>Splash.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Windows\Splash.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\goto.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\appheaderleft.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\appheadermain.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\back.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\bullet.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\document_plain.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\find.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\folder_closed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\grid.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\headerdark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\headerlight.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\icon.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\pens.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\photo_scenery.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\print.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\print_preview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\printer_options.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\replace.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\seperator.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\skin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\splash.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\webheader.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="XBMCSkinEditor.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
