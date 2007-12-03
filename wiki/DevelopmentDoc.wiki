@@ -1,4 +1,4 @@
-#summary One-sentence summary of this page.
+#summary Design and Implementation Document for Development.
 #labels Phase-Design,Phase-Implementation
 
 = Introduction =
@@ -22,7 +22,25 @@ Will show you which files/window files are open (being edited), another indicate
 At the time of writting XBMC only supports 1 Window decarled/defined per file
 
 = Skin =
-When a skin is loaded, all the file names for each resolution will be loaded in and a place for the xml document for that file to be stored as well as weather hte file is open, and modfied. With a way to save and load. So bascially when you edit a skin ur editing the xml dom (or whatever of that). Will cleanup this section once I (Donno) implement it.
+When a skin is loaded, all the file names for each resolution will be loaded in and a place for the xml document for that file to be stored as well as weather hte file is open, and modfied. With a way to save and load. So bascially when you edit a skin ur editing the xml dom (or whatever of that). Will cleanup this section once I (Donno) implement it. The base unit for this is currently called SkinComponent.
 
 = Plugins =
 The Editor will support plugins, more on this later.
+
+= SkinComponent =
+*Protected Varibles*
+  * string mFileName
+  * XmlDocument mComponentDoc
+  * bool mIsOpen
+  * bool mIsModified
+*Public Methods*
+  * Read()
+  * Save() - Saves the mComponentDoc (XmlDocument) to mFileName. (IsModfied = false)
+  * bool mIsOpen
+  * bool mIsModified
+*Public Properties*
+  * IsOpen [get only]
+  * IsModifed [get only]
+  * Filename
+
+Please Note this is prelim, im only putting it here to hold my thoughts, and partials snippets of the current state of the code. 
