@@ -28,14 +28,31 @@ namespace XBMCSkinEditor.Windows
         /// </summary>
         private void InitializeComponent()
         {
+            this.stp = new XBMCSkinEditor.Components.ScrollingTextPanel();
             this.SuspendLayout();
+            // 
+            // stp
+            // 
+            this.stp.BackColor = System.Drawing.Color.Transparent;
+            this.stp.ForeColor = System.Drawing.Color.White;
+            this.stp.Interval = 50;
+            this.stp.Location = new System.Drawing.Point(12, 12);
+            this.stp.Message = "\"--------------------------------- XBMC Skin Editor was created and designed by E" +
+                "qUiNox and Donno... GFX by Blackbolt...";
+            this.stp.Name = "stp";
+            this.stp.ScrollSpeed = 2;
+            this.stp.Size = new System.Drawing.Size(300, 52);
+            this.stp.Started = true;
+            this.stp.TabIndex = 0;
+            this.stp.Paint += new System.Windows.Forms.PaintEventHandler(this.stp_Paint);
             // 
             // About
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(292, 61);
+            this.ClientSize = new System.Drawing.Size(314, 72);
+            this.Controls.Add(this.stp);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MaximizeBox = false;
             this.Name = "About";
@@ -50,5 +67,6 @@ namespace XBMCSkinEditor.Windows
         }
 
         #endregion
+        internal XBMCSkinEditor.Components.ScrollingTextPanel stp;
     }
 }

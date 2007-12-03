@@ -22,6 +22,14 @@ namespace XBMCSkinEditor.Windows
         }
         private void About_Load(object sender, EventArgs e)
         {
+            this.stp.Message = "--------------------------------- XBMC Skin Editor was created and designed by EqUiNox and Donno... GFX by Blackbolt...";
+            this.stp.Message = this.stp.Message + "Big thanks go to: XBMC Team for creating such a great program and giving me inspiration to create this program. ";
+            this.stp.Message = this.stp.Message + "J Marshall who put up with me asking continuous questions regarding the XBMC spec. ";
+            this.stp.Started = true;
+        }
+
+        private void stp_Paint(object sender, PaintEventArgs e)
+        {
 
         }
     }

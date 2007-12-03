@@ -207,6 +207,15 @@ namespace XBMCSkinEditor.Properties {
             }
         }
         
+        /// <summary>
+        ///   Looks up a localized string similar to this.ilBrowser.Images.Add(XBMCSkinEditor.Properties.Resources.folder_closed);.
+        /// </summary>
+        internal static string String {
+            get {
+                return ResourceManager.GetString("String", resourceCulture);
+            }
+        }
+        
         internal static System.Drawing.Bitmap webheader {
             get {
                 object obj = ResourceManager.GetObject("webheader", resourceCulture);

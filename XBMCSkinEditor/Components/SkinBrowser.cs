@@ -15,16 +15,10 @@ namespace XBMCSkinEditor.Components
         }
         private void Browser_Load(object sender, EventArgs e)
         {
-
-        }
-        private void Browser_Quit(object sender, EventArgs e)
-        {
-
+            /*tvBrowser.Nodes.Add("PAL");
+            tvBrowser.Nodes.Add("PAL16x9");
+            tvBrowser.Nodes.Add("1080i");*/
         }
 
-        private void tvBrowser_AfterSelect(object sender, TreeViewEventArgs e)
-        {
-
-        }
     }
 }
