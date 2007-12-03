@@ -55,7 +55,7 @@
             this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiFileBrowser = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiSkinBrowser = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem9 = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiErrorLog = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiOutput = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem11 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -203,6 +203,7 @@
             this.MS.Name = "MS";
             this.MS.Size = new System.Drawing.Size(575, 24);
             this.MS.TabIndex = 7;
+            this.MS.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.MS_ItemClicked);
             // 
             // toolStripMenuItem2
             // 
@@ -217,19 +218,20 @@
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(143, 22);
             this.toolStripMenuItem3.Text = "New Skin";
             // 
             // toolStripMenuItem4
             // 
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(143, 22);
             this.toolStripMenuItem4.Text = "Open Skin";
+            this.toolStripMenuItem4.Click += new System.EventHandler(this.toolStripMenuItem4_Click);
             // 
             // toolStripMenuItem5
             // 
             this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(143, 22);
             this.toolStripMenuItem5.Text = "Reload Tree";
             // 
             // toolStripMenuItem6
@@ -239,7 +241,7 @@
             this.toolStripMenuItem6.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmiFileBrowser,
             this.tsmiSkinBrowser,
-            this.toolStripMenuItem9,
+            this.tsmiErrorLog,
             this.tsmiOutput,
             this.toolStripMenuItem11,
             this.toolStripSeparator1});
@@ -261,11 +263,11 @@
             this.tsmiSkinBrowser.Text = "Skin Browser";
             this.tsmiSkinBrowser.Click += new System.EventHandler(this.tsmi_View_Event);
             // 
-            // toolStripMenuItem9
+            // tsmiErrorLog
             // 
-            this.toolStripMenuItem9.Name = "toolStripMenuItem9";
-            this.toolStripMenuItem9.Size = new System.Drawing.Size(175, 22);
-            this.toolStripMenuItem9.Text = "Error Log";
+            this.tsmiErrorLog.Name = "tsmiErrorLog";
+            this.tsmiErrorLog.Size = new System.Drawing.Size(175, 22);
+            this.tsmiErrorLog.Text = "Error Log";
             // 
             // tsmiOutput
             // 
@@ -340,6 +342,7 @@
             this.DockPanel.Name = "DockPanel";
             this.DockPanel.Size = new System.Drawing.Size(575, 318);
             this.DockPanel.TabIndex = 9;
+            this.DockPanel.ActiveContentChanged += new System.EventHandler(this.DockPanel_ActiveContentChanged);
             // 
             // MainWin
             // 
@@ -386,7 +389,7 @@
         internal System.Windows.Forms.ToolStripMenuItem toolStripMenuItem6;
         internal System.Windows.Forms.ToolStripMenuItem tsmiFileBrowser;
         private System.Windows.Forms.ToolStripMenuItem tsmiSkinBrowser;
-        internal System.Windows.Forms.ToolStripMenuItem toolStripMenuItem9;
+        internal System.Windows.Forms.ToolStripMenuItem tsmiErrorLog;
         internal System.Windows.Forms.ToolStripMenuItem tsmiOutput;
         internal System.Windows.Forms.ToolStripMenuItem toolStripMenuItem11;
         internal System.Windows.Forms.ToolStripSeparator toolStripSeparator1;

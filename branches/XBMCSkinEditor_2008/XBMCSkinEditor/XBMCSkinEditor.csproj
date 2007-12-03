@@ -45,11 +45,25 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\FileInfo.cs" />
+    <Compile Include="Classes\XMLHelper.cs" />
+    <Compile Include="Classes\SkinManager.cs" />
+    <Compile Include="Classes\Skin.cs" />
+    <Compile Include="Classes\SkinComponent.cs" />
+    <Compile Include="Components\ErrorLog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Components\ErrorLog.Designer.cs">
+      <DependentUpon>ErrorLog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Components\Output.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Components\Output.Designer.cs">
       <DependentUpon>Output.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\ScrollingTextPanel.cs">
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Components\SkinBrowser.cs">
       <SubType>Form</SubType>
@@ -77,16 +91,20 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Components\ErrorLog.resx">
+      <DependentUpon>ErrorLog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\FileBrowser.resx">
+      <DependentUpon>FileBrowser.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Components\Output.resx">
       <DependentUpon>Output.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Components\SkinBrowser.resx">
       <DependentUpon>SkinBrowser.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Components\FileBrowser.resx">
-      <DependentUpon>FileBrowser.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -96,6 +114,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Windows\MainWin.resx">
       <DependentUpon>MainWin.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\NewSkin.resx">
+      <DependentUpon>NewSkin.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Windows\Splash.resx">
@@ -115,6 +137,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Windows\NewSkin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows\NewSkin.Designer.cs">
+      <DependentUpon>NewSkin.cs</DependentUpon>
     </Compile>
     <Compile Include="Windows\Splash.cs">
       <SubType>Form</SubType>
@@ -187,6 +215,7 @@
     <None Include="Images\webheader.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Readme.txt" />
     <Content Include="XBMCSkinEditor.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

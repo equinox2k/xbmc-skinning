@@ -8,9 +8,9 @@ using System.Windows.Forms;
 using WeifenLuo.WinFormsUI.Docking;
 namespace XBMCSkinEditor.Components
 {
-    public partial class Output : DockContent
+    public partial class OutputLog : DockContent
     {
-        public Output()
+        public OutputLog()
         {
             InitializeComponent();
         }
@@ -27,14 +27,6 @@ namespace XBMCSkinEditor.Components
             }
         }
 
-        private void Output_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtOutput_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+ 
     }
 }

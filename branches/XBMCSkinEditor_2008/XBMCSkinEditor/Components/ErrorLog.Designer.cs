@@ -1,6 +1,6 @@
 ﻿namespace XBMCSkinEditor.Components
 {
-    partial class OutputLog
+    partial class ErrorLog
     {
         /// <summary>
         /// Required designer variable.
@@ -28,36 +28,36 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtOutput = new System.Windows.Forms.TextBox();
+            this.lstErrors = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
-            // txtOutput
+            // lstErrors
             // 
-            this.txtOutput.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtOutput.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtOutput.Location = new System.Drawing.Point(0, 0);
-            this.txtOutput.Multiline = true;
-            this.txtOutput.Name = "txtOutput";
-            this.txtOutput.Size = new System.Drawing.Size(292, 266);
-            this.txtOutput.TabIndex = 1;
+            this.lstErrors.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lstErrors.FormattingEnabled = true;
+            this.lstErrors.Location = new System.Drawing.Point(0, 0);
+            this.lstErrors.Name = "lstErrors";
+            this.lstErrors.Size = new System.Drawing.Size(292, 264);
+            this.lstErrors.TabIndex = 0;
             // 
-            // OutputLog
+            // ErrorLog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(292, 266);
-            this.Controls.Add(this.txtOutput);
-            this.Name = "OutputLog";
-            this.TabText = "Output";
-            this.Text = "Output";
+            this.Controls.Add(this.lstErrors);
+            this.Name = "ErrorLog";
+            this.TabText = "Error Logs";
+            this.Text = "Error Logs";
+            this.Load += new System.EventHandler(this.ErrorLog_Load);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.TextBox txtOutput;
+        private System.Windows.Forms.ListBox lstErrors;
+
 
     }
 }

@@ -1,11 +1,14 @@
 ﻿using WeifenLuo.WinFormsUI.Docking;
+using XBMCSkinEditor.Classes;
 namespace XBMCSkinEditor
 {
     public partial class MainWin : System.Windows.Forms.Form
     {
-        private Components.FileBrowser mFileBrowser;
-        private Components.SkinBrowser mSkinBrowser;
-        private Components.Output      mOutput;
+
+        public static Components.FileBrowser mFileBrowser;
+        public static Components.SkinBrowser mSkinBrowser;
+        public static Components.OutputLog mOutput;
+        public static Components.ErrorLog mErrorLog;
 
         public MainWin()
         {
@@ -18,10 +21,14 @@ namespace XBMCSkinEditor
             tsmiSkinBrowser.Checked = true;
 
 
-            mOutput = new Components.Output();
+            mOutput = new Components.OutputLog();
             tsmiOutput.Checked = true;
             mOutput.Show(this.DockPanel, DockState.DockBottom);
             mOutput.OutputText = "== XBMCSkinEditor Started ==";
+
+            mErrorLog = new Components.ErrorLog();
+            tsmiErrorLog.Checked = true;
+            mErrorLog.Show(this.DockPanel, DockState.DockBottom);
 
             mSkinBrowser.Disposed += new System.EventHandler(View_Disposed);
             mFileBrowser.Disposed += new System.EventHandler(View_Disposed);
@@ -89,6 +96,22 @@ namespace XBMCSkinEditor
         {
 
         }
+
+        private void toolStripMenuItem4_Click(object sender, System.EventArgs e)
+        {
+            mFileBrowser.OpenSkinFolder(@"D:\TheSVN\XBMCSkinning\skins\MC360\");
+        }
+
+        private void DockPanel_ActiveContentChanged(object sender, System.EventArgs e)
+        {
+
+        }
+
+        private void MS_ItemClicked(object sender, System.Windows.Forms.ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
 
 
 
