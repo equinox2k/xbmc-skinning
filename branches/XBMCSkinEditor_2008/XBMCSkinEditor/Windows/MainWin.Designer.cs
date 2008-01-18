@@ -338,7 +338,7 @@
             this.DockPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.DockPanel.BackgroundImage = global::XBMCSkinEditor.Properties.Resources.back;
             this.DockPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DockPanel.DocumentStyle = WeifenLuo.WinFormsUI.Docking.DocumentStyle.SystemMdi;
+            //this.DockPanel.DocumentStyle = WeifenLuo.WinFormsUI.Docking.DocumentStyle.SystemMdi;
             this.DockPanel.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World);
             this.DockPanel.Location = new System.Drawing.Point(0, 24);
             this.DockPanel.Margin = new System.Windows.Forms.Padding(0);
