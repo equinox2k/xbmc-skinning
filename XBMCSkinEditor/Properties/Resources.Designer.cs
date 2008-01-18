@@ -216,6 +216,13 @@ namespace XBMCSkinEditor.Properties {
             }
         }
         
+        internal static byte[] Train {
+            get {
+                object obj = ResourceManager.GetObject("Train", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap webheader {
             get {
                 object obj = ResourceManager.GetObject("webheader", resourceCulture);

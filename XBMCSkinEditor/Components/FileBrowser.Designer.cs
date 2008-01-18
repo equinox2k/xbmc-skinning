@@ -1,6 +1,6 @@
 ﻿namespace XBMCSkinEditor.Components
 {
-    partial class FileBrowser
+    partial class FileBrowser 
     {
         /// <summary>
         /// Required designer variable.
@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FileBrowser));
             this.tvBrowser = new System.Windows.Forms.TreeView();
             this.ilBrowser = new System.Windows.Forms.ImageList(this.components);
             this.CMS_Image = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -45,21 +46,23 @@
             this.tvBrowser.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tvBrowser.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tvBrowser.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tvBrowser.ImageIndex = 2;
+            this.tvBrowser.ImageList = this.ilBrowser;
             this.tvBrowser.Location = new System.Drawing.Point(0, 0);
             this.tvBrowser.Name = "tvBrowser";
+            this.tvBrowser.SelectedImageIndex = 0;
             this.tvBrowser.Size = new System.Drawing.Size(292, 266);
             this.tvBrowser.StateImageList = this.ilBrowser;
             this.tvBrowser.TabIndex = 2;
-            this.tvBrowser.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tvBrowser_AfterSelect);
             // 
             // ilBrowser
             // 
-            /*this.ilBrowser.Images.Add(XBMCSkinEditor.Properties.Resources.document_plain);
-            this.ilBrowser.Images.Add(XBMCSkinEditor.Properties.Resources.folder_closed);
-            this.ilBrowser.Images.Add(XBMCSkinEditor.Properties.Resources.photo_scenery);*/
-            this.ilBrowser.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
-            this.ilBrowser.ImageSize = new System.Drawing.Size(16, 16);
+            this.ilBrowser.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ilBrowser.ImageStream")));
             this.ilBrowser.TransparentColor = System.Drawing.Color.Transparent;
+            this.ilBrowser.Images.SetKeyName(0, "");
+            this.ilBrowser.Images.SetKeyName(1, "");
+            this.ilBrowser.Images.SetKeyName(2, "");
+            this.ilBrowser.Images.SetKeyName(3, "");
             // 
             // CMS_Image
             // 
@@ -103,6 +106,9 @@
             this.ClientSize = new System.Drawing.Size(292, 266);
             this.Controls.Add(this.tvBrowser);
             this.Name = "FileBrowser";
+            this.ShowIcon = false;
+            
+            this.Icon = null;
             this.TabText = "File Browser";
             this.Text = "File Browser";
             this.Load += new System.EventHandler(this.FileBrowser_Load);

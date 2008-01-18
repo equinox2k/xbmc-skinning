@@ -82,34 +82,35 @@ namespace XBMCSkinEditor.Components
                 {
                     strChar = strMessage.Substring(0, 1);
                 }
-                SizeF objSizeF = objGraphics.MeasureString(strChar, this.Font); 
+                SizeF objSizeF = objGraphics.MeasureString(strChar, this.Font);
                 intPixelOffset -= intCharWidth;
-                intCharWidth = (int)objSizeF.Width;       
+                intCharWidth = (int)objSizeF.Width;
             }
-            if (intCharPos >= strMessage.Length) { intCharPos = 0; }
+
+            if (intCharPos >= strMessage.Length)
+                intCharPos = 0;
             int intCurChar = intCharPos;
             int intCurPosX = 0;
 
             do
             {
 
-                if (intCurChar >= strMessage.Length) { intCurChar = 0; }
+                if (intCurChar >= strMessage.Length)
+                    intCurChar = 0;
                 strChar = strMessage.Substring(intCurChar, 1);
 
                 SizeF objSizeF = objGraphics.MeasureString(strChar, this.Font);
-                
-                int intYOffset = (int)(Math.Sin(Math.PI * ((intSinOffset + (intCurPosX * 2)) / 180.0)) * ((this.Height - (objSizeF.Height * 2)) / 2));
-                objGraphics.DrawString(strChar, this.Font, new SolidBrush(this.ForeColor), intCurPosX - intPixelOffset, 0 + (this.Height / 2) - (objSizeF.Height / 2) + intYOffset);
-                //objGraphics.DrawString(strChar, Me.Font, New SolidBrush(Me.ForeColor), intCurPosX - intPixelOffset, 0 + (Me.Height / 2) - (objSizeF.Height / 2) + intYOffset)
-                intCurPosX += (int)(objSizeF.Width);
-                intCurChar += 1;
+                float fYOffset = (float)Math.Sin(Math.PI * ((intSinOffset + (intCurPosX * 2)) / 180.0)) * ((this.Height - (objSizeF.Height * 2)) / 2);
+                objGraphics.DrawString(strChar, this.Font, new SolidBrush(this.ForeColor), intCurPosX - intPixelOffset, 0 + (this.Height / 2) - (objSizeF.Height / 2) + fYOffset);
 
-            } while (intCurPosX - intPixelOffset > this.Width);
+                intCurPosX += (int)objSizeF.Width;
+                intCurChar += 1;
+            }
+
+            while (!(intCurPosX - intPixelOffset > this.Width));
 
             intPixelOffset += intScrollSpeed;
             base.OnPaint(e);
         }
-
-     
     }
 }

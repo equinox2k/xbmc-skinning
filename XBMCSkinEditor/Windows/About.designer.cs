@@ -34,34 +34,35 @@ namespace XBMCSkinEditor.Windows
             // stp
             // 
             this.stp.BackColor = System.Drawing.Color.Transparent;
+            this.stp.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.stp.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.stp.ForeColor = System.Drawing.Color.White;
             this.stp.Interval = 50;
-            this.stp.Location = new System.Drawing.Point(12, 12);
+            this.stp.Location = new System.Drawing.Point(10, 10);
+            this.stp.Margin = new System.Windows.Forms.Padding(10);
             this.stp.Message = "\"--------------------------------- XBMC Skin Editor was created and designed by E" +
                 "qUiNox and Donno... GFX by Blackbolt...";
             this.stp.Name = "stp";
+            this.stp.Padding = new System.Windows.Forms.Padding(10);
             this.stp.ScrollSpeed = 2;
-            this.stp.Size = new System.Drawing.Size(300, 52);
+            this.stp.Size = new System.Drawing.Size(342, 51);
             this.stp.Started = true;
             this.stp.TabIndex = 0;
-            this.stp.Paint += new System.Windows.Forms.PaintEventHandler(this.stp_Paint);
             // 
             // About
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(314, 72);
+            this.ClientSize = new System.Drawing.Size(362, 71);
             this.Controls.Add(this.stp);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.MaximizeBox = false;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "About";
-            this.ShowIcon = false;
-            this.ShowInTaskbar = false;
+            this.Padding = new System.Windows.Forms.Padding(10);
+            this.ShowInTaskbar = this.MaximizeBox = this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "About";
             this.Load += new System.EventHandler(this.About_Load);
-            this.DoubleClick += new System.EventHandler(this.About_DClick);
             this.ResumeLayout(false);
 
         }
