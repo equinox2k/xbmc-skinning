@@ -6,10 +6,10 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using XBMCSkinEditor.Classes;
-using WeifenLuo.WinFormsUI.Docking;
+
 namespace XBMCSkinEditor.Components
 {
-    public partial class FileBrowser : DockContent
+    public partial class FileBrowser : WeifenLuo.WinFormsUI.Docking.DockContent
     {
         public FileBrowser()
         {
