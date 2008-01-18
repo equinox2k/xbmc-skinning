@@ -112,9 +112,25 @@ namespace XBMCSkinEditor
 
         }
 
+        private void toolStripMenuItem3_Click(object sender, System.EventArgs e)
+        {
+            /*Windows.NewSkin ns = Windows.NewSkin();
+            ns.Show();
+            */
+        }
 
+        private void toolStripMenuItem5_Click(object sender, System.EventArgs e)
+        {
+            
+            Components.ImageViewer skinView = new Components.ImageViewer();
+            skinView.MdiParent = this;
+            if (this.DockPanel.DocumentStyle == DocumentStyle.SystemMdi) {
+                skinView.Show();
+            } else {
+                skinView.Show(this.DockPanel);
+            }
 
-
+        }
 
     }
 }

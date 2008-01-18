@@ -105,6 +105,7 @@
             this.ClientSize = new System.Drawing.Size(292, 266);
             this.Controls.Add(this.tvBrowser);
             this.Name = "SkinBrowser";
+            this.ShowIcon = false;
             this.TabText = "Skin Browser";
             this.Text = "Skin Browser";
             this.Load += new System.EventHandler(this.Browser_Load);

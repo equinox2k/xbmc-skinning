@@ -98,7 +98,7 @@ namespace XBMCSkinEditor.Dialogs
             this.BackColor = System.Drawing.SystemColors.Control;
             this.BackgroundImage = global::XBMCSkinEditor.Properties.Resources.splash;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(506, 407);
+            this.ClientSize = new System.Drawing.Size(505, 405);
             this.Controls.Add(this.m_dev);
             this.Controls.Add(this.m_dev2);
             this.Controls.Add(this.m_gfx);
@@ -109,6 +109,7 @@ namespace XBMCSkinEditor.Dialogs
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Splash";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Splash";
             this.TransparencyKey = System.Drawing.Color.Maroon;
             this.Load += new System.EventHandler(this.Splash_Load);

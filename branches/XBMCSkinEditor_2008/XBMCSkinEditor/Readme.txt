@@ -6,11 +6,11 @@ The dev enviroment is Microsoft Visual Studio C# 2008.
 Features Yet to transfer to this
 - Text Editor
 - Plugin Support
-- XPR/File Support
+- Image Preview (File and XPR)
+- Working Splash and About screen
 
 New Features (WIP)
 - New Skin 'Wizard'
-
 
 Known Bugs
 - About - Scrolling doesn't work correctly
@@ -18,3 +18,6 @@ Known Bugs
 - Working Skin Browser ('Now File Browser')
 - Error Log Window <- Pre Lim added.
 
+3RD Party Components
+- Bass.Net Mod by Un4Seen
+- by Weifen Luo (Source Included)

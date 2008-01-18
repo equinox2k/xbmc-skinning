@@ -50,6 +50,7 @@
             this.Name = "OutputLog";
             this.TabText = "Output";
             this.Text = "Output";
+            this.Load += new System.EventHandler(this.OutputLog_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

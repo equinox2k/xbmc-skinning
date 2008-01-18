@@ -14,6 +14,9 @@ namespace XBMCSkinEditor
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            //XBMCSkinEditor.Dialogs.Splash splash = new XBMCSkinEditor.Dialogs.Splash();
+            //splash.ShowDialog();
+
             Application.Run(new MainWin());
         }
     }

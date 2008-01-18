@@ -12,6 +12,7 @@
     <AssemblyName>XBMCSkinEditor</AssemblyName>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <SplashScreen>Splash</SplashScreen>
     <StartupObject>XBMCSkinEditor.Program</StartupObject>
     <ApplicationIcon>XBMCSkinEditor.ico</ApplicationIcon>
   </PropertyGroup>
@@ -33,28 +34,38 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BassMOD.Net, Version=2.0.0.0, Culture=neutral, PublicKeyToken=d4db1103f7215e10, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Components\BassMOD.Net.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="WeifenLuo.WinFormsUI.Docking, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>Components\WeifenLuo.WinFormsUI.Docking.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\FileInfo.cs" />
+    <Compile Include="Classes\SkinImages.cs" />
     <Compile Include="Classes\XMLHelper.cs" />
     <Compile Include="Classes\SkinManager.cs" />
     <Compile Include="Classes\Skin.cs" />
     <Compile Include="Classes\SkinComponent.cs" />
+    <Compile Include="Classes\XPRTool.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Components\ErrorLog.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Components\ErrorLog.Designer.cs">
       <DependentUpon>ErrorLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\ImageViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Components\ImageViewer.Designer.cs">
+      <DependentUpon>ImageViewer.cs</DependentUpon>
     </Compile>
     <Compile Include="Components\Output.cs">
       <SubType>Form</SubType>
@@ -99,6 +110,10 @@
       <DependentUpon>FileBrowser.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Components\ImageViewer.resx">
+      <DependentUpon>ImageViewer.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Components\Output.resx">
       <DependentUpon>Output.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -110,6 +125,10 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\About.resx">
+      <DependentUpon>About.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Windows\MainWin.resx">
@@ -213,10 +232,17 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Images\webheader.jpg" />
+    <None Include="Train.mod" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Readme.txt" />
     <Content Include="XBMCSkinEditor.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Components\WinFormsUI\WinFormsUI.csproj">
+      <Project>{C75532C4-765B-418E-B09B-46D36B2ABDB1}</Project>
+      <Name>WinFormsUI</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

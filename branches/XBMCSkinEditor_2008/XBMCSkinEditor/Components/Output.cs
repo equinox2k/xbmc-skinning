@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 using WeifenLuo.WinFormsUI.Docking;
 namespace XBMCSkinEditor.Components
 {
@@ -25,6 +19,11 @@ namespace XBMCSkinEditor.Components
             {
                 this.txtOutput.Text = this.txtOutput.Text + value;
             }
+        }
+
+        private void OutputLog_Load(object sender, System.EventArgs e)
+        {
+
         }
 
  
