@@ -58,7 +58,7 @@ namespace XBMCSkinEditor.Classes
             
         byte[] bytDelays = null;
         Image objImage = Image.FromFile(FileName);
-        //FrameDimension objDimension = new FrameDimension(objImage.FrameDimensionsList(0));
+        //FrameDimension objDimension = new FrameDimension(objImage.FrameDimensionsList[0]);
         
         this.frame = 0;
         _Loops = 0;

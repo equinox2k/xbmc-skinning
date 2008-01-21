@@ -2,7 +2,7 @@
 using System.Xml.Serialization;
 namespace XBMCSkinEditor.Classes {
     [XmlRoot("skin")]
-    public class Skin { //: SkinComponent {
+    public class Skin :  SkinComponent {
         private static XmlSerializer serializer = new XmlSerializer(typeof(Skin));
         private bool saved;
         [XmlElement("defaultresolution")]

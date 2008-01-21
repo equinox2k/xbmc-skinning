@@ -22,14 +22,15 @@ namespace XBMCSkinEditor.Windows
             this.stp.Message = this.stp.Message + "Big thanks go to: XBMC Team for creating such a great program and giving me inspiration to create this program. ";
             this.stp.Message = this.stp.Message + "J Marshall who put up with me asking continuous questions regarding the XBMC spec. ";
             this.stp.Started = true;
-            /*
-            bool ret = BassMOD.BASSMOD_Init(1, 44100, BASSInit.BASS_DEVICE_DEFAULT);
-            //BASS_ERROR_DEVICE
-            MessageBox.Show(ret + "" + BassMOD.BASSMOD_ErrorGetCode());
-            int intHand = BassMOD.BASSMOD_MusicLoad(XBMCSkinEditor.Properties.Resources.Train, 0, Properties.Resources.Train.Length, BASSMusic.BASS_MUSIC_LOOP);
-            MessageBox.Show("" + intHand);
-            //Un4seen.BassMOD.BASSErrorCode.BASS_ERROR_INIT 
-            BassMOD.BASSMOD_MusicPlay(); //intHand, true);*/
+
+            if (!BassMOD.BASSMOD_Init(-1, 44100, 0))
+            {
+                // couldn't initialize device, so use "no sound"
+                BassMOD.BASSMOD_Init(0, 44100, 0);
+                
+            }
+            BassMOD.BASSMOD_MusicLoad(XBMCSkinEditor.Properties.Resources.Train, 0, Properties.Resources.Train.Length, BASSMusic.BASS_MUSIC_LOOP);
+            BassMOD.BASSMOD_MusicPlay();
         }
     }
 }

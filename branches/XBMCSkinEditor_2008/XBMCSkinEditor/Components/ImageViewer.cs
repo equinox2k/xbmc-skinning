@@ -19,17 +19,14 @@ namespace XBMCSkinEditor.Components
 
         public void LoadFile()
         {
-            this.BackgroundImage = System.Drawing.Image.FromFile(this.fileName);
+            this.Text = fileName;
+            this.ImageViewerImageBox.Image = System.Drawing.Image.FromFile(this.fileName);
         }
-        public void LoadFile(string fileName)
+        public void LoadFile(string fileName, string path)
         {
+            this.Text = fileName;
             this.fileName = fileName;
-            this.BackgroundImage = System.Drawing.Image.FromFile(this.fileName);
-        }
-
-        private void ImageViewer_Load(object sender, System.EventArgs e)
-        {
-
+            this.ImageViewerImageBox.Image = System.Drawing.Image.FromFile(path);
         }
     }
 }

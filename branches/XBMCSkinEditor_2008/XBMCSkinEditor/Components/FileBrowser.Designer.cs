@@ -34,11 +34,12 @@
             this.ilBrowser = new System.Windows.Forms.ImageList(this.components);
             this.CMS_Image = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.OpenImageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.CMS_Text = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.tmsiEdit = new System.Windows.Forms.ToolStripMenuItem();
-            this.tmsiOpenWith = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmImage = new System.Windows.Forms.ContextMenu();
+            this.menuItem1 = new System.Windows.Forms.MenuItem();
+            this.cmText = new System.Windows.Forms.ContextMenu();
+            this.menuItem2 = new System.Windows.Forms.MenuItem();
+            this.menuItem3 = new System.Windows.Forms.MenuItem();
             this.CMS_Image.SuspendLayout();
-            this.CMS_Text.SuspendLayout();
             this.SuspendLayout();
             // 
             // tvBrowser
@@ -54,6 +55,8 @@
             this.tvBrowser.Size = new System.Drawing.Size(292, 266);
             this.tvBrowser.StateImageList = this.ilBrowser;
             this.tvBrowser.TabIndex = 2;
+            this.tvBrowser.Click += new System.EventHandler(this.tvBrowser_Click);
+            this.tvBrowser.DoubleClick += new System.EventHandler(this.tvBrowser_DoubleClick);
             // 
             // ilBrowser
             // 
@@ -63,6 +66,7 @@
             this.ilBrowser.Images.SetKeyName(1, "");
             this.ilBrowser.Images.SetKeyName(2, "");
             this.ilBrowser.Images.SetKeyName(3, "");
+            
             // 
             // CMS_Image
             // 
@@ -78,26 +82,33 @@
             this.OpenImageToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
             this.OpenImageToolStripMenuItem.Text = "Open Image";
             // 
-            // CMS_Text
+            // cmImage
             // 
-            this.CMS_Text.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tmsiEdit,
-            this.tmsiOpenWith});
-            this.CMS_Text.Name = "CMS_Image";
-            this.CMS_Text.Size = new System.Drawing.Size(179, 48);
-            this.CMS_Text.Text = "txt";
+            this.cmImage.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+            this.menuItem1});
             // 
-            // tmsiEdit
+            // menuItem1
             // 
-            this.tmsiEdit.Name = "tmsiEdit";
-            this.tmsiEdit.Size = new System.Drawing.Size(178, 22);
-            this.tmsiEdit.Text = "Edit";
+            this.menuItem1.Index = 0;
+            this.menuItem1.Text = "Open Image";
+            this.menuItem1.Click += new System.EventHandler(this.miOpenImage_MouseUp);
             // 
-            // tmsiOpenWith
+            // cmText
             // 
-            this.tmsiOpenWith.Name = "tmsiOpenWith";
-            this.tmsiOpenWith.Size = new System.Drawing.Size(178, 22);
-            this.tmsiOpenWith.Text = "Open with Notepad";
+            this.cmText.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+            this.menuItem2,
+            this.menuItem3});
+            //this.cmText.Popup += new System.EventHandler(this.cmText_Popup);
+            // 
+            // menuItem2
+            // 
+            this.menuItem2.Index = 0;
+            this.menuItem2.Text = "Edit";
+            // 
+            // menuItem3
+            // 
+            this.menuItem3.Index = 1;
+            this.menuItem3.Text = "Open in Notepad";
             // 
             // FileBrowser
             // 
@@ -107,13 +118,10 @@
             this.Controls.Add(this.tvBrowser);
             this.Name = "FileBrowser";
             this.ShowIcon = false;
-            
-            this.Icon = null;
             this.TabText = "File Browser";
             this.Text = "File Browser";
             this.Load += new System.EventHandler(this.FileBrowser_Load);
             this.CMS_Image.ResumeLayout(false);
-            this.CMS_Text.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -124,8 +132,10 @@
         internal System.Windows.Forms.ImageList ilBrowser;
         internal System.Windows.Forms.ContextMenuStrip CMS_Image;
         internal System.Windows.Forms.ToolStripMenuItem OpenImageToolStripMenuItem;
-        internal System.Windows.Forms.ContextMenuStrip CMS_Text;
-        internal System.Windows.Forms.ToolStripMenuItem tmsiEdit;
-        internal System.Windows.Forms.ToolStripMenuItem tmsiOpenWith;
+        private System.Windows.Forms.ContextMenu cmImage;
+        private System.Windows.Forms.MenuItem menuItem1;
+        private System.Windows.Forms.ContextMenu cmText;
+        private System.Windows.Forms.MenuItem menuItem2;
+        private System.Windows.Forms.MenuItem menuItem3;
     }
 }

@@ -38,9 +38,12 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Components\BassMOD.Net.dll</HintPath>
     </Reference>
+    <Reference Include="SkinEditor.XPRDecoder, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Components\SkinEditor.XPRDecoder.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
@@ -51,6 +54,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\FileInfo.cs" />
+    <Compile Include="Classes\Host.cs" />
+    <Compile Include="Classes\PluginServices.cs" />
     <Compile Include="Classes\SkinImages.cs" />
     <Compile Include="Classes\XMLHelper.cs" />
     <Compile Include="Classes\SkinManager.cs" />
@@ -241,6 +246,12 @@
   <ItemGroup>
     <Content Include="Readme.txt" />
     <Content Include="XBMCSkinEditor.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Components\Interfaces\Interfaces.csproj">
+      <Project>{44557485-4CEE-4F1B-886A-6DAB6CD56B29}</Project>
+      <Name>Interfaces</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
