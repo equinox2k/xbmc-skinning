@@ -59,7 +59,7 @@
             this.tsmiOutput = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem11 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripMenuItem12 = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiPlugins = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem13 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem14 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem15 = new System.Windows.Forms.ToolStripMenuItem();
@@ -194,7 +194,7 @@
             this.MS.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem2,
             this.toolStripMenuItem6,
-            this.toolStripMenuItem12,
+            this.tsmiPlugins,
             this.toolStripMenuItem13,
             this.toolStripMenuItem14,
             this.toolStripMenuItem16});
@@ -289,11 +289,12 @@
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(172, 6);
             // 
-            // toolStripMenuItem12
+            // tsmiPlugins
             // 
-            this.toolStripMenuItem12.Name = "toolStripMenuItem12";
-            this.toolStripMenuItem12.Size = new System.Drawing.Size(52, 20);
-            this.toolStripMenuItem12.Text = "Plugins";
+            this.tsmiPlugins.Name = "tsmiPlugins";
+            this.tsmiPlugins.Size = new System.Drawing.Size(52, 20);
+            this.tsmiPlugins.Text = "Plugins";
+            this.tsmiPlugins.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(tsmiPlugins_DropDownClick);
             // 
             // toolStripMenuItem13
             // 
@@ -338,7 +339,6 @@
             this.DockPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.DockPanel.BackgroundImage = global::XBMCSkinEditor.Properties.Resources.back;
             this.DockPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            //this.DockPanel.DocumentStyle = WeifenLuo.WinFormsUI.Docking.DocumentStyle.SystemMdi;
             this.DockPanel.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World);
             this.DockPanel.Location = new System.Drawing.Point(0, 24);
             this.DockPanel.Margin = new System.Windows.Forms.Padding(0);
@@ -355,6 +355,7 @@
             this.Controls.Add(this.DockPanel);
             this.Controls.Add(this.MS);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.IsMdiContainer = true;
             this.Name = "MainWin";
             this.Text = "XBMC Skin Editor";
             this.Load += new System.EventHandler(this.MainWin_Load);
@@ -396,7 +397,7 @@
         internal System.Windows.Forms.ToolStripMenuItem tsmiOutput;
         internal System.Windows.Forms.ToolStripMenuItem toolStripMenuItem11;
         internal System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        internal System.Windows.Forms.ToolStripMenuItem toolStripMenuItem12;
+        internal System.Windows.Forms.ToolStripMenuItem tsmiPlugins;
         internal System.Windows.Forms.ToolStripMenuItem toolStripMenuItem13;
         internal System.Windows.Forms.ToolStripMenuItem toolStripMenuItem14;
         internal System.Windows.Forms.ToolStripMenuItem toolStripMenuItem15;

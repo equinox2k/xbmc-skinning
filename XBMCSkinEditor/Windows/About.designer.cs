@@ -40,8 +40,8 @@ namespace XBMCSkinEditor.Windows
             this.stp.Interval = 50;
             this.stp.Location = new System.Drawing.Point(10, 10);
             this.stp.Margin = new System.Windows.Forms.Padding(10);
-            this.stp.Message = "\"--------------------------------- XBMC Skin Editor was created and designed by E" +
-                "qUiNox and Donno... GFX by Blackbolt...";
+            this.stp.Message = "\"--------------------------------- XBMC Skin Editor was created and designed by EqUiNox" +
+                " and Donno... GFX by Blackbolt...";
             this.stp.Name = "stp";
             this.stp.Padding = new System.Windows.Forms.Padding(10);
             this.stp.ScrollSpeed = 2;
@@ -59,7 +59,9 @@ namespace XBMCSkinEditor.Windows
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "About";
             this.Padding = new System.Windows.Forms.Padding(10);
-            this.ShowInTaskbar = this.MaximizeBox = this.ShowIcon = false;
+            this.ShowInTaskbar = false;
+            this.ShowIcon = false;
+            this.MaximizeBox = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "About";
             this.Load += new System.EventHandler(this.About_Load);

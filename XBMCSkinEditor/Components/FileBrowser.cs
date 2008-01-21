@@ -63,6 +63,7 @@ namespace XBMCSkinEditor.Components
             {
                 FileInfo fi = new FileInfo();
                 TreeNode objTN = new TreeNode();
+                
                 string filename = System.IO.Path.GetFileName(file);
                 if (System.IO.Path.GetExtension(file).ToLower() == ".xpr") {
                     try
@@ -84,9 +85,10 @@ namespace XBMCSkinEditor.Components
                         foreach (XPRFileInfo xfi in objXPRTool.XPRFileInfoList)
                         {
                             FileInfo fixpr = new FileInfo();
+                            fixpr.filetype = FileType.XPR;
                             fixpr.xpi.isProtected = objXPRTool.ProtectionEnabled;
                             fixpr.xpi.xprFile = xfi.Name;
-
+                            fixpr.name = fi.displayName;
                             TreeNode objTNxpr = new TreeNode();
                             objTNxpr.Text = xfi.Name;
                             objTNxpr.Tag = fixpr;
@@ -95,6 +97,7 @@ namespace XBMCSkinEditor.Components
                             {
                                 objTNxpr.ImageIndex = 3;
                                 objTNxpr.SelectedImageIndex = 3;
+                                objTNxpr.ContextMenu = this.cmImage;
                             }
                             else
                             {
@@ -136,7 +139,55 @@ namespace XBMCSkinEditor.Components
             return true;
         }
 
+        private void tvBrowser_Click(object sender, System.EventArgs e)
+        {
+            /*MouseEventArgs mea = (MouseEventArgs)e;
+            if (mea.Button == MouseButtons.Right)
+            {
 
+            }
+            MessageBox.Show(e.GetType().ToString());
+             */
+
+        }
+        private void tvBrowser_DoubleClick(object sender, System.EventArgs e)
+        {
+            if (tvBrowser.SelectedNode.Tag == null)
+            {
+                return;
+            }
+            FileInfo fi = (FileInfo)(tvBrowser.SelectedNode.Tag);
+            switch (fi.filetype) {
+                case FileType.File: {
+                    MainWin.mMainWin.OpenFile(fi.name, fi.path);
+                    break;
+                } case FileType.XPR: {
+                    MessageBox.Show(System.IO.Path.GetExtension(fi.xpi.xprFile.ToUpper()));
+                    break;
+                }
+
+            }
+        }
+
+        private void miOpenImage_MouseUp(object sender, EventArgs e)
+        {
+            TreeNode tn = tvBrowser.SelectedNode;
+            MessageBox.Show(tn.Text);
+            
+        }
+
+        /*
+
+        private void MenuItem_MouseUp(object sender, System.Windows.Forms.MouseEventArgs e)
+        {
+            //    MessageBox.Show(tvBrowser.SelectedNode.Text);
+            if (e.Button == MouseButtons.Right)
+            {
+                MessageBox.Show(e.GetType().ToString());
+            }
+        }*/
+        //Dim ClickPoint As Point = New Point(e.X,e.Y) 
+          //Dim ClickNode As TreeNode = treeView1.GetNodeAt(ClickPoint)
  
     }
 }
