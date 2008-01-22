@@ -11,7 +11,7 @@ namespace XBMCSkinEditor.Classes
     {
 
         private Image frame;
-        private int delay;
+        private uint delay;
 
         public Image Frame
         {
@@ -19,7 +19,7 @@ namespace XBMCSkinEditor.Classes
             set { frame = value; }
         }
 
-        public int Delay
+        public uint Delay
         {
             get { return delay; }
             set { delay = value; }
@@ -58,7 +58,7 @@ namespace XBMCSkinEditor.Classes
             
         byte[] bytDelays = null;
         Image objImage = Image.FromFile(FileName);
-        //FrameDimension objDimension = new FrameDimension(objImage.FrameDimensionsList[0]);
+        FrameDimension objDimension = new FrameDimension(objImage.FrameDimensionsList[0]);
         
         this.frame = 0;
         _Loops = 0;
