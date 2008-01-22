@@ -36,11 +36,11 @@
   <ItemGroup>
     <Reference Include="BassMOD.Net, Version=2.0.0.0, Culture=neutral, PublicKeyToken=d4db1103f7215e10, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>Components\BassMOD.Net.dll</HintPath>
+      <HintPath>References\BassMOD.Net.dll</HintPath>
     </Reference>
     <Reference Include="SkinEditor.XPRDecoder, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>Components\SkinEditor.XPRDecoder.dll</HintPath>
+      <HintPath>References\SkinEditor.XPRDecoder.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -49,7 +49,7 @@
     <Reference Include="System.Xml" />
     <Reference Include="WeifenLuo.WinFormsUI.Docking, Version=2.2.2939.32656, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>Components\WeifenLuo.WinFormsUI.Docking.dll</HintPath>
+      <HintPath>References\WeifenLuo.WinFormsUI.Docking.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -244,8 +244,17 @@
     <None Include="Train.mod" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="BASSMOD.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lzo.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Readme.txt" />
     <Content Include="XBMCSkinEditor.ico" />
+    <Content Include="XPRTool.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Components\Interfaces\Interfaces.csproj">

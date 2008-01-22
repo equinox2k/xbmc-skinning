@@ -188,5 +188,20 @@ namespace XBMCSkinEditor
                 return;
             }
         }
+
+        internal void OpenFileInXPR(string filename, string xprpath)
+        {
+            string[] imageExtention = { ".PNG", ".BMP", ".TGA", ".JPG", ".GIF" };
+            string fileExtension = System.IO.Path.GetExtension(filename.ToUpper());
+            int i = System.Array.IndexOf<string>(imageExtention, fileExtension);
+            if (i > -1)
+            {
+                XPRTool objXPRTool = new XPRTool();
+                objXPRTool.OpenXPR(xprpath);
+                objXPRTool.GetImage(filename);
+                objXPRTool.CloseXPR();
+
+            }
+        }
     }
 }

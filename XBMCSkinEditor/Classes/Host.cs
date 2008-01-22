@@ -26,8 +26,7 @@ namespace XBMCSkinEditor.Classes
 
         public void ShowMessage(string Message)
         {
-            //Interaction.MsgBox(Message);
-            #warning not implemented
+            System.Windows.Forms.MessageBox.Show(Message);
         }
 
         public void ShowForm(Form Form, string DockLocation)

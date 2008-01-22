@@ -88,6 +88,7 @@ namespace XBMCSkinEditor.Components
                             fixpr.filetype = FileType.XPR;
                             fixpr.xpi.isProtected = objXPRTool.ProtectionEnabled;
                             fixpr.xpi.xprFile = xfi.Name;
+                            fixpr.path = file;
                             fixpr.name = fi.displayName;
                             TreeNode objTNxpr = new TreeNode();
                             objTNxpr.Text = xfi.Name;
@@ -162,7 +163,9 @@ namespace XBMCSkinEditor.Components
                     MainWin.mMainWin.OpenFile(fi.name, fi.path);
                     break;
                 } case FileType.XPR: {
-                    MessageBox.Show(System.IO.Path.GetExtension(fi.xpi.xprFile.ToUpper()));
+//MessageBox.Show(System.IO.Path.GetExtension(fi.xpi.xprFile.ToUpper()));
+                    MainWin.mMainWin.OpenFileInXPR(fi.xpi.xprFile, fi.path);
+
                     break;
                 }
 
